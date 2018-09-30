@@ -1,35 +1,6 @@
 // $( document ).ready(function() {    
 // });
 
-$( "#btnSalir" ).click(function() {
-    CerrarSesion();
-});
-
-function CerrarSesion(){
-    EliminarSession();
-    RedireccionarLogin();
-}
-
-function RedireccionarIngreso(){
-    location.href = BASE_URL + 'Inicio';
-}
-
-function RedireccionarLogin(){
-    location.href = BASE_URL;
-}
-
-function AgregarSession(usuario){
-    sessionStorage.setItem("usuario", JSON.stringify(usuario));
-}
-
-function EliminarSession(){
-    sessionStorage.clear();
-}
-
-function ObtenerSession(){
-    return JSON.parse(sessionStorage.getItem("usuario"));
-}
-
 function validar_email(email) 
 {
     var regex = /^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/;
@@ -43,16 +14,6 @@ function MensajeAlert(titulo,mensaje){
         sticky: false,
         class_name: 'my-sticky-class'
     });
-}
-
-function EventoModal(modal,evento){
-    modal.modal(evento);
-}
-
-function CrearModal(){
-    var modal=null;  
-    modal = $("#processing-modal");
-    return modal;
 }
 
 function number_format(amount, decimals) {
@@ -90,11 +51,6 @@ function ReemplazoNuloMonto(parametro) {
     return valor;
 }
 
-function sumarDias(fecha, dias){
-    fecha.setDate(fecha.getDate() + dias);
-    return fecha;
-}
-
 function numeroFormato(num,cantidadCaracteres){
 	numtmp='"'+num+'"';
 	largo=numtmp.length-2;
@@ -104,71 +60,4 @@ function numeroFormato(num,cantidadCaracteres){
 	pendientes=cantidadCaracteres-largo;
 	for(i=0;i<pendientes;i++)ceros+='0';
 	return ceros+numtmp;
-}
-
-function CargarDatatableConFiltros(nombreTabla) {
-    return $(nombreTabla).DataTable({
-        responsive: true ,
-        paging: true,
-        filter: true,
-        ordering: true,
-        info: true,
-        language: {
-            oPaginate: {
-                sNext: "Siguiente",
-                sPrevious: "Anterior"
-            },
-            emptyTable: "No hay registros para los filtros buscados",
-            lengthMenu: " Registros _MENU_ ",
-            info: "Página _PAGE_ de _PAGES_",
-            infoEmpty: "No se encontraron registros",
-            emptyTable: "No hay registros para los filtros buscados",
-            sLengthMenu: "     _MENU_ registros por pagina",
-            sZeroRecords: "No se encontraron registros",
-            sInfo: "Mostrando _START_ a _END_ de _TOTAL_ registros",
-            sInfoEmpty: "Mostrandro 0 a 0 de 0 registros",
-            sInfoFiltered: "(filtrado de _MAX_ registros)",
-            sLoadingRecords: "Un momento por favor - cargando...",
-            sSearch: "Filtro:",
-            sProcessing: "Cargando...",
-            // columnDefs: [
-            //     {
-            //         "targets": 0,
-            //         "className": "text-center",
-            //         "width": "250px"
-            //    }]
-        },
-        lengthMenu: [10, 20, 30, 40, 50]//,
-    });  
-}
-
-function CargarDatatableSinFiltros(nombreTabla) {
-    return $(nombreTabla).DataTable({
-        responsive: true,
-        paging: true,
-        filter: false,
-        ordering: true,
-        info: true,
-        language: {
-            oPaginate: {
-                sNext: "Siguiente",
-                sPrevious: "Anterior"
-            },
-            emptyTable: "No hay registros para los filtros buscados",
-            lengthMenu: " Registros _MENU_ ",
-            info: "Página _PAGE_ de _PAGES_",
-            infoEmpty: "No se encontraron registros",
-            emptyTable: "No hay registros para los filtros buscados",
-            sLengthMenu: "     _MENU_ registros por pagina",
-            sZeroRecords: "No se encontraron registros",
-            sInfo: "Mostrando _START_ a _END_ de _TOTAL_ registros",
-            sInfoEmpty: "Mostrandro 0 a 0 de 0 registros",
-            sInfoFiltered: "(filtrado de _MAX_ registros)",
-            sLoadingRecords: "Un momento por favor - cargando...",
-            sSearch: "Filtro:",
-            sProcessing: "Cargando..."
-        },
-        lengthMenu: [10, 20, 30, 40, 50]//,
-    });
-
 }

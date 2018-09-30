@@ -1,9 +1,6 @@
       
-        <!-- BEGIN #footer -->
         <div id="footer" class="footer">
-            <!-- BEGIN container -->
             <div class="container">
-                <!-- BEGIN row -->
                 <div class="row">                    
 					<div class="col-md-12">					
 						<div class="col-md-6">							
@@ -20,7 +17,6 @@
 							</div>
 							<div class="col-md-4">
 							</div>
-
 						</div>
                     
 						<div class="col-md-4">
@@ -36,20 +32,12 @@
 							<i class="fa fa-facebook f-s-14"></i>
 							<i class="fa fa-envelope-open-o f-s-14"></i>
 							<i class="fa fa-instagram f-s-14"></i>
-						</div>
-                    
+						</div>                    
 					</div>
-                    <!-- END col-3 -->
                 </div>
-                <!-- END row -->
             </div>
-            <!-- END container -->
         </div>
-        <!-- END #footer -->
-    
-        <!-- BEGIN #footer-copyright -->
         <div id="footer-copyright" class="footer-copyright">
-            <!-- BEGIN container -->
             <div class="container">
                 <div class="payment-method">
                     <img src="<?php echo base_url();?>assets/img/payment/payment-method.png" alt="" />
@@ -58,24 +46,27 @@
                     Copyright &copy; 2017 SeanTheme. All rights reserved.
                 </div>
             </div>
-            <!-- END container -->
         </div>
-        <!-- END #footer-copyright -->
     </div>
-    <!-- END #page-container -->
-
-	
-	<!-- ================== BEGIN BASE JS ================== -->
 	<script src="<?php echo base_url();?>assets/plugins/jquery/jquery-3.2.1.min.js"></script>
 	<script src="<?php echo base_url();?>assets/plugins/bootstrap3/js/bootstrap.min.js"></script>
 	<script src="<?php echo base_url();?>assets/plugins/js-cookie/js.cookie.js"></script>
 	<script src="<?php echo base_url();?>assets/js/e-commerce/apps.min.js"></script>
-	<!-- ================== END BASE JS ================== -->
 	
+	<!--INICIALIZAR VARIABLES GLOBALES-->
+	<script type="text/javascript">
+		var BASE_URL = "<?php echo base_url();?>";
+		var URL_PANEL_ADMIN = "<?php echo utf8_decode($this->config->item('RUTA_ADMINISTRADOR')); ?>";
+	</script>
+	
+	
+	<script src="<?php echo base_url();?>assets/js/panelAdministrador/generico.js"></script>
+	<script src="<?php echo base_url();?>assets/js/panelAdministrador/producto/bocaditos.js"></script>
+	<script src="<?php echo base_url();?>assets/js/panelAdministrador/producto/producto.js"></script>	
 	<script>
 	    $(document).ready(function() {
 	        App.init();
-	    });
+		});
 	</script>
 </body>
 </html>

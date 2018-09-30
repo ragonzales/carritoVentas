@@ -85,7 +85,7 @@
                             <div class="cart-body">
                                 <ul class="cart-item">
                                     <li>
-                                        <div class="cart-item-image"><img src="../assets/img/product/product-ipad.jpg" alt="" /></div>
+                                        <!-- <div class="cart-item-image"><img src="../assets/img/product/product-ipad.jpg" alt="" /></div> -->
                                         <div class="cart-item-info">
                                             <h4>iPad Pro Wi-Fi 128GB - Silver</h4>
                                             <p class="price">$699.00</p>
@@ -95,7 +95,7 @@
                                         </div>
                                     </li>
                                     <li>
-                                        <div class="cart-item-image"><img src="../assets/img/product/product-imac.jpg" alt="" /></div>
+                                        <!-- <div class="cart-item-image"><img src="../assets/img/product/product-imac.jpg" alt="" /></div> -->
                                         <div class="cart-item-info">
                                             <h4>21.5-inch iMac</h4>
                                             <p class="price">$1299.00</p>
@@ -105,7 +105,7 @@
                                         </div>
                                     </li>
                                     <li>
-                                        <div class="cart-item-image"><img src="../assets/img/product/product-iphone.png" alt="" /></div>
+                                        <!-- <div class="cart-item-image"><img src="../assets/img/product/product-iphone.png" alt="" /></div> -->
                                         <div class="cart-item-info">
                                             <h4>iPhone 6s 16GB - Silver</h4>
                                             <p class="price">$649.00</p>
@@ -131,7 +131,7 @@
                     <li class="divider"></li>                            
                     <li>
                         <a href="my_account.html">
-                            <img src="../assets/img/user/user-1.jpg" class="user-img" alt="" />
+                            <!-- <img src="../assets/img/user/user-1.jpg" class="user-img" alt="" /> -->
                             <span class="hidden-md hidden-sm hidden-xs"></span>
                             <!-- Administrador -->
                         </a>
@@ -141,3 +141,4 @@
         </div>
     </div>
 </div>
+
