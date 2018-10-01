@@ -1,8 +1,42 @@
 .item.item-thumbnail .item-image {
-    height: 190px;
+    height: 200px;
     text-align: center;
     padding: 15px;
     line-height: 100px;
     display: block;
     position: relative;
+}
+
+.item.item-thumbnail .item-title, .item.item-thumbnail .item-title a {
+    font-weight: 600;
+    color: #212121;
+    font-size: 18px;
+    line-height: 35px;
+    max-height: 36px;
+    overflow: hidden;
+}
+
+.item.item-thumbnail .item-price {
+    margin: 3px 0;
+    font-size: 30px !important;
+    color: rgb(65, 33, 10);
+    font-weight: 600;
+}
+
+.btn.btn-inverse {
+    color: #fff;
+    background: rgb(65, 33, 10);
+    border-color: rgb(65, 33, 10);
+}
+
+.item.item-thumbnail .item-title a:focus, .item.item-thumbnail .item-title a:hover {
+    color: rgb(65, 33, 10);
+    font-weight: bold;
+}
+
+.modal-header {
+    padding: 12px 15px;
+    border-bottom-color: rgb(65, 33, 10);
+    background: rgb(65, 33, 10);
+    color: white;
 }

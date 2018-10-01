@@ -58,7 +58,7 @@
                             <div class="dropdown-menu p-15">
                                 <form action="search_results.html" method="POST" name="search_form">
                                     <div class="input-group">
-                                        <input type="text" placeholder="Search" class="form-control bg-silver-lighter" />
+                                        <input type="text" placeholder="Buscar Producto" class="form-control bg-silver-lighter" />
                                         <span class="input-group-btn">
                                             <button class="btn btn-inverse" type="submit"><i class="fa fa-search"></i></button>
                                         </span>
@@ -142,3 +142,18 @@
     </div>
 </div>
 
+<div class="modal fade" id="modalProductos">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title">DETALLE PRODUCTO</h4>
+            </div>
+            <div class="modal-body" id="dvDetalleProducto">                                
+                
+            </div>
+            <div class="modal-footer">
+                <a href="javascript:;" class="btn btn-white" data-dismiss="modal">Cerrar</a>
+            </div>
+        </div>
+    </div>
+</div>

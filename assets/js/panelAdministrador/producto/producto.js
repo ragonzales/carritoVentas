@@ -60,7 +60,9 @@ function BannerIzquierda(banner,active){
     bannerTexto += '<div class="container">';
     bannerTexto += '<h3 class="title m-b-5 fadeInLeftBig animated">' + banner.titulo + '</h3> ';
     bannerTexto += '<p class="m-b-15 fadeInLeftBig animated">' + banner.descripcioncorta + '</p>';
-    bannerTexto += '<div class="price m-b-30 fadeInLeftBig animated"><span> ' + banner.mensaje + '</span></div>';
+    if(banner.mensaje != ""){
+        bannerTexto += '<div class="price m-b-30 fadeInLeftBig animated"><span> ' + banner.mensaje + '</span></div>';    
+    }
     bannerTexto += '</div>';
     bannerTexto += '</div>';
     bannerTexto += '</div>';
@@ -75,7 +77,9 @@ function BannerDerecha(banner,active){
     bannerTexto += '<div class="container">';
     bannerTexto += '<h3 class="title m-b-5 fadeInRightBig animated">' + banner.titulo + '</h3> ';
     bannerTexto += '<p class="m-b-15 fadeInRightBig animated">' + banner.descripcioncorta + '</p>';
-    bannerTexto += '<div class="price m-b-30 fadeInRightBig animated"><span>' + banner.mensaje + '</span></div>';
+    if(banner.mensaje != ""){
+        bannerTexto += '<div class="price m-b-30 fadeInRightBig animated"><span>' + banner.mensaje + '</span></div>';
+    }
     bannerTexto += '</div>';
     bannerTexto += '</div>';
     bannerTexto += '</div>';
@@ -90,7 +94,9 @@ function BannerCentro(banner,active){
     bannerTexto += '<div class="container">';
     bannerTexto += '<h3 class="title m-b-5 fadeInDownBig animated">' + banner.titulo + '</h3> ';
     bannerTexto += '<p class="m-b-15 fadeInDownBig animated">' + banner.descripcioncorta + '</p>';
-    bannerTexto += '<div class="price fadeInDownBig animated"><span>' + banner.mensaje + '</span></div>';
+    if(banner.mensaje != ""){
+        bannerTexto += '<div class="price fadeInDownBig animated"><span>' + banner.mensaje + '</span></div>';
+    }
     bannerTexto += '</div>';
     bannerTexto += '</div>';
     bannerTexto += '</div>';
@@ -98,7 +104,6 @@ function BannerCentro(banner,active){
 }
 
 function ListarProductosPopulares() {
-    var contador = 0;
     $.ajax({
         type: "POST",
         url: BASE_URL + 'Productos/ListarProductosPopulares',
@@ -125,34 +130,106 @@ function AgregarProductoPopular(producto){
     var productoTexto = '';
     productoTexto += '<div class="col-md-3 col-sm-6">';
     productoTexto += '<div class="item item-thumbnail">';
-    productoTexto += '<a href="product_detail.html" class="item-image">';
-    productoTexto += '<img src="' + URL_PANEL_ADMIN + producto.rutafoto  +'" alt="" />';
-    // productoTexto += '<div class="discount">40% OFF</div>';
+    productoTexto += '<a class="item-image">';
+    productoTexto += '<img src="' + URL_PANEL_ADMIN + producto.rutafoto  +'" onclick="DetalleProducto(' + producto.idproducto + ')" alt="' + producto.nombre  + '" />';
+    if(producto.descuento.trim() != "")
+    {
+        productoTexto += '<div class="discount">' + producto.descuento + '% Descuento</div>';
+    }
     productoTexto += '</a>';
     productoTexto += '<div class="item-info">';
     productoTexto += '<h4 class="item-title">';
-    productoTexto += '<a href="product.html">'+  producto.nombre + '</a>';
+    productoTexto += '<a onclick="DetalleProducto(' + producto.idproducto + ')">'+  producto.nombre + '</a>';
     productoTexto += '</h4>';
-    productoTexto += '<p class="item-desc">'+  producto.descripcioncorta + '</p>';
-    productoTexto += AgregarProporciones(producto.idProducto);
-    productoTexto += '<div class="item-price">$149.00</div>';
+    // productoTexto += '<p class="item-desc">'+  producto.descripcioncorta + '</p>';
+    productoTexto += BuscarProporciones(producto.idproducto);
     productoTexto += '</div>';
     productoTexto += '</div>';
     productoTexto += '</div>';
     return productoTexto;
 }
 
-function AgregarProporciones(IdProducto){
-    var prorporcion = '';
-    prorporcion += '<select class="form-control">';
-    prorporcion += '<option value="volvo">Volvo</option>';
-    prorporcion += '<option value="saab">Saab</option>';
-    prorporcion += '<option value="mercedes">Mercedes</option>';
-    prorporcion += '<option value="audi">Audi</option>';
-    prorporcion += '</select>';
-    return prorporcion;
+function DetalleProducto(IdProducto){    
+    var producto = BuscarProducto(IdProducto);
+    console.log(producto);
+
+
+    var detalleProductoTexto = '';
+    detalleProductoTexto += '<div class="row">';
+    detalleProductoTexto += '<div class="col-md-12">';
+    detalleProductoTexto += '<div class="col-md-6">';
+    detalleProductoTexto += '<div class="item item-thumbnail">';
+    detalleProductoTexto += '<a class="item-image">';
+    detalleProductoTexto += '<img src="' + URL_PANEL_ADMIN + producto.rutafoto  +'" alt="' + producto.nombre  + '" />';
+    if(producto.descuento.trim() != "")
+    {
+        detalleProductoTexto += '<div class="discount">' + producto.descuento + '% Descuento</div>';
+    }
+    detalleProductoTexto += '</a>';
+    detalleProductoTexto += '</div>';
+    detalleProductoTexto += '</div>';
+    detalleProductoTexto += '<div class="col-md-6">';
+    detalleProductoTexto += '<div class="item-info">';
+    detalleProductoTexto += '<h4 class="item-title">';
+    detalleProductoTexto += '<a>' +  producto.nombre + '</a>';
+    detalleProductoTexto += '</h4>';
+    detalleProductoTexto += '<p class="item-desc">' +  producto.descripcioncorta + '</p>';
+    detalleProductoTexto += '<p class="item-desc">' +  producto.descripcionlarga + '</p>';
+    detalleProductoTexto += '</div>';
+    detalleProductoTexto += '</div>';
+    detalleProductoTexto += '</div>';
+    detalleProductoTexto += '</div>';
+
+    $("#dvDetalleProducto").empty();
+    $("#dvDetalleProducto").append(detalleProductoTexto);
+    $('#modalProductos').modal('toggle');
+    //return detalleProductoTexto;    
 }
 
+function AgregarProporciones(IdProducto,listadoPoporciones){
+    var productoTexto = '';
+    var contador = 0;
+    var precio = '0.00';
+    
+    if(listadoPoporciones.length > 0){
+        productoTexto += '<select class="form-control" id="PRODUCTO_'+ IdProducto + '" onchange="CambiarPrecioProducto(this,'+ IdProducto +')">';    
+        listadoPoporciones.forEach(function (proporcion) {
+            if(contador==0){
+                precio = proporcion.precio;
+            }
+            productoTexto += '<option value="'+ proporcion.idproductoproporcion + '"  precio="'+ proporcion.precio +'" >'+ proporcion.proporcion +'</option>';
+            contador++;
+        });
+        productoTexto += '</select>';
+        productoTexto += '<div class="item-price" id="dvPrecio_' + IdProducto  + '">S/. ' + precio +' </div>';
+        productoTexto += '<button class="btn btn-inverse btn-lg btnAgregarProducto" type="submit"><i class="fa fa-shopping-cart"> AGREGAR </i></button>';
+    }    
+    return productoTexto;
+}
+
+function CambiarPrecioProducto(control,IdProducto){
+    $("#dvPrecio_"+ IdProducto).empty();
+    $("#dvPrecio_"+ IdProducto).append('S/. ' + $('option:selected', control).attr('precio'));
+}
+
+function BuscarProporciones(IdProducto) {
+    var proporcionesTexto = '';
+    $.ajax({
+        type: "POST",
+        url: BASE_URL + 'Productos/BuscarProductoProporciones',
+        data: {"IdProducto": IdProducto },
+        async: false,
+        dataType: 'json',
+        success: function (listadoPoporciones) {
+            proporcionesTexto = AgregarProporciones(IdProducto,listadoPoporciones);
+        },
+        error: function (jqXhr, textStatus, errorThrown) {
+            console.log(jqXhr); console.log(textStatus); console.log(errorThrown);
+            MensajeAlert(MODULO, 'Error al listar las proporciones del producto. Detalle Técnico : ' + errorThrown);
+        }
+    });
+    return proporcionesTexto;
+}
 
 function ListarProductos() {
     var contador = 0;
@@ -197,40 +274,22 @@ function BuscarProducto(IdProducto) {
 }
 
 function BuscarProducto(IdProducto) {
+    var producto = null;
     $.ajax({
         type: "POST",
         url: BASE_URL + 'Productos/BuscarProducto',
         data: {
             "IdProducto": IdProducto
         },
-        async: true,
+        async: false,
         dataType: 'json',
-        success: function (producto) {
-            AsignarProducto(producto)
-            BuscarProductoProporciones(IdProducto);
+        success: function (datoProducto) {
+            producto = datoProducto;
         },
         error: function (jqXhr, textStatus, errorThrown) {
             console.log(jqXhr); console.log(textStatus); console.log(errorThrown);
             MensajeAlert(MODULO, 'Error al buscar el producto. Detalle Técnico : ' + errorThrown);
         }
     });
-}
-
-function BuscarProductoProporciones(IdProducto) {
-    $.ajax({
-        type: "POST",
-        url: BASE_URL + 'Productos/BuscarProductoProporciones',
-        data: {
-            "IdProducto": IdProducto
-        },
-        async: true,
-        dataType: 'json',
-        success: function (listadoPoporciones) {
-            AsignarListadoProporciones(listadoPoporciones);
-        },
-        error: function (jqXhr, textStatus, errorThrown) {
-            console.log(jqXhr); console.log(textStatus); console.log(errorThrown);
-            MensajeAlert(MODULO, 'Error al listar las proporciones del producto. Detalle Técnico : ' + errorThrown);
-        }
-    });
+    return producto;
 }
