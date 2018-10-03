@@ -25,11 +25,11 @@
                                 <span class="arrow top"></span>
                             </a>
                             <ul class="dropdown-menu">
-                                <li><a href="product.html">BOCADITOS</a></li>
-                                <li><a href="product.html">COMBOS</a></li>
-                                <li><a href="product.html">CUPCKES</a></li>
-                                <li><a href="product.html">FESTIVO</a></li>
-                                <li><a href="product.html">POSTRES Y TORTAS</a></li>
+                            <li class="<?=($this->uri->segment(2)==='Bocaditos')?'active':''?>"><a href="<?php echo base_url();?>Productos/Bocaditos">BOCADITOS</a></li>
+                                <li class="<?=($this->uri->segment(2)==='Combos')?'active':''?>"><a href="<?php echo base_url();?>Productos/Combos">COMBOS</a></li>
+                                <li class="<?=($this->uri->segment(2)==='Cupckes')?'active':''?>"><a href="<?php echo base_url();?>Productos/Cupckes">CUPCKES</a></li>
+                                <li class="<?=($this->uri->segment(2)==='Festivo')?'active':''?>"><a href="<?php echo base_url();?>Productos/Festivo">FESTIVO</a></li>
+                                <li class="<?=($this->uri->segment(2)==='Postres')?'active':''?>"><a href="<?php echo base_url();?>Productos/Postres">POSTRES Y TORTAS</a></li>
                             </ul>
                         </li>								
                         <li class="dropdown dropdown-hover">
@@ -39,17 +39,18 @@
                                 <span class="arrow top"></span>
                             </a>
                             <ul class="dropdown-menu">
-                                <li><a href="product.html">Mobile Phone</a></li>
-                                <li><a href="product.html">Tablet</a></li>
-                                <li><a href="product.html">TV</a></li>
-                                <li><a href="product.html">Desktop</a></li>
-                                <li><a href="product.html">Laptop</a></li>
-                                <li><a href="product.html">Speaker</a></li>
-                                <li><a href="product.html">Gadget</a></li>
+                                <li><a href="product.html">Servicio 1</a></li>
+                                <li><a href="product.html">Servicio 2</a></li>
+                                <li><a href="product.html">Servicio 3</a></li>
+                                <li><a href="product.html">Servicio 4</a></li>
+                                <li><a href="product.html">Servicio 5</a></li>
+                                <li><a href="product.html">Servicio 6</a></li>
                             </ul>
+                        </li>                        
+                        <li class="<?=($this->uri->segment(1)==='Coberturas')?'active':''?>">
+                            <a href="<?php echo base_url();?>Coberturas">COBERTURA</a>
                         </li>
-                        <li><a href="product.html">COBERTURA</a></li>
-                        <li><a href="product.html">INICIO</a></li>
+                        <li><a href="http://dolcesalato.com.pe/" target="blank">INICIO</a></li>
                         <li class="dropdown dropdown-hover">
                             <a href="#" data-toggle="dropdown">
                                 <i class="fa fa-search search-btn"></i>
@@ -150,6 +151,21 @@
             </div>
             <div class="modal-body" id="dvDetalleProducto">                                
                 
+            </div>
+            <div class="modal-footer">
+                <a href="javascript:;" class="btn btn-white" data-dismiss="modal">Cerrar</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="modalCoberturas">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title">COBERTURAS</h4>
+            </div>
+            <div class="modal-body" id="dvDetalleCobertura">
             </div>
             <div class="modal-footer">
                 <a href="javascript:;" class="btn btn-white" data-dismiss="modal">Cerrar</a>

@@ -1,5 +1,8 @@
-// $( document ).ready(function() {    
-// });
+$( document ).ready(function() {
+    if(COBERTURA){
+        ListarCoberturas();
+    }
+});
 
 function validar_email(email) 
 {
@@ -60,4 +63,45 @@ function numeroFormato(num,cantidadCaracteres){
 	pendientes=cantidadCaracteres-largo;
 	for(i=0;i<pendientes;i++)ceros+='0';
 	return ceros+numtmp;
+}
+
+$( "#btnCobertura" ).click(function() {
+    ListarCoberturas();
+});
+
+
+function ListarCoberturas(){
+    $.ajax({
+        type: "POST",
+        url: BASE_URL + 'Coberturas/ListarCoberturas',
+        data: {},
+        async: false,
+        dataType: 'json',
+        success: function (listadoCoberturas) {
+            console.log(listadoCoberturas);
+            if (listadoCoberturas != null) {
+                var texto = '';
+                listadoCoberturas.forEach(function (cobertura) {                    
+                    texto += AgregarCobertura(cobertura);
+                });
+                $("#dvDetalleCobertura").empty();
+                $("#dvDetalleCobertura").append(texto);
+            }
+            $('#modalCoberturas').modal('toggle');
+        },
+        error: function (jqXhr, textStatus, errorThrown) {
+            console.log(jqXhr); console.log(textStatus); console.log(errorThrown);
+            MensajeAlert(MODULO, 'Error al listar las coberturas. Detalle Técnico : ' + errorThrown);
+        }
+    });
+}
+
+function AgregarCobertura(cobertura){
+    var coberturaTexto = '';
+    coberturaTexto += '<div class="row">';
+    coberturaTexto += '<div class="col-md-12">';
+    coberturaTexto += cobertura.distrito + '</br>';
+    coberturaTexto += '</div>';
+    coberturaTexto += '</div>';
+    return coberturaTexto;
 }

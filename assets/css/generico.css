@@ -40,3 +40,26 @@
     background: rgb(65, 33, 10);
     color: white;
 }
+
+.dropdown-menu>.active>a, .dropdown-menu>.active>a:focus, .dropdown-menu>.active>a:hover {
+    color: #fff;
+    text-decoration: none;
+    background-color: #fcd708;
+    outline: 0;
+}
+
+.header .dropdown-menu {
+    margin: 0;
+    padding: 0 15px;
+    border-top: 3px solid #00acac;
+    border-radius: 0 0 4px 4px;
+    min-width: 240px;
+}
+
+.header .dropdown-menu {
+    border-top-color: #00acac;
+}
+
+.dropdown .arrow.top:after, .dropdown .arrow.top:before {
+    border-bottom-color: #90cece;
+}

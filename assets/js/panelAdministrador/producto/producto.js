@@ -2,12 +2,13 @@ var MODULO = "MÓDULO DE PRODUCTOS";
 
 $(document).ready(function () {
     ListarBanners();
-    ListarProductos();
-    ListarProductosPopulares();
+    if(PRODUCTOS)
+        ListarProductos();
+    else
+        ListarProductosPopulares();
 });
 
 function ListarBanners() {
-    var contador = 0;
     $.ajax({
         type: "POST",
         url: BASE_URL + 'Productos/ListarBanners',
@@ -114,7 +115,7 @@ function ListarProductosPopulares() {
             if (listaProductosPopulares != null) {
                 var productoTexto = '';
                 listaProductosPopulares.forEach(function (producto) { 
-                    productoTexto += AgregarProductoPopular(producto);
+                    productoTexto += AgregarProducto(producto);
                 });
                 $("#dvProductosPopulares").append(productoTexto);
             }
@@ -126,7 +127,7 @@ function ListarProductosPopulares() {
     });
 }
 
-function AgregarProductoPopular(producto){
+function AgregarProducto(producto){
     var productoTexto = '';
     productoTexto += '<div class="col-md-3 col-sm-6">';
     productoTexto += '<div class="item item-thumbnail">';
@@ -151,9 +152,6 @@ function AgregarProductoPopular(producto){
 
 function DetalleProducto(IdProducto){    
     var producto = BuscarProducto(IdProducto);
-    console.log(producto);
-
-
     var detalleProductoTexto = '';
     detalleProductoTexto += '<div class="row">';
     detalleProductoTexto += '<div class="col-md-12">';
@@ -240,35 +238,20 @@ function ListarProductos() {
         async: true,
         dataType: 'json',
         success: function (listaProductos) {
+            console.log("CATEGORIA  : " + CATEGORIA);            
+            console.log(listaProductos);
+            
             if (listaProductos != null) {
-                listaProductos.forEach(function (producto) {                    
-                    
+                var productoTexto = '';
+                listaProductos.forEach(function (producto) { 
+                    productoTexto += AgregarProducto(producto);
                 });
+                $("#dvProductos").append(productoTexto);
             }
         },
         error: function (jqXhr, textStatus, errorThrown) {
             console.log(jqXhr); console.log(textStatus); console.log(errorThrown);
             MensajeAlert(MODULO,'Error al listar los productos. Detalle Técnico : ' + errorThrown);
-        }
-    });
-}
-
-function BuscarProducto(IdProducto) {
-    $.ajax({
-        type: "POST",
-        url: BASE_URL + 'Productos/BuscarProducto',
-        data: {
-            "IdProducto": IdProducto
-        },
-        async: true,
-        dataType: 'json',
-        success: function (producto) {
-            AsignarProducto(producto)
-            BuscarProductoProporciones(IdProducto);
-        },
-        error: function (jqXhr, textStatus, errorThrown) {
-            console.log(jqXhr); console.log(textStatus); console.log(errorThrown);
-            MensajeAlert(MODULO, 'Error al buscar el producto. Detalle Técnico : ' + errorThrown);
         }
     });
 }
