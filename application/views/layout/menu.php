@@ -25,11 +25,11 @@
                                 <span class="arrow top"></span>
                             </a>
                             <ul class="dropdown-menu">
-                            <li class="<?=($this->uri->segment(2)==='Bocaditos')?'active':''?>"><a href="<?php echo base_url();?>Productos/Bocaditos">BOCADITOS</a></li>
-                                <li class="<?=($this->uri->segment(2)==='Combos')?'active':''?>"><a href="<?php echo base_url();?>Productos/Combos">COMBOS</a></li>
-                                <li class="<?=($this->uri->segment(2)==='Cupckes')?'active':''?>"><a href="<?php echo base_url();?>Productos/Cupckes">CUPCKES</a></li>
-                                <li class="<?=($this->uri->segment(2)==='Festivo')?'active':''?>"><a href="<?php echo base_url();?>Productos/Festivo">FESTIVO</a></li>
-                                <li class="<?=($this->uri->segment(2)==='Postres')?'active':''?>"><a href="<?php echo base_url();?>Productos/Postres">POSTRES Y TORTAS</a></li>
+                                <li class="btnBuscarListadoProductos" codigo="1" nombre="BOCADITOS"><a href="#BOCADITOS">BOCADITOS</a></li>
+                                <li class="btnBuscarListadoProductos" codigo="2" nombre="COMBOS"><a href="#COMBOS">COMBOS</a></li>
+                                <li class="btnBuscarListadoProductos" codigo="3" nombre="CUPCKES"><a href="#CUPCKES">CUPCKES</a></li>
+                                <li class="btnBuscarListadoProductos" codigo="4" nombre="FESTIVO"><a href="#FESTIVO">FESTIVO</a></li>
+                                <li class="btnBuscarListadoProductos" codigo="5" nombre="POSTRES Y TORTAS"><a href="#POSTRES">POSTRES Y TORTAS</a></li>
                             </ul>
                         </li>								
                         <li class="dropdown dropdown-hover">
@@ -46,11 +46,9 @@
                                 <li><a href="product.html">Servicio 5</a></li>
                                 <li><a href="product.html">Servicio 6</a></li>
                             </ul>
-                        </li>                        
-                        <li class="<?=($this->uri->segment(1)==='Coberturas')?'active':''?>">
-                            <a href="<?php echo base_url();?>Coberturas">COBERTURA</a>
-                        </li>
-                        <li><a href="http://dolcesalato.com.pe/" target="blank">INICIO</a></li>
+                        </li>                                               
+                        <li id="btnBuscarCoberturas"><a href="#COBERTURAS">COBERTURA</a></li>
+                        <li id="btnInicio"><a href="#INICIO">INICIO</a></li>
                         <li class="dropdown dropdown-hover">
                             <a href="#" data-toggle="dropdown">
                                 <i class="fa fa-search search-btn"></i>
@@ -75,47 +73,29 @@
                     <li class="dropdown dropdown-hover">
                         <a href="#" class="header-cart" data-toggle="dropdown">
                             <i class="fa fa-shopping-bag"></i>
-                            <span class="total">2</span>
+                            <span class="total" id="txtCantidadProductos">2</span>
                             <span class="arrow top"></span>
                         </a>
             
                         <div class="dropdown-menu dropdown-menu-cart p-0">
                             <div class="cart-header">
-                                <h4 class="cart-title">CARRITO COMPRAS (1) </h4>
+                                <h4 class="cart-title">TU PEDIDO</h4>
                             </div>
                             <div class="cart-body">
-                                <ul class="cart-item">
-                                    <li>
-                                        <!-- <div class="cart-item-image"><img src="../assets/img/product/product-ipad.jpg" alt="" /></div> -->
-                                        <div class="cart-item-info">
-                                            <h4>iPad Pro Wi-Fi 128GB - Silver</h4>
-                                            <p class="price">$699.00</p>
-                                        </div>
-                                        <div class="cart-item-close">
-                                            <a href="#" data-toggle="tooltip" data-title="Remove">&times;</a>
-                                        </div>
-                                    </li>
-                                    <li>
-                                        <!-- <div class="cart-item-image"><img src="../assets/img/product/product-imac.jpg" alt="" /></div> -->
-                                        <div class="cart-item-info">
-                                            <h4>21.5-inch iMac</h4>
-                                            <p class="price">$1299.00</p>
-                                        </div>
-                                        <div class="cart-item-close">
-                                            <a href="#" data-toggle="tooltip" data-title="Remove">&times;</a>
-                                        </div>
-                                    </li>
-                                    <li>
-                                        <!-- <div class="cart-item-image"><img src="../assets/img/product/product-iphone.png" alt="" /></div> -->
-                                        <div class="cart-item-info">
-                                            <h4>iPhone 6s 16GB - Silver</h4>
-                                            <p class="price">$649.00</p>
-                                        </div>
-                                        <div class="cart-item-close">
-                                            <a href="#" data-toggle="tooltip" data-title="Remove">&times;</a>
-                                        </div>
-                                    </li>
+                                <ul class="cart-item" id="menuCarritoVenta">
+                                    
                                 </ul>
+                            </div>
+                            <div class="cart-footer">
+                                <div class="row row-space-10">
+                                    <div class="col-xs-12">
+                                        <center>
+                                            <h4>
+                                            <b>MONTO MINIMO S/.20.00</b>
+                                            </h4>
+                                        </center>
+                                    </div>
+                                </div>
                             </div>
                             <div class="cart-footer">
                                 <div class="row row-space-10">

@@ -1,12 +1,45 @@
-var MODULO = "MÓDULO DE PRODUCTOS";
+        var MODULO = "MÓDULO DE PRODUCTOS";
 
 $(document).ready(function () {
     ListarBanners();
-    if(PRODUCTOS)
-        ListarProductos();
-    else
-        ListarProductosPopulares();
+    ObtenerHash();
 });
+
+function ObtenerHash() {
+    var loc = window.location;
+    var nombreHash = loc.hash.toUpperCase();
+    switch(nombreHash){
+        case "#INICIO" :
+            ListarProductosPopulares();
+            break;
+        case "#BOCADITOS" :
+            MostrarProductosXcategoria("BOCADITOS",1);
+            break;
+        case "#COMBOS" :
+            MostrarProductosXcategoria("COMBOS",2);
+            break;
+        case "#CUPCKES" :
+            MostrarProductosXcategoria("CUPCKES",3);
+            break;
+        case "#FESTIVO" :
+            MostrarProductosXcategoria("FESTIVO",4);
+            break;
+        case "#POSTRES" :
+            MostrarProductosXcategoria("TORTAS Y POSTRES",5);
+            break;
+        case "#COBERTURAS" :
+            ListarCoberturas();
+            break;
+        default:
+            ListarProductosPopulares();
+            break;
+    }
+}
+
+$( ".btnAgregarProducto").click(function() {
+    AgregarProductoCarritoVenta();
+});
+
 
 function ListarBanners() {
     $.ajax({
@@ -118,6 +151,12 @@ function ListarProductosPopulares() {
                     productoTexto += AgregarProducto(producto);
                 });
                 $("#dvProductosPopulares").append(productoTexto);
+                $( ".btnAgregarProducto").click(function() {
+                    AgregarProductoCarritoVenta();
+                });
+
+                $("#dvProductosListado").hide();
+                $("#dvIncio").show();
             }
         },
         error: function (jqXhr, textStatus, errorThrown) {
@@ -181,7 +220,6 @@ function DetalleProducto(IdProducto){
     $("#dvDetalleProducto").empty();
     $("#dvDetalleProducto").append(detalleProductoTexto);
     $('#modalProductos').modal('toggle');
-    //return detalleProductoTexto;    
 }
 
 function AgregarProporciones(IdProducto,listadoPoporciones){
@@ -229,24 +267,25 @@ function BuscarProporciones(IdProducto) {
     return proporcionesTexto;
 }
 
-function ListarProductos() {
-    var contador = 0;
+function ListarProductos(CATEGORIA) {
     $.ajax({
         type: "POST",
         url: BASE_URL + 'Productos/ListarProductos',
         data: { "categoria": CATEGORIA },
         async: true,
         dataType: 'json',
-        success: function (listaProductos) {
-            console.log("CATEGORIA  : " + CATEGORIA);            
-            console.log(listaProductos);
-            
+        success: function (listaProductos) {            
             if (listaProductos != null) {
                 var productoTexto = '';
+                $("#dvProductos").empty();
                 listaProductos.forEach(function (producto) { 
                     productoTexto += AgregarProducto(producto);
                 });
                 $("#dvProductos").append(productoTexto);
+
+                $(".btnAgregarProducto").click(function() {
+                    AgregarProductoCarritoVenta();
+                });
             }
         },
         error: function (jqXhr, textStatus, errorThrown) {
@@ -276,3 +315,42 @@ function BuscarProducto(IdProducto) {
     });
     return producto;
 }
+
+$( "#btnInicio" ).click(function() {
+    ListarProductosPopulares();
+});
+
+$( ".btnBuscarListadoProductos" ).click(function() {
+    var nombre = $(this).attr("nombre");
+    var codigo = $(this).attr("codigo");
+    MostrarProductosXcategoria(nombre,codigo);
+});
+
+function MostrarProductosXcategoria(nombre,categoria) {
+    ListarProductos(categoria);
+    $("#lblNombreProducto").text(nombre);
+    $("#dvIncio").hide();
+    $("#dvProductosListado").show();
+}
+
+
+function AgregarProductoCarritoVenta(producto) {
+    debugger;
+    var texto = '';
+    texto += '<li>';
+    texto += '<div class="cart-item-image">';
+    texto += '<img src="' + producto.rutafoto + '" alt="' + producto.nombre + '">';
+    texto += '</div>';
+    texto += '<div class="cart-item-info">';
+    texto += '<h4>' + producto.nombre + '</h4>';
+    texto += '<h5>Cantidad : ' + producto.cantidad + '</h5>';
+    texto += '<p class="price">' + producto.precioTotal + '</p>';
+    texto += '</div>';
+    texto += '<div class="cart-item-close">';
+    texto += '<a href="#" data-toggle="tooltip" data-title="Remove">&times;</a>';
+    texto += '</div>';
+    texto += '</li>';
+    $("#menuCarritoVenta").append(texto);
+}
+
+

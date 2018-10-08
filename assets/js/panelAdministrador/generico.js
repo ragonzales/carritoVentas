@@ -1,10 +1,10 @@
 $( document ).ready(function() {
-    if(COBERTURA){
-        ListarCoberturas();
-    }
+    // if(COBERTURA){
+    //     ListarCoberturas();
+    // }
 });
 
-function validar_email(email) 
+function validar_email(email)
 {
     var regex = /^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/;
     return regex.test(email) ? true : false;
@@ -65,10 +65,9 @@ function numeroFormato(num,cantidadCaracteres){
 	return ceros+numtmp;
 }
 
-$( "#btnCobertura" ).click(function() {
+$( "#btnBuscarCoberturas").click(function() {
     ListarCoberturas();
 });
-
 
 function ListarCoberturas(){
     $.ajax({
@@ -88,6 +87,7 @@ function ListarCoberturas(){
                 $("#dvDetalleCobertura").append(texto);
             }
             $('#modalCoberturas').modal('toggle');
+            debugger;
         },
         error: function (jqXhr, textStatus, errorThrown) {
             console.log(jqXhr); console.log(textStatus); console.log(errorThrown);
