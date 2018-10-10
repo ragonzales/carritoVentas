@@ -171,7 +171,7 @@ function AgregarProducto(producto){
     productoTexto += '<div class="col-md-3 col-sm-6">';
     productoTexto += '<div class="item item-thumbnail">';
     productoTexto += '<a class="item-image">';
-    productoTexto += '<img src="' + URL_PANEL_ADMIN + producto.rutafoto  +'" onclick="DetalleProducto(' + producto.idproducto + ')" alt="' + producto.nombre  + '" />';
+    productoTexto += '<img src="' + producto.rutafoto  +'" onclick="DetalleProducto(' + producto.idproducto + ')" alt="' + producto.nombre  + '" />';
     if(producto.descuento.trim() != "")
     {
         productoTexto += '<div class="discount">' + producto.descuento + '% Descuento</div>';
@@ -197,7 +197,7 @@ function DetalleProducto(IdProducto){
     detalleProductoTexto += '<div class="col-md-6">';
     detalleProductoTexto += '<div class="item item-thumbnail">';
     detalleProductoTexto += '<a class="item-image">';
-    detalleProductoTexto += '<img src="' + URL_PANEL_ADMIN + producto.rutafoto  +'" alt="' + producto.nombre  + '" />';
+    detalleProductoTexto += '<img src="' + producto.rutafoto  +'" alt="' + producto.nombre  + '" />';
     if(producto.descuento.trim() != "")
     {
         detalleProductoTexto += '<div class="discount">' + producto.descuento + '% Descuento</div>';
