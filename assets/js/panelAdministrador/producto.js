@@ -152,9 +152,8 @@ function ListarProductosPopulares() {
                     var producto = BuscarProducto(IdProducto);  //Idproductoproporcion
                     var proporcion = BuscarProporcion(Idproductoproporcion);  //Idproductoproporcion
                     console.log(proporcion);                    
-                    AgregarProductoCarritoVenta(producto, proporcion);
+                    CarritoVenta(producto, proporcion);
                 });
-
                 $("#dvProductosListado").hide();
                 $("#dvIncio").show();
             }
@@ -237,7 +236,7 @@ function AgregarProporciones(IdProducto,listadoPoporciones){
             contador++;
         });
         productoTexto += '</select>';
-        productoTexto += '<div class="item-price" id="dvPrecio_' + IdProducto  + '">S/. ' + precio +' </div>';
+        productoTexto += '<div class="item-price" id="dvPrecio_' + IdProducto  + '">S/. ' + precio +' </div>';              
         productoTexto += '<button class="btn btn-inverse btn-lg btnAgregarProducto" type="submit" IdProducto="' + IdProducto + '"><i class="fa fa-shopping-cart"> AGREGAR </i></button>';
     }    
     return productoTexto;
@@ -289,7 +288,7 @@ function ListarProductos(CATEGORIA) {
                     var producto = BuscarProducto(IdProducto);  //Idproductoproporcion
                     var proporcion = BuscarProporcion(Idproductoproporcion);  //Idproductoproporcion
                     console.log(proporcion);
-                    AgregarProductoCarritoVenta(producto, proporcion);
+                    CarritoVenta(producto, proporcion);
                 });
             }
         },
@@ -366,27 +365,45 @@ function AgregarProductoCarritoVenta(producto, proporcion) {
     texto += '<img src="' + producto.rutafoto + '" alt="' + producto.nombre + '">';
     texto += '</div>';
     texto += '<div class="cart-item-info">';
-    texto += '<h4>' + producto.nombre + '</h4>';
+    texto += '<a href="#" class="header-cart">';
+    texto += '<span class="total" id="txtCantidadProductos">0</span>';
+    // texto += '<span class="arrow top"></span>';
+    texto += '</a>';
+    texto += '<h5>' + producto.nombre +  '</h5>';
+    
+    texto += '<span class="arrow top"></span>';
     texto += '<p class="price" id="dvPrecio"> S/ ' + proporcion.precio + ' la unidad </p>';
     // texto += '<h5><input type="number" name="cantidadProductos" min="1" max="1000" style="border :0px" value="1"> Unidades </h5>';  //producto.cantidad
     // texto += '<p class="price" id="dvPrecio">S/ </p><p class="price" id="dvPrecio">' + proporcion.precio + '</p>';
     texto += '</div>';
     texto += '<div class="cart-item-close">';
-    texto += '<a href="#" data-toggle="tooltip" class="btnCerrar" proporcion ="'+ proporcion.idproductoproporcion  + '" data-title="Remove">&times;</a>';
+    texto += '<a href="#" data-toggle="tooltip" id="btnCerrar_'+ proporcion.idproductoproporcion +'" proporcion ="'+ proporcion.idproductoproporcion  + '" data-title="Remove">&times;</a>';
     texto += '</div>';
     texto += '</li>';
     $("#menuCarritoVenta").append(texto);
     $("#txtCantidadProductos").text((parseFloat($("#txtCantidadProductos").text()) + 1));
 
-    $( ".btnCerrar").click(function() {
+    $( "#btnCerrar_" + proporcion.idproductoproporcion).click(function() {
         var IdProporcion = $(this).attr("proporcion");
         $("#dvProporcion"+ IdProporcion).remove();
         $("#txtCantidadProductos").text((parseFloat($("#txtCantidadProductos").text()) - 1));
     });
+}
+
+function CarritoVenta(producto, proporcion) {
+
+
+    //validar si existe el producto caso contrario agregar productos
+    
+    AgregarProductoCarritoVenta(producto,proporcion);
+
+    // $( ".btnCerrar").click(function() {
+    //     debugger;
+    //     var IdProporcion = $(this).attr("proporcion");
+    //     $("#dvProporcion"+ IdProporcion).remove();
+    //     $("#txtCantidadProductos").text((parseFloat($("#txtCantidadProductos").text()) - 1));
+    // });
 
 }
 
-$("[type='number']").keypress(function (evt) {
-    evt.preventDefault();
-});
 
