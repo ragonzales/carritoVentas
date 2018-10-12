@@ -14,11 +14,6 @@ class ProductoModel extends CI_Model
 	{	
 		$query = $this->db->get_where('producto', array('destacado' => 1, 'estado' => 1));
 		return $query->result();
-		// $this->db->select('*');    
-		// $this->db->from('producto');
-		// $this->db->join('proporcionproductos', 'producto.idproducto = proporcionproductos.idproducto');
-		// $query=$this->db->get();
-		// return $query->result();
 	}
 
 	public function ListarProductos($idcategoria)
@@ -36,6 +31,12 @@ class ProductoModel extends CI_Model
 	public function BuscarProducto($IdProducto)
 	{	
 		$query = $this->db->get_where('producto', array('IdProducto' => $IdProducto));
+		return $query->row();
+	}
+
+	public function BuscarProporcion($IdProporcion)
+	{	
+		$query = $this->db->get_where('proporcionproductos', array('idproductoproporcion' => $IdProporcion));
 		return $query->row();
 	}
 }

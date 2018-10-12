@@ -73,7 +73,7 @@
                     <li class="dropdown dropdown-hover">
                         <a href="#" class="header-cart" data-toggle="dropdown">
                             <i class="fa fa-shopping-bag"></i>
-                            <span class="total" id="txtCantidadProductos">2</span>
+                            <span class="total" id="txtCantidadProductos">0</span>
                             <span class="arrow top"></span>
                         </a>
             

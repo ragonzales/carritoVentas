@@ -83,6 +83,13 @@ class Productos extends CI_Controller {
 		echo json_encode($resultado);
 	}
 
+	public function BuscarProporcion()
+	{
+		$IdProporcion = $this->input->post("IdProporcion");
+		$resultado = $this->ProductoModel->BuscarProporcion($IdProporcion);
+		echo json_encode($resultado);
+	}
+
 	public function BuscarProductoProporciones()
 	{
 		$IdProducto = $this->input->post("IdProducto");
