@@ -10,21 +10,24 @@ class ProductoModel extends CI_Model
 		return $query->result();
 	}
 
-	public function ListarProductosPopulares()
+	public function ListarProductosPopulares($limit,$start)
 	{	
+		$this->db->limit($limit, $start);
 		$query = $this->db->get_where('producto', array('destacado' => 1, 'estado' => 1));
 		return $query->result();
 	}
 
-	public function ListarProductos($idcategoria)
+	public function ListarProductos($idcategoria,$limit,$start)
 	{	
-		$query = $this->db->get_where('producto', array('idcategoria' => $idcategoria, 'estado' => 1));
+		$this->db->limit($limit, $start);
+		$query = $this->db->get_where('producto', array('idcategoria' => $idcategoria, 'estado' => 1));		
 		return $query->result();
 	}
 
 	public function BuscarProductoProporciones($IdProducto)
-	{	
-		$query = $this->db->get_where('proporcionproductos', array('IdProducto' => $IdProducto));
+	{		
+		$this->db->order_by("proporcion desc");
+		$query = $this->db->get_where('proporcionproductos', array('IdProducto' => $IdProducto));		
 		return $query->result();
 	}
 

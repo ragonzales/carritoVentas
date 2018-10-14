@@ -12,7 +12,8 @@
     font-weight: 600;
     color: #212121;
     font-size: 18px;
-    line-height: 35px;
+    /* line-height: 35px; */
+    line-height: 18px;
     max-height: 36px;
     overflow: hidden;
 }

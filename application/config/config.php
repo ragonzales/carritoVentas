@@ -9,7 +9,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 | URL to your CodeIgniter root. Typically this will be your base URL,
 | WITH a trailing slash:
 |
-|	http://example.com/
+| http://example.com/
 |
 | WARNING: You MUST set this value!
 |
@@ -23,7 +23,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 | a PHP script and you can easily do that on your own.
 |
 */
-$config['base_url'] = 'http://localhost:80/carritoVentas/';
+$config['base_url'] = 'http://localhost:8080/carritoVentas/';
 
 /*
 |--------------------------------------------------------------------------
@@ -522,4 +522,4 @@ $config['rewrite_short_tags'] = FALSE;
 */
 $config['proxy_ips'] = '';
 
-$config['RUTA_ADMINISTRADOR'] = "http://localhost:80/dolceSalato"; 
+//$config['RUTA_ADMINISTRADOR'] = "http://localhost:80/dolceSalato";

@@ -34,7 +34,7 @@
 <div id="dvProductosListado" class="section-container bg-silver" style="display:block">
 	<div class="container">
 		<h4 class="section-title clearfix">
-			<label id="lblNombreProducto">Nombre Producto </label>
+			<label id="lblNombreProducto"></label>
 		</h4>
 		<div class="row row-space-10" id="dvProductos">
 		</div>

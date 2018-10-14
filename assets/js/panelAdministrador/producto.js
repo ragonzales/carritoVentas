@@ -1,161 +1,242 @@
-        var MODULO = "MÓDULO DE PRODUCTOS";
+var MODULO = "MÓDULO DE PRODUCTOS";
+var LIMITE_INICIAL = 12;
+var categoriaAnterior = 0;
+var limit = LIMITE_INICIAL;
+var categoriaNuevo = '';
+var action = 'inactive';
+var start = 0;
 
-$(document).ready(function () {
-    ListarBanners();
-    ObtenerHash();
+$(document).ready(function () 
+{          
+    ListadoURL();
 });
 
-function ObtenerHash() {
+function ListadoURL() {
+    if(action == 'inactive')
+    {
+      action = 'active';
+      InicializarURL();
+    }
+
+    $(window).scroll(function(){
+        if($(window).scrollTop() + $(window).height() > $("#dvProductos").height() && action == 'inactive')
+        {
+            action = 'active';
+            start = start + limit;
+            setTimeout(function(){
+                InicializarURL();
+            }, 800);
+        }
+    });
+}
+
+function InicializarURL() {
     var loc = window.location;
     var nombreHash = loc.hash.toUpperCase();
+    nombreLinkNuevo = nombreHash;
+
     switch(nombreHash){
         case "#INICIO" :
             ListarProductosPopulares();
             break;
+
         case "#BOCADITOS" :
             MostrarProductosXcategoria("BOCADITOS",1);
             break;
+
         case "#COMBOS" :
             MostrarProductosXcategoria("COMBOS",2);
             break;
         case "#CUPCKES" :
             MostrarProductosXcategoria("CUPCKES",3);
             break;
+
         case "#FESTIVO" :
             MostrarProductosXcategoria("FESTIVO",4);
             break;
+
         case "#POSTRES" :
             MostrarProductosXcategoria("TORTAS Y POSTRES",5);
             break;
+
         case "#COBERTURAS" :
             ListarCoberturas();
             break;
+
         default:
             ListarProductosPopulares();
             break;
     }
 }
 
-function ListarBanners() {
-    $.ajax({
-        type: "POST",
-        url: BASE_URL + 'Productos/ListarBanners',
-        data: { },
-        async: true,
-        dataType: 'json',
-        success: function (listaBanners) {
-            if (listaBanners != null) {
-                var bannerTexto = '';
-                var contador = 0;                                
-                listaBanners.forEach(function (banner) {
-                    var active = '';
-                    if(contador==0) 
-                        active = 'active';
+function ListadoURL_LINK(categoria) 
+{
+    LIMITE_INICIAL = 12;
+    limit = LIMITE_INICIAL;
+    action = 'inactive';
+    start = 0;
 
-                    switch(parseInt(banner.alineacion)){
-                        case 0:
-                            bannerTexto += BannerIzquierda(banner,active);
-                            break;
+    if(action == 'inactive')
+    {
+      action = 'active';
+      ObtenerHash(categoria);
+    }
 
-                        case 1:
-                            bannerTexto += BannerIzquierda(banner,active);
-                            break;
-
-                        case 2:
-                            bannerTexto += BannerDerecha(banner,active);
-                            break;
-
-                        case 3:
-                            bannerTexto += BannerCentro(banner,active);
-                            break;
-                    }
-                    contador++;
-                });
-                $("#dvBanner").append(bannerTexto);
-            }
-        },
-        error: function (jqXhr, textStatus, errorThrown) {
-            console.log(jqXhr); console.log(textStatus); console.log(errorThrown);
-            MensajeAlert(MODULO,'Error al listar los productos. Detalle Técnico : ' + errorThrown);
+    $(window).scroll(function(){
+        if($(window).scrollTop() + $(window).height() > $("#dvProductos").height() && action == 'inactive')
+        {
+            action = 'active';
+            start = start + limit;
+            setTimeout(function(){
+                ObtenerHash(categoria);
+            }, 800);
         }
     });
 }
 
-function BannerIzquierda(banner,active){
-    var bannerTexto = '';
-    bannerTexto += '<div class="item ' + active +'">';
-    bannerTexto += '<img src="' + URL_PANEL_ADMIN + banner.rutafoto  +'" class="bg-cover-img" alt="" />';
-    bannerTexto += '<div class="carousel-caption carousel-caption-left">';
-    bannerTexto += '<div class="container">';
-    bannerTexto += '<h3 class="title m-b-5 fadeInLeftBig animated">' + banner.titulo + '</h3> ';
-    bannerTexto += '<p class="m-b-15 fadeInLeftBig animated">' + banner.descripcioncorta + '</p>';
-    if(banner.mensaje != ""){
-        bannerTexto += '<div class="price m-b-30 fadeInLeftBig animated"><span> ' + banner.mensaje + '</span></div>';    
-    }
-    bannerTexto += '</div>';
-    bannerTexto += '</div>';
-    bannerTexto += '</div>';
-    return bannerTexto;
-}
+function ObtenerHash(categoria) {
+    //var loc = window.location;
+    //var nombreHash = loc.hash.toUpperCase();
 
-function BannerDerecha(banner,active){
-    var bannerTexto = '';
-    bannerTexto += '<div class="item ' + active +'">';
-    bannerTexto += '<img src="' + URL_PANEL_ADMIN + banner.rutafoto  +'" class="bg-cover-img" alt="" />';
-    bannerTexto += '<div class="carousel-caption carousel-caption-right">';
-    bannerTexto += '<div class="container">';
-    bannerTexto += '<h3 class="title m-b-5 fadeInRightBig animated">' + banner.titulo + '</h3> ';
-    bannerTexto += '<p class="m-b-15 fadeInRightBig animated">' + banner.descripcioncorta + '</p>';
-    if(banner.mensaje != ""){
-        bannerTexto += '<div class="price m-b-30 fadeInRightBig animated"><span>' + banner.mensaje + '</span></div>';
-    }
-    bannerTexto += '</div>';
-    bannerTexto += '</div>';
-    bannerTexto += '</div>';
-    return bannerTexto;
-}
+    // categoriaAnterior = parseInt(categoria);
+    // categoriaNuevo = parseInt(categoria);
 
-function BannerCentro(banner,active){
-    var bannerTexto = '';
-    bannerTexto += '<div class="item ' + active +'">';
-    bannerTexto += '<img src="' + URL_PANEL_ADMIN + banner.rutafoto  +'" class="bg-cover-img" alt="" />';
-    bannerTexto += '<div class="carousel-caption">';
-    bannerTexto += '<div class="container">';
-    bannerTexto += '<h3 class="title m-b-5 fadeInDownBig animated">' + banner.titulo + '</h3> ';
-    bannerTexto += '<p class="m-b-15 fadeInDownBig animated">' + banner.descripcioncorta + '</p>';
-    if(banner.mensaje != ""){
-        bannerTexto += '<div class="price fadeInDownBig animated"><span>' + banner.mensaje + '</span></div>';
+    // if(categoriaAnterior != categoriaNuevo){
+    //     debugger;
+    //     // LIMITE_INICIAL = 12;
+    //     // limit = LIMITE_INICIAL;
+    //     // action = 'inactive';
+    //     // start = 0;
+    //     // $("#dvProductosPopulares").empty();
+    //      $("#dvProductos").empty();        
+    // }
+
+
+    switch(parseInt(categoria))
+    {
+        case 1:
+            MostrarProductosXcategoria("BOCADITOS",1);
+            break;
+        
+        case 2:
+            MostrarProductosXcategoria("COMBOS",2);
+            break;
+
+        case 3:
+            MostrarProductosXcategoria("CUPCKES",3);
+            break;
+
+        case 4:
+            MostrarProductosXcategoria("FESTIVO",4);
+            break;
+        
+        case 5:
+            MostrarProductosXcategoria("TORTAS Y POSTRES",5);
+            break;
     }
-    bannerTexto += '</div>';
-    bannerTexto += '</div>';
-    bannerTexto += '</div>';
-    return bannerTexto;
+
+
+
+
+    // if(categoria!=null)
+    // {
+    //     switch(parseInt(categoria))
+    //     {
+    //         case 1:
+    //             MostrarProductosXcategoria("BOCADITOS",1);
+    //             break;
+            
+    //         case 2:
+    //             MostrarProductosXcategoria("COMBOS",2);
+    //             break;
+
+    //         case 3:
+    //             MostrarProductosXcategoria("CUPCKES",3);
+    //             break;
+
+    //         case 4:
+    //             MostrarProductosXcategoria("FESTIVO",4);
+    //             break;
+            
+    //         case 5:
+    //             MostrarProductosXcategoria("TORTAS Y POSTRES",5);
+    //             break;
+    //     }
+    // }
+    // else
+    // {
+    //     switch(nombreHash){
+    //         case "#INICIO" :
+    //             ListarProductosPopulares();
+    //             break;
+
+    //         case "#BOCADITOS" :
+    //             MostrarProductosXcategoria("BOCADITOS",1);
+    //             break;
+
+    //         case "#COMBOS" :
+    //             MostrarProductosXcategoria("COMBOS",2);
+    //             break;
+    //         case "#CUPCKES" :
+    //             MostrarProductosXcategoria("CUPCKES",3);
+    //             break;
+
+    //         case "#FESTIVO" :
+    //             MostrarProductosXcategoria("FESTIVO",4);
+    //             break;
+
+    //         case "#POSTRES" :
+    //             MostrarProductosXcategoria("TORTAS Y POSTRES",5);
+    //             break;
+
+    //         case "#COBERTURAS" :
+    //             ListarCoberturas();
+    //             break;
+
+    //         default:
+    //             ListarProductosPopulares();
+    //             break;
+    //     }
+    //}
 }
 
 function ListarProductosPopulares() {
     $.ajax({
         type: "POST",
         url: BASE_URL + 'Productos/ListarProductosPopulares',
-        data: { },
-        async: true,
+        data: 
+            { 
+                "limit" :  limit,
+                "start" :  start
+            },
+        cache: false,
         dataType: 'json',
         success: function (listaProductosPopulares) {
-            if (listaProductosPopulares != null) {
-                var productoTexto = '';
-                listaProductosPopulares.forEach(function (producto) { 
-                    productoTexto += AgregarProducto(producto);
-                });
-                $("#dvProductosPopulares").append(productoTexto);
-                $( ".btnAgregarProducto").click(function() {
-                    var IdProducto = $(this).attr("IdProducto");
-                    var Idproductoproporcion = $("#PRODUCTO_"+ IdProducto).val();
-                    var producto = BuscarProducto(IdProducto);  //Idproductoproporcion
-                    var proporcion = BuscarProporcion(Idproductoproporcion);  //Idproductoproporcion
-                    console.log(proporcion);                    
-                    CarritoVenta(producto, proporcion);
-                });
-                $("#dvProductosListado").hide();
-                $("#dvIncio").show();
+            if (listaProductosPopulares != null) 
+            {
+                if (listaProductosPopulares.length > 0) 
+                {
+                    var productoTexto = '';                
+                    listaProductosPopulares.forEach(function (producto) { 
+                        productoTexto += AgregarProducto(producto);
+                    });
+
+                    $(".btnAgregarProducto").click(function(event)
+                    {
+                        event.preventDefault();
+                        var IdProducto = $(this).attr("IdProducto");
+                        var Idproductoproporcion = $("#PRODUCTO_"+ IdProducto).val();
+                        var producto = BuscarProducto(IdProducto);
+                        var proporcion = BuscarProporcion(Idproductoproporcion);
+                        CarritoVenta(producto, proporcion);
+                    });
+                    $("#dvProductosPopulares").append(productoTexto);
+                    action = 'inactive';
+                }
+            }
+            else
+            {
+                $("#dvProductosPopulares").empty();
             }
         },
         error: function (jqXhr, textStatus, errorThrown) {
@@ -167,7 +248,7 @@ function ListarProductosPopulares() {
 
 function AgregarProducto(producto){
     var productoTexto = '';
-    productoTexto += '<div class="col-md-3 col-sm-6">';
+    productoTexto += '<div class="col-md-2 col-sm-4">';
     productoTexto += '<div class="item item-thumbnail">';
     productoTexto += '<a class="item-image">';
     productoTexto += '<img src="' + producto.rutafoto  +'" onclick="DetalleProducto(' + producto.idproducto + ')" alt="' + producto.nombre  + '" />';
@@ -178,9 +259,16 @@ function AgregarProducto(producto){
     productoTexto += '</a>';
     productoTexto += '<div class="item-info">';
     productoTexto += '<h4 class="item-title">';
-    productoTexto += '<a onclick="DetalleProducto(' + producto.idproducto + ')">'+  producto.nombre + '</a>';
+    
+    if(producto.nombre.length > 24){
+        productoTexto += '<a onclick="DetalleProducto(' + producto.idproducto + ')"><center>'+  producto.nombre + '</center></a>';
+    }else{
+        productoTexto += '<a onclick="DetalleProducto(' + producto.idproducto + ')"><center>'+  producto.nombre + '</center></a>';
+    }
+    
+    productoTexto += '<br>';
     productoTexto += '</h4>';
-    // productoTexto += '<p class="item-desc">'+  producto.descripcioncorta + '</p>';
+    productoTexto += '<p class="item-desc"><br></p>';   //producto.descripcioncorta 
     productoTexto += BuscarProporciones(producto.idproducto);
     productoTexto += '</div>';
     productoTexto += '</div>';
@@ -227,7 +315,7 @@ function AgregarProporciones(IdProducto,listadoPoporciones){
     var precio = '0.00';
     
     if(listadoPoporciones.length > 0){
-        productoTexto += '<select class="form-control" id="PRODUCTO_'+ IdProducto + '" onchange="CambiarPrecioProducto(this,'+ IdProducto +')">';    
+        productoTexto += '<select class="form-control" id="PRODUCTO_'+ IdProducto + '" onchange="CambiarPrecioProducto(this,'+ IdProducto +')" style="text-align-last: center;" >';    
         listadoPoporciones.forEach(function (proporcion) {
             if(contador==0){
                 precio = proporcion.precio;
@@ -236,15 +324,15 @@ function AgregarProporciones(IdProducto,listadoPoporciones){
             contador++;
         });
         productoTexto += '</select>';
-        productoTexto += '<div class="item-price" id="dvPrecio_' + IdProducto  + '">S/. ' + precio +' </div>';              
-        productoTexto += '<button class="btn btn-inverse btn-lg btnAgregarProducto" type="submit" IdProducto="' + IdProducto + '"><i class="fa fa-shopping-cart"> AGREGAR </i></button>';
+        productoTexto += '<div class="item-price" id="dvPrecio_' + IdProducto  + '">S/. ' + number_format(precio,2) +' </div>';              
+        productoTexto += '<button id="IDCARRITO_' + IdProducto + '"  class="btn btn-inverse btn-lg btnAgregarProducto" type="submit" IdProducto="' + IdProducto + '"><i class="fa fa-shopping-cart"> AGREGAR </i></button>';
     }    
     return productoTexto;
 }
 
 function CambiarPrecioProducto(control,IdProducto){
     $("#dvPrecio_"+ IdProducto).empty();
-    $("#dvPrecio_"+ IdProducto).append('S/. ' + $('option:selected', control).attr('precio'));
+    $("#dvPrecio_"+ IdProducto).append('S/. ' + number_format($('option:selected', control).attr('precio'),2));
 }
 
 function BuscarProporciones(IdProducto) {
@@ -270,26 +358,42 @@ function ListarProductos(CATEGORIA) {
     $.ajax({
         type: "POST",
         url: BASE_URL + 'Productos/ListarProductos',
-        data: { "categoria": CATEGORIA },
-        async: true,
+        data: 
+            { 
+                "categoria": CATEGORIA,
+                "limit" :  limit,
+                "start" :  start
+            },
+        //async: true,
+        cache: false,
         dataType: 'json',
         success: function (listaProductos) {            
-            if (listaProductos != null) {
-                var productoTexto = '';
-                $("#dvProductos").empty();
-                listaProductos.forEach(function (producto) { 
-                    productoTexto += AgregarProducto(producto);
-                });
-                $("#dvProductos").append(productoTexto);
+            
+            if (listaProductos != null) 
+            {
+                if (listaProductos.length > 0) 
+                {
+                    var productoTexto = '';                
+                    listaProductos.forEach(function (producto) { 
+                        productoTexto += AgregarProducto(producto);
+                    });
 
-                $(".btnAgregarProducto").click(function() {
-                    var IdProducto = $(this).attr("IdProducto");
-                    var Idproductoproporcion = $("#PRODUCTO_"+ IdProducto).val();
-                    var producto = BuscarProducto(IdProducto);  //Idproductoproporcion
-                    var proporcion = BuscarProporcion(Idproductoproporcion);  //Idproductoproporcion
-                    console.log(proporcion);
-                    CarritoVenta(producto, proporcion);
-                });
+                    $(".btnAgregarProducto").click(function(event) 
+                    {
+                        var IdProducto = $(this).attr("IdProducto");
+                        var Idproductoproporcion = $("#PRODUCTO_"+ IdProducto).val();
+                        var producto = BuscarProducto(IdProducto);
+                        var proporcion = BuscarProporcion(Idproductoproporcion);
+                        CarritoVenta(producto, proporcion);
+                    });
+
+                    $("#dvProductos").append(productoTexto);
+                    action = 'inactive';
+                }
+            }
+            else
+            {
+                $("#dvProductos").empty();
             }
         },
         error: function (jqXhr, textStatus, errorThrown) {
@@ -347,8 +451,12 @@ $( "#btnInicio" ).click(function() {
 
 $( ".btnBuscarListadoProductos" ).click(function() {
     var nombre = $(this).attr("nombre");
-    var codigo = $(this).attr("codigo");
-    MostrarProductosXcategoria(nombre,codigo);
+    var categoria = $(this).attr("codigo");
+    $("#lblNombreProducto").text(nombre);
+    $("#dvProductos").empty();
+    $("#dvIncio").hide();
+    $("#dvProductosListado").show();
+    ListadoURL_LINK(categoria);    
 });
 
 function MostrarProductosXcategoria(nombre,categoria) {
@@ -360,21 +468,16 @@ function MostrarProductosXcategoria(nombre,categoria) {
 
 function AgregarProductoCarritoVenta(producto, proporcion) {
     var texto = '';
-    texto += '<li IdProporcion = "' + proporcion.idproductoproporcion + '"  id="dvProporcion'+ proporcion.idproductoproporcion +'" >';
+    texto += '<li class="menuCarritoClase" IdPrecio="dvPrecio_' + proporcion.idproductoproporcion + '" IdCantidadProductos="txtCantidadProductos_' + proporcion.idproductoproporcion + '"  IdProporcion = "' + proporcion.idproductoproporcion + '"  id="dvProporcion'+ proporcion.idproductoproporcion +'" >';
     texto += '<div class="cart-item-image">';
     texto += '<img src="' + producto.rutafoto + '" alt="' + producto.nombre + '">';
     texto += '</div>';
     texto += '<div class="cart-item-info">';
     texto += '<a href="#" class="header-cart">';
-    texto += '<span class="total" id="txtCantidadProductos">0</span>';
-    // texto += '<span class="arrow top"></span>';
+    texto += '<span class="total" id="txtCantidadProductos_'+ proporcion.idproductoproporcion  +'" + >1</span>';
     texto += '</a>';
-    texto += '<h5>' + producto.nombre +  '</h5>';
-    
-    texto += '<span class="arrow top"></span>';
-    texto += '<p class="price" id="dvPrecio"> S/ ' + proporcion.precio + ' la unidad </p>';
-    // texto += '<h5><input type="number" name="cantidadProductos" min="1" max="1000" style="border :0px" value="1"> Unidades </h5>';  //producto.cantidad
-    // texto += '<p class="price" id="dvPrecio">S/ </p><p class="price" id="dvPrecio">' + proporcion.precio + '</p>';
+    texto += '<h5>' + producto.nombre + '</h5>';
+    texto += '<p class="price" id="dvPrecio_"' + proporcion.idproductoproporcion + '> S/ ' + proporcion.precio + ' la unidad </p>';
     texto += '</div>';
     texto += '<div class="cart-item-close">';
     texto += '<a href="#" data-toggle="tooltip" id="btnCerrar_'+ proporcion.idproductoproporcion +'" proporcion ="'+ proporcion.idproductoproporcion  + '" data-title="Remove">&times;</a>';
@@ -391,19 +494,39 @@ function AgregarProductoCarritoVenta(producto, proporcion) {
 }
 
 function CarritoVenta(producto, proporcion) {
+    var existeProducto = false;
+    var IdCantidadProductos = 0;
+    var IdProporcion = 0;
+    var IdPrecio = 0;
 
+    $( ".menuCarritoClase" ).each(function( index ) {
+        IdProporcion = $( this ).attr("IdProporcion");
+        IdPrecio = $( this ).attr("IdPrecio");
+        IdCantidadProductos = $( this ).attr("IdCantidadProductos");
+        if(IdProporcion == proporcion.idproductoproporcion){
+            existeProducto=true;
+        }
+    });
+    if(!existeProducto){
+        AgregarProductoCarritoVenta(producto,proporcion);
+    }else{
+        CarritoVentaModificarCantidadPrductos(IdCantidadProductos,IdPrecio);
+    }
+    CalcularMontos();
+}
 
-    //validar si existe el producto caso contrario agregar productos
-    
-    AgregarProductoCarritoVenta(producto,proporcion);
-
-    // $( ".btnCerrar").click(function() {
-    //     debugger;
-    //     var IdProporcion = $(this).attr("proporcion");
-    //     $("#dvProporcion"+ IdProporcion).remove();
-    //     $("#txtCantidadProductos").text((parseFloat($("#txtCantidadProductos").text()) - 1));
-    // });
-
+function CarritoVentaModificarCantidadPrductos(IdCantidadProductos,IdPrecio){
+    $("#"+IdCantidadProductos).text((parseFloat($("#"+IdCantidadProductos).text()) + 1));
+    // $("#"+IdCantidadProductos).val();
+    // $("#"+IdPrecio).val();
 }
 
 
+function CalcularMontos() {
+    $( ".menuCarritoClase" ).each(function( index ) {
+        IdProporcion = $( this ).attr("IdProporcion");
+        IdPrecio = $( this ).attr("IdPrecio");
+        IdCantidadProductos = $( this ).attr("IdCantidadProductos");
+        
+    });
+}

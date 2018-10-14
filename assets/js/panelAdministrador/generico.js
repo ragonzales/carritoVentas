@@ -1,8 +1,103 @@
 $( document ).ready(function() {
-    // if(COBERTURA){
-    //     ListarCoberturas();
-    // }
+    ListarBanners();
 });
+
+function ListarBanners() {
+    $.ajax({
+        type: "POST",
+        url: BASE_URL + 'Productos/ListarBanners',
+        data: { },
+        //async: true,
+        dataType: 'json',
+        success: function (listaBanners) {
+            if (listaBanners != null) {
+                var bannerTexto = '';
+                var contador = 0;                                
+                listaBanners.forEach(function (banner) {
+                    var active = '';
+                    if(contador==0) 
+                        active = 'active';
+
+                    switch(parseInt(banner.alineacion)){
+                        case 0:
+                            bannerTexto += BannerIzquierda(banner,active);
+                            break;
+
+                        case 1:
+                            bannerTexto += BannerIzquierda(banner,active);
+                            break;
+
+                        case 2:
+                            bannerTexto += BannerDerecha(banner,active);
+                            break;
+
+                        case 3:
+                            bannerTexto += BannerCentro(banner,active);
+                            break;
+                    }
+                    contador++;
+                });
+                $("#dvBanner").append(bannerTexto);
+            }
+        },
+        error: function (jqXhr, textStatus, errorThrown) {
+            console.log(jqXhr); console.log(textStatus); console.log(errorThrown);
+            MensajeAlert(MODULO,'Error al listar los productos. Detalle Técnico : ' + errorThrown);
+        }
+    });
+}
+
+function BannerIzquierda(banner,active){
+    var bannerTexto = '';
+    bannerTexto += '<div class="item ' + active +'">';
+    bannerTexto += '<img src="' + banner.rutafoto  +'" class="bg-cover-img" alt="" />';
+    bannerTexto += '<div class="carousel-caption carousel-caption-left">';
+    bannerTexto += '<div class="container">';
+    bannerTexto += '<h3 class="title m-b-5 fadeInLeftBig animated">' + banner.titulo + '</h3> ';
+    bannerTexto += '<p class="m-b-15 fadeInLeftBig animated">' + banner.descripcioncorta + '</p>';
+    if(banner.mensaje != ""){
+        bannerTexto += '<div class="price m-b-30 fadeInLeftBig animated"><span> ' + banner.mensaje + '</span></div>';    
+    }
+    bannerTexto += '</div>';
+    bannerTexto += '</div>';
+    bannerTexto += '</div>';
+    return bannerTexto;
+}
+
+function BannerDerecha(banner,active){
+    var bannerTexto = '';
+    bannerTexto += '<div class="item ' + active +'">';
+    bannerTexto += '<img src="' + banner.rutafoto  +'" class="bg-cover-img" alt="" />';
+    bannerTexto += '<div class="carousel-caption carousel-caption-right">';
+    bannerTexto += '<div class="container">';
+    bannerTexto += '<h3 class="title m-b-5 fadeInRightBig animated">' + banner.titulo + '</h3> ';
+    bannerTexto += '<p class="m-b-15 fadeInRightBig animated">' + banner.descripcioncorta + '</p>';
+    if(banner.mensaje != ""){
+        bannerTexto += '<div class="price m-b-30 fadeInRightBig animated"><span>' + banner.mensaje + '</span></div>';
+    }
+    bannerTexto += '</div>';
+    bannerTexto += '</div>';
+    bannerTexto += '</div>';
+    return bannerTexto;
+}
+
+function BannerCentro(banner,active){
+    var bannerTexto = '';
+    bannerTexto += '<div class="item ' + active +'">';
+    bannerTexto += '<img src="' + banner.rutafoto  +'" class="bg-cover-img" alt="" />';
+    bannerTexto += '<div class="carousel-caption">';
+    bannerTexto += '<div class="container">';
+    bannerTexto += '<h3 class="title m-b-5 fadeInDownBig animated">' + banner.titulo + '</h3> ';
+    bannerTexto += '<p class="m-b-15 fadeInDownBig animated">' + banner.descripcioncorta + '</p>';
+    if(banner.mensaje != ""){
+        bannerTexto += '<div class="price fadeInDownBig animated"><span>' + banner.mensaje + '</span></div>';
+    }
+    bannerTexto += '</div>';
+    bannerTexto += '</div>';
+    bannerTexto += '</div>';
+    return bannerTexto;
+}
+
 
 function validar_email(email)
 {

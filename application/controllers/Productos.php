@@ -62,12 +62,16 @@ class Productos extends CI_Controller {
 
 	public function ListarProductos(){
 		$categoria = $this->input->post("categoria");
-		$resultado = $this->ProductoModel->ListarProductos($categoria);
+		$limit = $this->input->post("limit");
+		$start = $this->input->post("start");
+		$resultado = $this->ProductoModel->ListarProductos($categoria,$limit,$start);
 		echo json_encode($resultado);
 	}
 
 	public function ListarProductosPopulares(){
-		$resultado = $this->ProductoModel->ListarProductosPopulares();
+		$limit = $this->input->post("limit");
+		$start = $this->input->post("start");
+		$resultado = $this->ProductoModel->ListarProductosPopulares($limit,$start);
 		echo json_encode($resultado);
 	}
 
