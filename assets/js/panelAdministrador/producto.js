@@ -220,18 +220,17 @@ function ListarProductosPopulares() {
                     listaProductosPopulares.forEach(function (producto) { 
                         productoTexto += AgregarProducto(producto);
                     });
+                    $("#dvProductosPopulares").append(productoTexto);
+                    action = 'inactive';
 
-                    $(".btnAgregarProducto").click(function(event)
+                    $(".btnAgregarProducto").click(function()
                     {
-                        event.preventDefault();
                         var IdProducto = $(this).attr("IdProducto");
                         var Idproductoproporcion = $("#PRODUCTO_"+ IdProducto).val();
                         var producto = BuscarProducto(IdProducto);
                         var proporcion = BuscarProporcion(Idproductoproporcion);
                         CarritoVenta(producto, proporcion);
                     });
-                    $("#dvProductosPopulares").append(productoTexto);
-                    action = 'inactive';
                 }
             }
             else
@@ -248,7 +247,7 @@ function ListarProductosPopulares() {
 
 function AgregarProducto(producto){
     var productoTexto = '';
-    productoTexto += '<div class="col-md-2 col-sm-4">';
+    productoTexto += '<div class="col-md-3 col-sm-6">';
     productoTexto += '<div class="item item-thumbnail">';
     productoTexto += '<a class="item-image">';
     productoTexto += '<img src="' + producto.rutafoto  +'" onclick="DetalleProducto(' + producto.idproducto + ')" alt="' + producto.nombre  + '" />';
@@ -378,7 +377,10 @@ function ListarProductos(CATEGORIA) {
                         productoTexto += AgregarProducto(producto);
                     });
 
-                    $(".btnAgregarProducto").click(function(event) 
+                    $("#dvProductos").append(productoTexto);
+                    action = 'inactive';
+
+                    $(".btnAgregarProducto").click(function() 
                     {
                         var IdProducto = $(this).attr("IdProducto");
                         var Idproductoproporcion = $("#PRODUCTO_"+ IdProducto).val();
@@ -387,8 +389,7 @@ function ListarProductos(CATEGORIA) {
                         CarritoVenta(producto, proporcion);
                     });
 
-                    $("#dvProductos").append(productoTexto);
-                    action = 'inactive';
+                    
                 }
             }
             else
@@ -467,29 +468,45 @@ function MostrarProductosXcategoria(nombre,categoria) {
 }
 
 function AgregarProductoCarritoVenta(producto, proporcion) {
+
+    var IdProporcion = proporcion.idproductoproporcion;
     var texto = '';
-    texto += '<li class="menuCarritoClase" IdPrecio="dvPrecio_' + proporcion.idproductoproporcion + '" IdCantidadProductos="txtCantidadProductos_' + proporcion.idproductoproporcion + '"  IdProporcion = "' + proporcion.idproductoproporcion + '"  id="dvProporcion'+ proporcion.idproductoproporcion +'" >';
+    texto += '<li class="menuCarritoClase" unidades="txtUnidadesProductos_' + IdProporcion + '" montoPrecio="' + proporcion.precio + '" IdCantidadProductos="txtCantidadProductos_' + IdProporcion + '"  IdProporcion = "' + IdProporcion + '"  id="dvProporcion_'+ IdProporcion +'" >';
     texto += '<div class="cart-item-image">';
     texto += '<img src="' + producto.rutafoto + '" alt="' + producto.nombre + '">';
     texto += '</div>';
     texto += '<div class="cart-item-info">';
-    texto += '<a href="#" class="header-cart">';
-    texto += '<span class="total" id="txtCantidadProductos_'+ proporcion.idproductoproporcion  +'" + >1</span>';
-    texto += '</a>';
     texto += '<h5>' + producto.nombre + '</h5>';
-    texto += '<p class="price" id="dvPrecio_"' + proporcion.idproductoproporcion + '> S/ ' + proporcion.precio + ' la unidad </p>';
+    texto += '<span class="total" id="txtCantidadProductos_'+ IdProporcion  + '"> 1 </span>';
+    texto += '<span class="total" id="txtUnidadesProductos_'+ IdProporcion  + '"> unidad </span>';
+    texto += '<p class="price" id="dvPrecio_"' + IdProporcion + '> S/ ' + proporcion.precio + ' la unidad </p>';    
     texto += '</div>';
     texto += '<div class="cart-item-close">';
-    texto += '<a href="#" data-toggle="tooltip" id="btnCerrar_'+ proporcion.idproductoproporcion +'" proporcion ="'+ proporcion.idproductoproporcion  + '" data-title="Remove">&times;</a>';
+    texto += '<a href="#" data-toggle="tooltip" id="btnCerrar_'+ IdProporcion +'" proporcion ="'+ IdProporcion  + '" data-title="Remove">&times;</a>';
     texto += '</div>';
     texto += '</li>';
     $("#menuCarritoVenta").append(texto);
     $("#txtCantidadProductos").text((parseFloat($("#txtCantidadProductos").text()) + 1));
 
-    $( "#btnCerrar_" + proporcion.idproductoproporcion).click(function() {
+    $( "#btnCerrar_" + IdProporcion).click(function() {
         var IdProporcion = $(this).attr("proporcion");
-        $("#dvProporcion"+ IdProporcion).remove();
-        $("#txtCantidadProductos").text((parseFloat($("#txtCantidadProductos").text()) - 1));
+        $("#txtCantidadProductos_"+IdProporcion).text((parseFloat($("#txtCantidadProductos_"+IdProporcion).text()) - 1));
+
+        if(parseFloat($("#txtCantidadProductos_" + IdProporcion).text()) == 0)
+        {
+            $("#dvProporcion_"+ IdProporcion).remove();
+            $("#txtCantidadProductos").text((parseFloat($("#txtCantidadProductos").text()) - 1));
+        }
+        else
+        {        
+            if(parseFloat($("#"+IdCantidadProductos).text()) == 1){
+                $("#"+unidades).text(' unidad');
+            }else{
+                $("#"+unidades).text(' unidades');
+            }
+        }
+
+        CalcularMontos();
     });
 }
 
@@ -501,32 +518,36 @@ function CarritoVenta(producto, proporcion) {
 
     $( ".menuCarritoClase" ).each(function( index ) {
         IdProporcion = $( this ).attr("IdProporcion");
-        IdPrecio = $( this ).attr("IdPrecio");
         IdCantidadProductos = $( this ).attr("IdCantidadProductos");
+        IdUnidades = $( this ).attr("unidades");
         if(IdProporcion == proporcion.idproductoproporcion){
+            CarritoVentaModificarCantidadPrductos(IdCantidadProductos,IdUnidades);
             existeProducto=true;
         }
     });
+    
+    debugger;
     if(!existeProducto){
-        AgregarProductoCarritoVenta(producto,proporcion);
-    }else{
-        CarritoVentaModificarCantidadPrductos(IdCantidadProductos,IdPrecio);
+        AgregarProductoCarritoVenta(producto,proporcion);        
     }
     CalcularMontos();
 }
 
-function CarritoVentaModificarCantidadPrductos(IdCantidadProductos,IdPrecio){
+function CarritoVentaModificarCantidadPrductos(IdCantidadProductos,unidades){
     $("#"+IdCantidadProductos).text((parseFloat($("#"+IdCantidadProductos).text()) + 1));
-    // $("#"+IdCantidadProductos).val();
-    // $("#"+IdPrecio).val();
+    if(parseFloat($("#"+IdCantidadProductos).text()) == 1){
+        $("#"+unidades).text(' unidad');
+    }else{
+        $("#"+unidades).text(' unidades');
+    }
 }
 
-
 function CalcularMontos() {
+    var precioTotal = 0.0;
     $( ".menuCarritoClase" ).each(function( index ) {
-        IdProporcion = $( this ).attr("IdProporcion");
-        IdPrecio = $( this ).attr("IdPrecio");
-        IdCantidadProductos = $( this ).attr("IdCantidadProductos");
-        
+        var montoPrecio = $( this ).attr("montoPrecio");
+        var IdCantidadProductos = $( this ).attr("IdCantidadProductos");
+        precioTotal +=  (parseFloat(montoPrecio) * parseFloat($("#"+IdCantidadProductos).text()));
     });
+    $("#lblMontoTotal").text(number_format(precioTotal),2);
 }

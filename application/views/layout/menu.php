@@ -69,7 +69,7 @@
                 </div>
             </div>
             <div class="header-nav">
-                <ul class="nav pull-right">
+                <ul class="nav pull-right">                    
                     <li class="dropdown dropdown-hover">
                         <a href="#" class="header-cart" data-toggle="dropdown">
                             <i class="fa fa-shopping-bag"></i>
@@ -79,7 +79,10 @@
             
                         <div class="dropdown-menu dropdown-menu-cart p-0">
                             <div class="cart-header">
-                                <h4 class="cart-title">TU PEDIDO</h4>
+                                <!-- <h4 class="cart-title">TU PEDIDO</h4> -->
+                                <div class="text-right" style="margin-right: 20px;">
+                                    <h4 class=""><b>TOTAL S/. <label id="lblMontoTotal">00.00</label></b></h4>
+                                </div>
                             </div>
                             <div class="cart-body">
                                 <ul class="cart-item" id="menuCarritoVenta">
@@ -90,8 +93,16 @@
                                 <div class="row row-space-10">
                                     <div class="col-xs-12">
                                         <center>
-                                            <h4>
+                                            <h5>
                                             <b>MONTO MINIMO S/.20.00</b>
+                                            </h5>
+                                        </center>
+                                    </div>
+
+                                    <div class="col-xs-12">
+                                        <center>
+                                            <h4>
+                                            
                                             </h4>
                                         </center>
                                     </div>
