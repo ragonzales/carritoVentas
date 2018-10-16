@@ -161,6 +161,7 @@ function numeroFormato(num,cantidadCaracteres){
 }
 
 $( "#btnBuscarCoberturas").click(function() {
+    debugger;
     ListarCoberturas();
 });
 
@@ -172,7 +173,6 @@ function ListarCoberturas(){
         async: false,
         dataType: 'json',
         success: function (listadoCoberturas) {
-            console.log(listadoCoberturas);
             if (listadoCoberturas != null) {
                 var texto = '';
                 listadoCoberturas.forEach(function (cobertura) {                    
@@ -182,7 +182,6 @@ function ListarCoberturas(){
                 $("#dvDetalleCobertura").append(texto);
             }
             $('#modalCoberturas').modal('toggle');
-            debugger;
         },
         error: function (jqXhr, textStatus, errorThrown) {
             console.log(jqXhr); console.log(textStatus); console.log(errorThrown);

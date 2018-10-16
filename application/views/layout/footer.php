@@ -10,7 +10,7 @@
 									<div class="input-group">
 										<input type="text" class="form-control" name="email" placeholder="Ingrese su correo" />
 										<div class="input-group-btn">
-											<button type="submit" class="btn btn-inverse"><i class="fa fa-angle-right"></i></button>
+											<button type="submit" class="btn btn-inverse btnColorAmarillo"><i class="fa fa-angle-right"></i></button>
 										</div>
 									</div>
 								</div>

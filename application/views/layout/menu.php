@@ -7,11 +7,13 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <div class="header-logo">
+                <!-- class="header-logo" -->
+                <div> 
                     <a href="index.html">
                         <span class="brand"></span>
-                        <span>Color</span>Admin
-                        <small>e-commerce frontend theme</small>
+                        <!-- <span>Color</span>Admin
+                        <small>e-commerce frontend theme</small> -->
+                        <img src="<?php echo base_url();?>assets/img/logo/logo.png" alt="Dolce Salato" />
                     </a>
                 </div>
             </div>
@@ -59,7 +61,7 @@
                                     <div class="input-group">
                                         <input type="text" placeholder="Buscar Producto" class="form-control bg-silver-lighter" />
                                         <span class="input-group-btn">
-                                            <button class="btn btn-inverse" type="submit"><i class="fa fa-search"></i></button>
+                                            <button class="btn btn-inverse btnColorAmarillo" type="submit"><i class="fa fa-search"></i></button>
                                         </span>
                                     </div>
                                 </form>

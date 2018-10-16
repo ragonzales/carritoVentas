@@ -61,6 +61,7 @@ function InicializarURL() {
 
         case "#COBERTURAS" :
             ListarCoberturas();
+            ListarProductosPopulares();
             break;
 
         default:
@@ -247,7 +248,7 @@ function AgregarProporciones(IdProducto,listadoPoporciones){
         });
         productoTexto += '</select>';
         productoTexto += '<div class="item-price" id="dvPrecio_' + IdProducto  + '">S/. ' + number_format(precio,2) + ' </div>';              
-        productoTexto += '<button id="IDCARRITO_' + IdProducto + '"  class="btn btn-inverse btn-lg btnAgregarProducto" type="submit" IdProducto="' + IdProducto + '"><i class="fa fa-shopping-cart"> AGREGAR </i></button>';
+        productoTexto += '<button id="IDCARRITO_' + IdProducto + '"  class="btn btn-inverse btn-lg btnAgregarProducto btnColorAmarillo" type="submit" IdProducto="' + IdProducto + '"><i class="fa fa-shopping-cart"> AGREGAR </i></button>';
     }    
     return productoTexto;
 }
