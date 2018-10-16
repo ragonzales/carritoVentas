@@ -94,23 +94,8 @@ function ListadoURL_LINK(categoria)
     });
 }
 
-function ObtenerHash(categoria) {
-    //var loc = window.location;
-    //var nombreHash = loc.hash.toUpperCase();
-
-    // categoriaAnterior = parseInt(categoria);
-    // categoriaNuevo = parseInt(categoria);
-
-    // if(categoriaAnterior != categoriaNuevo){
-    //     debugger;
-    //     // LIMITE_INICIAL = 12;
-    //     // limit = LIMITE_INICIAL;
-    //     // action = 'inactive';
-    //     // start = 0;
-    //     // $("#dvProductosPopulares").empty();
-    //      $("#dvProductos").empty();        
-    // }
-
+function ObtenerHash(categoria) 
+{
 
     switch(parseInt(categoria))
     {
@@ -134,70 +119,6 @@ function ObtenerHash(categoria) {
             MostrarProductosXcategoria("TORTAS Y POSTRES",5);
             break;
     }
-
-
-
-
-    // if(categoria!=null)
-    // {
-    //     switch(parseInt(categoria))
-    //     {
-    //         case 1:
-    //             MostrarProductosXcategoria("BOCADITOS",1);
-    //             break;
-            
-    //         case 2:
-    //             MostrarProductosXcategoria("COMBOS",2);
-    //             break;
-
-    //         case 3:
-    //             MostrarProductosXcategoria("CUPCKES",3);
-    //             break;
-
-    //         case 4:
-    //             MostrarProductosXcategoria("FESTIVO",4);
-    //             break;
-            
-    //         case 5:
-    //             MostrarProductosXcategoria("TORTAS Y POSTRES",5);
-    //             break;
-    //     }
-    // }
-    // else
-    // {
-    //     switch(nombreHash){
-    //         case "#INICIO" :
-    //             ListarProductosPopulares();
-    //             break;
-
-    //         case "#BOCADITOS" :
-    //             MostrarProductosXcategoria("BOCADITOS",1);
-    //             break;
-
-    //         case "#COMBOS" :
-    //             MostrarProductosXcategoria("COMBOS",2);
-    //             break;
-    //         case "#CUPCKES" :
-    //             MostrarProductosXcategoria("CUPCKES",3);
-    //             break;
-
-    //         case "#FESTIVO" :
-    //             MostrarProductosXcategoria("FESTIVO",4);
-    //             break;
-
-    //         case "#POSTRES" :
-    //             MostrarProductosXcategoria("TORTAS Y POSTRES",5);
-    //             break;
-
-    //         case "#COBERTURAS" :
-    //             ListarCoberturas();
-    //             break;
-
-    //         default:
-    //             ListarProductosPopulares();
-    //             break;
-    //     }
-    //}
 }
 
 function ListarProductosPopulares() {
@@ -223,8 +144,10 @@ function ListarProductosPopulares() {
                     $("#dvProductosPopulares").append(productoTexto);
                     action = 'inactive';
 
-                    $(".btnAgregarProducto").click(function()
+                    $(".btnAgregarProducto").click(function(e)
                     {
+                        e.preventDefault();
+                        e.stopImmediatePropagation();
                         var IdProducto = $(this).attr("IdProducto");
                         var Idproductoproporcion = $("#PRODUCTO_"+ IdProducto).val();
                         var producto = BuscarProducto(IdProducto);
@@ -316,14 +239,14 @@ function AgregarProporciones(IdProducto,listadoPoporciones){
     if(listadoPoporciones.length > 0){
         productoTexto += '<select class="form-control" id="PRODUCTO_'+ IdProducto + '" onchange="CambiarPrecioProducto(this,'+ IdProducto +')" style="text-align-last: center;" >';    
         listadoPoporciones.forEach(function (proporcion) {
-            if(contador==0){
+            if(contador == 0){
                 precio = proporcion.precio;
             }
             productoTexto += '<option value="'+ proporcion.idproductoproporcion + '"  precio="'+ proporcion.precio +'" >'+ proporcion.proporcion +'</option>';
             contador++;
         });
         productoTexto += '</select>';
-        productoTexto += '<div class="item-price" id="dvPrecio_' + IdProducto  + '">S/. ' + number_format(precio,2) +' </div>';              
+        productoTexto += '<div class="item-price" id="dvPrecio_' + IdProducto  + '">S/. ' + number_format(precio,2) + ' </div>';              
         productoTexto += '<button id="IDCARRITO_' + IdProducto + '"  class="btn btn-inverse btn-lg btnAgregarProducto" type="submit" IdProducto="' + IdProducto + '"><i class="fa fa-shopping-cart"> AGREGAR </i></button>';
     }    
     return productoTexto;
@@ -372,24 +295,23 @@ function ListarProductos(CATEGORIA) {
             {
                 if (listaProductos.length > 0) 
                 {
-                    var productoTexto = '';                
+                    var productoTexto = '';
+                    action = 'inactive';
                     listaProductos.forEach(function (producto) { 
                         productoTexto += AgregarProducto(producto);
                     });
-
                     $("#dvProductos").append(productoTexto);
-                    action = 'inactive';
 
-                    $(".btnAgregarProducto").click(function() 
+                    $(".btnAgregarProducto").click(function(e)
                     {
+                        e.preventDefault();
+                        e.stopImmediatePropagation();
                         var IdProducto = $(this).attr("IdProducto");
                         var Idproductoproporcion = $("#PRODUCTO_"+ IdProducto).val();
                         var producto = BuscarProducto(IdProducto);
                         var proporcion = BuscarProporcion(Idproductoproporcion);
                         CarritoVenta(producto, proporcion);
-                    });
-
-                    
+                    });                    
                 }
             }
             else
@@ -499,13 +421,13 @@ function AgregarProductoCarritoVenta(producto, proporcion) {
         }
         else
         {        
-            if(parseFloat($("#"+IdCantidadProductos).text()) == 1){
-                $("#"+unidades).text(' unidad');
+            if(parseFloat($("#txtCantidadProductos_" + IdProporcion).text()) == 0)
+            {
+                $("#txtUnidadesProductos_" + IdProporcion).text(' unidad');
             }else{
-                $("#"+unidades).text(' unidades');
+                $("#txtUnidadesProductos_" + IdProporcion).text(' unidades');
             }
         }
-
         CalcularMontos();
     });
 }
@@ -526,7 +448,6 @@ function CarritoVenta(producto, proporcion) {
         }
     });
     
-    debugger;
     if(!existeProducto){
         AgregarProductoCarritoVenta(producto,proporcion);        
     }
@@ -543,11 +464,11 @@ function CarritoVentaModificarCantidadPrductos(IdCantidadProductos,unidades){
 }
 
 function CalcularMontos() {
-    var precioTotal = 0.0;
+    var precioTotal = 0.00;
     $( ".menuCarritoClase" ).each(function( index ) {
         var montoPrecio = $( this ).attr("montoPrecio");
         var IdCantidadProductos = $( this ).attr("IdCantidadProductos");
-        precioTotal +=  (parseFloat(montoPrecio) * parseFloat($("#"+IdCantidadProductos).text()));
+        precioTotal +=  (parseFloat(montoPrecio) * parseFloat($("#" + IdCantidadProductos).text()));
     });
     $("#lblMontoTotal").text(number_format(precioTotal),2);
 }

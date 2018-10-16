@@ -21,7 +21,7 @@
                         <li class="dropdown dropdown-hover">
                             <a href="#" data-toggle="dropdown">
                                 CATEGORÍAS
-                                <i class="fa fa-angle-down"></i> 
+                                <i class="fa fa-angle-down"></i>
                                 <span class="arrow top"></span>
                             </a>
                             <ul class="dropdown-menu">
@@ -31,11 +31,11 @@
                                 <li class="btnBuscarListadoProductos" codigo="4" nombre="FESTIVO"><a href="#FESTIVO">FESTIVO</a></li>
                                 <li class="btnBuscarListadoProductos" codigo="5" nombre="POSTRES Y TORTAS"><a href="#POSTRES">POSTRES Y TORTAS</a></li>
                             </ul>
-                        </li>								
+                        </li>
                         <li class="dropdown dropdown-hover">
                             <a href="#" data-toggle="dropdown">
                                 SERVICIOS ADICIONALES
-                                <i class="fa fa-angle-down"></i> 
+                                <i class="fa fa-angle-down"></i>
                                 <span class="arrow top"></span>
                             </a>
                             <ul class="dropdown-menu">
@@ -46,7 +46,7 @@
                                 <li><a href="product.html">Servicio 5</a></li>
                                 <li><a href="product.html">Servicio 6</a></li>
                             </ul>
-                        </li>                                               
+                        </li>
                         <li id="btnBuscarCoberturas"><a href="#COBERTURAS">COBERTURA</a></li>
                         <li id="btnInicio"><a href="#INICIO">INICIO</a></li>
                         <li class="dropdown dropdown-hover">
@@ -63,30 +63,27 @@
                                         </span>
                                     </div>
                                 </form>
-                            </div> 
+                            </div>
                         </li>
                     </ul>
                 </div>
             </div>
             <div class="header-nav">
-                <ul class="nav pull-right">                    
+                <ul class="nav pull-right">
                     <li class="dropdown dropdown-hover">
                         <a href="#" class="header-cart" data-toggle="dropdown">
                             <i class="fa fa-shopping-bag"></i>
                             <span class="total" id="txtCantidadProductos">0</span>
                             <span class="arrow top"></span>
                         </a>
-            
+
                         <div class="dropdown-menu dropdown-menu-cart p-0">
                             <div class="cart-header">
-                                <!-- <h4 class="cart-title">TU PEDIDO</h4> -->
-                                <div class="text-right" style="margin-right: 20px;">
-                                    <h4 class=""><b>TOTAL S/. <label id="lblMontoTotal">00.00</label></b></h4>
-                                </div>
+                                <h4 class="cart-title">TU PEDIDO</h4>
                             </div>
                             <div class="cart-body">
                                 <ul class="cart-item" id="menuCarritoVenta">
-                                    
+
                                 </ul>
                             </div>
                             <div class="cart-footer">
@@ -96,14 +93,6 @@
                                             <h5>
                                             <b>MONTO MINIMO S/.20.00</b>
                                             </h5>
-                                        </center>
-                                    </div>
-
-                                    <div class="col-xs-12">
-                                        <center>
-                                            <h4>
-                                            
-                                            </h4>
                                         </center>
                                     </div>
                                 </div>
@@ -120,11 +109,13 @@
                             </div>
                         </div>
                     </li>
-                    <li class="divider"></li>                            
+                    <li class="divider"></li>
                     <li>
-                        <a href="my_account.html">
+                        <a>
                             <!-- <img src="../assets/img/user/user-1.jpg" class="user-img" alt="" /> -->
-                            <span class="hidden-md hidden-sm hidden-xs"></span>
+                            <span class="hidden-md hidden-sm hidden-xs">
+                            <b>TOTAL S/. <label id="lblMontoTotal">00.00</label></b></h4>
+                             </span>
                             <!-- Administrador -->
                         </a>
                     </li>
@@ -140,8 +131,8 @@
             <div class="modal-header">
                 <h4 class="modal-title">DETALLE PRODUCTO</h4>
             </div>
-            <div class="modal-body" id="dvDetalleProducto">                                
-                
+            <div class="modal-body" id="dvDetalleProducto">
+
             </div>
             <div class="modal-footer">
                 <a href="javascript:;" class="btn btn-white" data-dismiss="modal">Cerrar</a>
