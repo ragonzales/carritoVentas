@@ -14,7 +14,9 @@
 	<link href="<?php echo base_url();?>assets/css/e-commerce/style-responsive.min.css" rel="stylesheet" />
 	<link href="<?php echo base_url();?>assets/css/e-commerce/theme/orange.css" id="theme" rel="stylesheet" />
     <link href="<?php echo base_url();?>assets/css/generico.css" id="theme" rel="stylesheet" />
-	<script src="<?php echo base_url();?>assets/plugins/pace/pace.min.js"></script>
+    <!-- <link href="<?php echo base_url();?>assets/plugins/jquery-smart-wizard/src/css/smart_wizard.css" rel="stylesheet" /> -->
+    <script src="<?php echo base_url();?>assets/plugins/pace/pace.min.js"></script>
+    
 </head>
 <body>
     <div id="page-container" class="fade">

@@ -7,12 +7,9 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <!-- class="header-logo" -->
                 <div> 
-                    <a href="index.html">
+                    <a href="#">
                         <span class="brand"></span>
-                        <!-- <span>Color</span>Admin
-                        <small>e-commerce frontend theme</small> -->
                         <img src="<?php echo base_url();?>assets/img/logo/logo.png" alt="Dolce Salato" />
                     </a>
                 </div>
@@ -41,10 +38,10 @@
                                 <span class="arrow top"></span>
                             </a>
                             <ul class="dropdown-menu">
-                                <li><a href="product.html">Servicio 1</a></li>
-                                <li><a href="product.html">Servicio 2</a></li>
-                                <li><a href="product.html">Servicio 3</a></li>
-                                <li><a href="product.html">Servicio 4</a></li>
+                                <li><a href="product.html">Snack Cart</a></li>
+                                <li><a href="product.html">Caritas Pintadas</a></li>
+                                <li><a href="product.html">Coffee Break</a></li>
+                                <li><a href="product.html">Mozos y Barman</a></li>
                                 <li><a href="product.html">Servicio 5</a></li>
                                 <li><a href="product.html">Servicio 6</a></li>
                             </ul>
@@ -114,11 +111,9 @@
                     <li class="divider"></li>
                     <li>
                         <a>
-                            <!-- <img src="../assets/img/user/user-1.jpg" class="user-img" alt="" /> -->
                             <span class="hidden-md hidden-sm hidden-xs">
                             <b>TOTAL S/. <label id="lblMontoTotal">00.00</label></b></h4>
-                             </span>
-                            <!-- Administrador -->
+                            </span>
                         </a>
                     </li>
                 </ul>

@@ -143,3 +143,16 @@
     color: #f3f3f3;
     background: #f6c53b;    
 } */
+
+@media (max-width: 767px){
+    .navbar-collapse .nav > li > a {
+        line-height: 30px;
+        padding: 10px 15px;
+        color: white !important;
+        background: #f6c53b;
+    }
+}
+
+.header-nav .nav>li.open>a, .header-nav .nav>li.open>a:focus, .header-nav .nav>li.open>a:hover, .header-nav .nav>li>a:focus, .header-nav .nav>li>a:hover {
+    background: #f6c53b;
+}

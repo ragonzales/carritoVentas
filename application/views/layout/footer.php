@@ -5,7 +5,7 @@
 					<div class="col-md-12">					
 						<div class="col-md-6">							
 							<div class="col-md-10">
-								<h4 class="footer-header">Suscribete para recibir promociones</h4>
+								<h4 class="footer-header">SUSCRIBETE PARA RECIBIR PROMOCIONES</h4>
 								<div class="subscription-form">
 									<div class="input-group">
 										<input type="text" class="form-control" name="email" placeholder="Ingrese su correo" />
@@ -52,7 +52,10 @@
 	<script src="<?php echo base_url();?>assets/plugins/bootstrap3/js/bootstrap.min.js"></script>
 	<script src="<?php echo base_url();?>assets/plugins/js-cookie/js.cookie.js"></script>
 	<script src="<?php echo base_url();?>assets/js/e-commerce/apps.min.js"></script>
-	
+	<!-- <script src="<?php echo base_url();?>assets/plugins/jquery-smart-wizard/src/js/jquery.smartWizard.js"></script>
+	<script src="<?php echo base_url();?>assets/js/demo/form-wizards.demo.min.js"></script> -->
+
+
 	<!--INICIALIZAR VARIABLES GLOBALES-->
 	<script type="text/javascript">
 		var BASE_URL = "<?php echo base_url();?>";
@@ -117,6 +120,7 @@
 	<script>
 	    $(document).ready(function() {
 	        App.init();
+			FormWizard.init();
 		});
 	</script>
 </body>
