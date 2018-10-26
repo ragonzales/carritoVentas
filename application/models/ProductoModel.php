@@ -49,5 +49,19 @@ class ProductoModel extends CI_Model
 		$query = $this->db->get('producto');	
 		return $query->result();	
 	}
+
+	public function BuscarProductos_XProporcion($IdProporcion)
+	{	
+		//$query = $this->db->query('SELECT * FROM  producto p INNER JOIN proporcionproductos pp ON p.idproducto = pp.idproducto WHERE pp.idproductoproporcion = "' + $IdProporcion + "'");
+		// return $query->result();
+		
+		$this->db->select('producto.*');
+		$this->db->from('proporcionproductos');
+		$this->db->join('producto', 'producto.IdProducto = proporcionproductos.IdProducto');
+		$this->db->where('proporcionproductos.idproductoproporcion', $IdProporcion);
+		$query = $this->db->get();
+		return $query->row();
+	}
+
 }
 ?>

@@ -107,4 +107,11 @@ class Productos extends CI_Controller {
 		$resultado = $this->ProductoModel->BuscarProductos_Nombre($nombreProducto);
 		echo json_encode($resultado);
 	}
+
+	public function BuscarProductos_XProporcion()
+	{
+		$IdProporcion = $this->input->post("IdProporcion");
+		$resultado = $this->ProductoModel->BuscarProductos_XProporcion($IdProporcion);
+		echo json_encode($resultado);
+	}
 }
