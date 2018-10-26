@@ -54,14 +54,14 @@
                                 <span class="arrow top"></span>
                             </a>
                             <div class="dropdown-menu p-15">
-                                <form action="search_results.html" method="POST" name="search_form">
+                                <!-- <form action="search_results.html" method="POST" name="search_form"> -->
                                     <div class="input-group">
-                                        <input type="text" placeholder="Buscar Producto" class="form-control bg-silver-lighter" />
+                                        <input type="text" placeholder="Buscar Producto" id="txtNombreProducto_Busqueda" class="form-control bg-silver-lighter" />
                                         <span class="input-group-btn">
-                                            <button class="btn btn-inverse btnColorAmarillo" type="submit"><i class="fa fa-search"></i></button>
+                                            <button class="btn btn-inverse btnColorAmarillo" type="submit" id="btnBuscarProducto"><i class="fa fa-search"></i></button>
                                         </span>
                                     </div>
-                                </form>
+                                <!-- </form> -->
                             </div>
                         </li>
                     </ul>
@@ -99,10 +99,10 @@
                             <div class="cart-footer">
                                 <div class="row row-space-10">
                                     <div class="col-xs-6">
-                                        <a href="checkout_cart.html" class="btn btn-default btn-block">View Cart</a>
+                                        <a href="#DetalleCompra" class="btn btn-default btn-block btnColorAmarillo" id="btnVerDetalleCompra">VER CARRITO</a>
                                     </div>
                                     <div class="col-xs-6">
-                                        <a href="checkout_cart.html" class="btn btn-inverse btn-block">Checkout</a>
+                                        <a href="checkout_cart.html" class="btn btn-inverse btn-block">COMPRAR</a>
                                     </div>
                                 </div>
                             </div>

@@ -120,7 +120,7 @@
 	<script>
 	    $(document).ready(function() {
 	        App.init();
-			FormWizard.init();
+			// FormWizard.init();
 		});
 	</script>
 </body>

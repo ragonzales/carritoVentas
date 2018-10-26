@@ -58,10 +58,26 @@ function InicializarURL() {
         case "#POSTRES" :
             MostrarProductosXcategoria("TORTAS Y POSTRES",5);
             break;
-
+        
         case "#COBERTURAS" :
             ListarCoberturas();
             ListarProductosPopulares();
+            break;
+
+        case "#SNACKCART" :
+            AbrirServicio("#SNACKCART");
+            break;
+        
+        case "#CARITAS_PINTADAS" :
+            AbrirServicio("#CARITASPINTADAS");
+            break;
+        
+        case "#COFFE_BREAK" :
+            AbrirServicio("#CARITASPINTADAS");
+            break;
+        
+        case "#MOZOZ_BARMAN" :
+            AbrirServicio("#MOZOZBARMAN");
             break;
 
         default:
@@ -379,7 +395,9 @@ $( ".btnBuscarListadoProductos" ).click(function() {
     $("#lblNombreProducto").text(nombre);
     $("#dvProductos").empty();
     $("#dvIncio").hide();
-    $("#dvProductosListado").show();
+    $("#dvProductosBuscados").hide();
+    $("#dvProductosBuscados").empty();
+    $("#dvProductosListado").show();    
     ListadoURL_LINK(categoria);    
 });
 
@@ -394,7 +412,7 @@ function AgregarProductoCarritoVenta(producto, proporcion) {
 
     var IdProporcion = proporcion.idproductoproporcion;
     var texto = '';
-    texto += '<li class="menuCarritoClase" unidades="txtUnidadesProductos_' + IdProporcion + '" montoPrecio="' + proporcion.precio + '" IdCantidadProductos="txtCantidadProductos_' + IdProporcion + '"  IdProporcion = "' + IdProporcion + '"  id="dvProporcion_'+ IdProporcion +'" >';
+    texto += '<li class="menuCarritoClase"  unidades="txtUnidadesProductos_' + IdProporcion + '" montoPrecio="' + proporcion.precio + '" IdCantidadProductos="txtCantidadProductos_' + IdProporcion + '"  IdProporcion = "' + IdProporcion + '"  id="dvProporcion_'+ IdProporcion +'" >';
     texto += '<div class="cart-item-image">';
     texto += '<img src="' + producto.rutafoto + '" alt="' + producto.nombre + '">';
     texto += '</div>';
@@ -437,7 +455,6 @@ function CarritoVenta(producto, proporcion) {
     var existeProducto = false;
     var IdCantidadProductos = 0;
     var IdProporcion = 0;
-    var IdPrecio = 0;
 
     $( ".menuCarritoClase" ).each(function( index ) {
         IdProporcion = $( this ).attr("IdProporcion");
@@ -473,3 +490,68 @@ function CalcularMontos() {
     });
     $("#lblMontoTotal").text(number_format(precioTotal),2);
 }
+
+$( "#btnBuscarProducto" ).click(function() {
+    var nombreProducto = $("#txtNombreProducto_Busqueda").val();
+    if(nombreProducto != ""){
+        BuscarProductos_Nombre(nombreProducto);
+        $("#txtNombreProducto_Busqueda").empty();
+    }
+});
+
+function BuscarProductos_Nombre(nombreProducto)
+{
+    $.ajax({
+        type: "POST",
+        url: BASE_URL + 'Productos/BuscarProductos_Nombre',
+        data: {
+            "nombreProducto": nombreProducto
+        },
+        async: false,
+        dataType: 'json',
+        success: function (listadoProductos) {
+            
+            console.log(listadoProductos);            
+            
+            if (listadoProductos != null) 
+            {
+                if (listadoProductos.length > 0) 
+                {
+                    var productoTexto = '';
+                    $("#dvIncio").hide();
+                    $("#dvProductos").empty();
+                    $("#dvProductosListado").hide();                  
+                    $("#dvProductosBuscadosRegistro").empty();
+
+                    listadoProductos.forEach(function (producto) { 
+                        productoTexto += AgregarProducto(producto);
+                    });
+                    $("#dvProductosBuscadosRegistro").append(productoTexto);
+
+                    $(".btnAgregarProducto").click(function(e)
+                    {
+                        e.preventDefault();
+                        e.stopImmediatePropagation();
+                        var IdProducto = $(this).attr("IdProducto");
+                        var Idproductoproporcion = $("#PRODUCTO_"+ IdProducto).val();
+                        var producto = BuscarProducto(IdProducto);
+                        var proporcion = BuscarProporcion(Idproductoproporcion);
+                        CarritoVenta(producto, proporcion);
+                    });                    
+                }
+            }
+        },
+        error: function (jqXhr, textStatus, errorThrown) {
+            console.log(jqXhr); console.log(textStatus); console.log(errorThrown);
+            MensajeAlert(MODULO, 'Error al buscar el producto. Detalle Técnico : ' + errorThrown);
+        }
+    });
+}
+
+
+
+$( "#btnVerDetalleCompra" ).click(function() {
+    $("#dvVentas").hide();
+    $("#dvDetalleCompra").show();
+    // $("#").hide();
+});

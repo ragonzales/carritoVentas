@@ -42,5 +42,12 @@ class ProductoModel extends CI_Model
 		$query = $this->db->get_where('proporcionproductos', array('idproductoproporcion' => $IdProporcion));
 		return $query->row();
 	}
+	
+	public function BuscarProductos_Nombre($nombreProducto)
+	{	
+		$this->db->or_like('nombre', $nombreProducto);
+		$query = $this->db->get('producto');	
+		return $query->result();	
+	}
 }
 ?>

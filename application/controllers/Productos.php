@@ -100,4 +100,11 @@ class Productos extends CI_Controller {
 		$resultado = $this->ProductoModel->BuscarProductoProporciones($IdProducto);
 		echo json_encode($resultado);
 	}
+
+	public function BuscarProductos_Nombre()
+	{
+		$nombreProducto = $this->input->post("nombreProducto");
+		$resultado = $this->ProductoModel->BuscarProductos_Nombre($nombreProducto);
+		echo json_encode($resultado);
+	}
 }
