@@ -7,8 +7,8 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <div> 
-                    <a href="#">
+                <div>
+                    <a href="javascript:;" id="btnInicioLogo">
                         <span class="brand"></span>
                         <img src="<?php echo base_url();?>assets/img/logo/logo.png" alt="Dolce Salato" />
                     </a>
@@ -47,7 +47,7 @@
                             </ul>
                         </li>
                         <li id="btnBuscarCoberturas"><a href="#COBERTURAS">COBERTURA</a></li>
-                        <li id="btnInicio"><a href="#INICIO">INICIO</a></li>
+                        <li id="btnInicio"><a href="http://dolcesalato.com.pe/" target="_blank">INICIO</a></li>
                         <li class="dropdown dropdown-hover">
                             <a href="#" data-toggle="dropdown">
                                 <i class="fa fa-search search-btn"></i>
@@ -90,7 +90,7 @@
                                     <div class="col-xs-12">
                                         <center>
                                             <h5>
-                                            <b>MONTO MINIMO S/.20.00</b>
+                                            <b>MONTO MINIMO S/. 20.00</b>
                                             </h5>
                                         </center>
                                     </div>
@@ -99,7 +99,7 @@
                             <div class="cart-footer">
                                 <div class="row row-space-10">
                                     <div class="col-xs-6">
-                                        <a href="#DetalleCompra" class="btn btn-default btn-block btnColorAmarillo" id="btnVerDetalleCompra">VER CARRITO</a>
+                                        <a href="javascript:;" class="btn btn-default btn-block btnColorAmarillo" id="btnVerDetalleCompra">VER CARRITO</a>
                                     </div>
                                     <div class="col-xs-6">
                                         <a href="checkout_cart.html" class="btn btn-inverse btn-block">COMPRAR</a>

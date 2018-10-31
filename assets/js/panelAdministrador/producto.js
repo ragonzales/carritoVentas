@@ -385,9 +385,16 @@ function BuscarProporcion(IdProporcion) {
     return proporcion;
 }
 
-$( "#btnInicio" ).click(function() {
-    ListarProductosPopulares();
-});
+// $( "#btnInicio" ).click(function() {
+//     debugger;
+//     $("#dvProductosPopulares").empty();
+//     ListarProductosPopulares();
+//     $("#dvVentas").show();
+//     $("#dvIncio").show();
+//     $("#dvProductosListado").hide();
+//     $("#dvProductosBuscados").hide();
+//     $("#dvDetalleCompra").hide();
+// });
 
 $( ".btnBuscarListadoProductos" ).click(function() {
     var nombre = $(this).attr("nombre");
@@ -397,7 +404,8 @@ $( ".btnBuscarListadoProductos" ).click(function() {
     $("#dvIncio").hide();
     $("#dvProductosBuscados").hide();
     $("#dvProductosBuscados").empty();
-    $("#dvVentas").show();    
+    $("#dvVentas").show();
+    $("#slider").show();
     $("#dvProductosListado").show();
     $("#dvDetalleCompra").hide();
     ListadoURL_LINK(categoria);
@@ -549,6 +557,7 @@ function BuscarProductos_Nombre(nombreProducto)
 
 $( "#btnVerDetalleCompra" ).click(function() {
     $("#dvVentas").hide();
+    $("#slider").hide();    
     VerDetalleCarrito();
     $("#dvDetalleCompra").show();    
 });
@@ -568,35 +577,38 @@ function ObjetoProporcion(Idproporcion,cantidad,unidades,montoPrecio)
 function VerDetalleCarrito() {
     var detalleCarrito = '';
     var listaCompra = [];
+    var montoTotal = number_format(0,2);
     
     $("#dvCarrito").empty();
-    
     $(".menuCarritoClase").each(function() {  //index
         var Idproporcion = $(this).attr("Idproporcion").trim();
         var cantidad = $("#"+$(this).attr("IdCantidadProductos")).text().trim();
         var unidades = $("#"+$(this).attr("unidades")).text().trim();
         var montoPrecio = $(this).attr("montoPrecio").trim();
         var proporcion = ObjetoProporcion(Idproporcion,cantidad,unidades,montoPrecio);
-        console.log(proporcion);
+        //console.log(proporcion);
         listaCompra.push(proporcion);
     });
     
+    detalleCarrito += '<div class="table-responsive">';
+    detalleCarrito += '<table class="table table-cart">';
+    detalleCarrito += '<thead>';
+    detalleCarrito += '<tr>';
+    detalleCarrito += '<th>PRODUCTOS</th>';
+    detalleCarrito += '<th class="text-center">PRECIO</th>';
+    detalleCarrito += '<th class="text-center">CANTIDAD</th>';
+    detalleCarrito += '<th class="text-center">TOTAL</th>';
+    detalleCarrito += '</tr>';
+    detalleCarrito += '</thead>';
+    detalleCarrito += '<tbody>';
+    
     if(listaCompra.length > 0)
     {
-        detalleCarrito += '<div class="table-responsive">';
-        detalleCarrito += '<table class="table table-cart">';
-        detalleCarrito += '<thead>';
-        detalleCarrito += '<tr>';
-        detalleCarrito += '<th>Productos</th>';
-        detalleCarrito += '<th class="text-center">Precio</th>';
-        detalleCarrito += '<th class="text-center">Cantidad</th>';
-        detalleCarrito += '<th class="text-center">Total</th>';
-        detalleCarrito += '</tr>';
-        detalleCarrito += '</thead>';
-        detalleCarrito += '<tbody>';
-        
         listaCompra.forEach(function (proporcion) 
-        {        
+        {
+            var totalUnitarios = number_format(parseFloat(number_format(proporcion.montoPrecio,2)*(parseFloat(proporcion.cantidad))),2)
+            var precioUnitario = number_format(parseFloat(proporcion.montoPrecio),2);
+
             detalleCarrito += '<tr>';
             detalleCarrito += '<td class="cart-product">';
             detalleCarrito += '<div class="product-img">';
@@ -607,28 +619,48 @@ function VerDetalleCarrito() {
             detalleCarrito += '<div class="desc">' + proporcion.proporcion.proporcion  + '</div>';
             detalleCarrito += '</div>';
             detalleCarrito += '</td>';
-            detalleCarrito += '<td class="cart-price text-center">S/.' + number_format(parseFloat(proporcion.montoPrecio),2)  + '</td>';
-            
+            detalleCarrito += '<td class="cart-price text-center">S/. ' + precioUnitario  + '</td>';
+
             detalleCarrito += '<td class="cart-qty text-center">';
             detalleCarrito += '<div class="cart-qty-input">';
-            detalleCarrito += '<a href="javascript:void(0)" class="qty-control left disabled" data-click="decrease-qty" data-target="#qty_' +  proporcion.Idproporcion + '"><i class="fa fa-minus"></i></a>';
-            detalleCarrito += '<input type="text" name="qty" value="'+ proporcion.cantidad + '" class="form-control" id="qty_' +  proporcion.Idproporcion + '"/>';
-            detalleCarrito += '<a href="javascript:void(0)" class="qty-control right disabled" data-click="increase-qty" data-target="#qty_' +  proporcion.Idproporcion + '"><i class="fa fa-plus"></i></a>';
+            //detalleCarrito += '<a href="javascript:void(0)" class="qty-control left disabled" id="btnMenos_"' + proporcion.Idproporcion  + ' data-click="decrease-qty" data-target="#qty_' +  proporcion.Idproporcion + '"><i class="fa fa-minus"></i></a>';
+            detalleCarrito += '<input type="text" name="qty" value="'+ proporcion.cantidad + '" class="form-control" id="qty_' +  proporcion.Idproporcion + '" disabled/>';
+            //detalleCarrito += '<a href="javascript:void(0)" class="qty-control right disabled" data-click="increase-qty" data-target="#qty_' +  proporcion.Idproporcion + '"><i class="fa fa-plus"></i></a>';
             detalleCarrito += '</div>';
-            detalleCarrito += '<div class="qty-desc">1 to max order</div>';
+            //detalleCarrito += '<div class="qty-desc"> </div>';
             detalleCarrito += '</td>';
 
             detalleCarrito += '<td class="cart-total text-center">';
-            detalleCarrito += 'S/. ' + number_format(parseFloat(number_format(proporcion.montoPrecio,2)*(parseFloat(proporcion.cantidad))),2);
+            detalleCarrito += 'S/. ' + totalUnitarios;
             detalleCarrito += '</td>';
             detalleCarrito += '</tr>';
+            montoTotal = parseFloat(montoTotal) + parseFloat(totalUnitarios);
         });
-
-        detalleCarrito += '</tbody>';
-        detalleCarrito += '</table>';
-        detalleCarrito += '</div>';
-        $("#dvCarrito").append(detalleCarrito);
     }
+
+    detalleCarrito += '<tr>';
+    detalleCarrito += '<td class="cart-summary" colspan="4">';
+    detalleCarrito += '<div class="summary-container">';
+    detalleCarrito += '<div class="summary-row">';
+    detalleCarrito += '<div class="field">SUBTOTAL</div>';
+    detalleCarrito += '<div class="value">S/. ' + montoTotal + ' </div>';
+    detalleCarrito += '</div>';
+    detalleCarrito += '<div class="summary-row text-danger">';
+    detalleCarrito += '<div class="field">Envio Gratis</div>';
+    detalleCarrito += '<div class="value">S/. 0.00</div>';
+    detalleCarrito += '</div>';
+    detalleCarrito += '<div class="summary-row total">';
+    detalleCarrito += '<div class="field">TOTAL</div>';
+    detalleCarrito += '<div class="value">S/. ' + montoTotal + ' </div>';
+    detalleCarrito += '</div>';
+    detalleCarrito += '</div>';
+    detalleCarrito += '</td>';
+    detalleCarrito += '</tr>';
+
+    detalleCarrito += '</tbody>';
+    detalleCarrito += '</table>';
+    detalleCarrito += '</div>';
+    $("#dvCarrito").append(detalleCarrito);
 }
 
 function BuscarProductos_XProporcion(IdProporcion)
@@ -652,3 +684,18 @@ function BuscarProductos_XProporcion(IdProporcion)
     });
     return producto;
 }
+
+function MostrarUltimaPantalla()
+{
+    $("#slider").show();
+    $("#dvVentas").show();
+    $("#dvDetalleCompra").hide();
+}
+
+$("#btnSeguirComprando").click(function(e){
+    MostrarUltimaPantalla();
+});
+
+$("#btnInicioLogo").click(function(e){
+    MostrarUltimaPantalla();
+});

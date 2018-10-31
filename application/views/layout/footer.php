@@ -54,6 +54,7 @@
 	<script src="<?php echo base_url();?>assets/js/e-commerce/apps.min.js"></script>
 	<!-- <script src="<?php echo base_url();?>assets/plugins/jquery-smart-wizard/src/js/jquery.smartWizard.js"></script>
 	<script src="<?php echo base_url();?>assets/js/demo/form-wizards.demo.min.js"></script> -->
+	<script src="<?php echo base_url();?>assets/js/blog/apps.min.js"></script>
 
 
 	<!--INICIALIZAR VARIABLES GLOBALES-->
