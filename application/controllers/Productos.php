@@ -68,20 +68,22 @@ class Productos extends CI_Controller {
 		echo json_encode($resultado);
 	}
 
-	/*
+	
 	public function ListarProductosPopulares(){
 		$limit = $this->input->post("limit");
 		$start = $this->input->post("start");
 		$resultado = $this->ProductoModel->ListarProductosPopulares($limit,$start);
 		echo json_encode($resultado);
 	}
-	*/
+	
+	/*
 	public function ListarProductosPopulares(){
 		// $limit = $this->input->post("limit");
 		// $start = $this->input->post("start");
 		$resultado = $this->ProductoModel->ListarProductosPopulares();
 		echo json_encode($resultado);
 	}
+	*/
 
 	public function ListarBanners(){
 		$resultado = $this->ProductoModel->ListarBanners();

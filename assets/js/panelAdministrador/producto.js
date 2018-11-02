@@ -1,9 +1,10 @@
 var MODULO = "MÓDULO DE PRODUCTOS";
-// var LIMITE_INICIAL = 12;
-// var categoriaAnterior = 0;
-// var limit = LIMITE_INICIAL;
+var LIMITE_INICIAL = 12;
+var categoriaAnterior = 0;
+var limit = LIMITE_INICIAL;
 var categoriaNuevo = '';
 var action = 'inactive';
+var productosBuscado = false;
 var start = 0;
 
 $(document).ready(function () 
@@ -18,33 +19,19 @@ function ListadoURL() {
       InicializarURL();
     }
 
-    /*
     $(window).scroll(function(){
         if($(window).scrollTop() + $(window).height() > $("#dvProductos").height() && action == 'inactive')
         {
-            action = 'active';
-            start = start + limit;
-            setTimeout(function(){
-                InicializarURL();
-            }, 800);
+            if(productosBuscado == false){
+                action = 'active';
+                start = start + limit;
+                setTimeout(function(){
+                    InicializarURL();
+                }, 600);
+            }
         }
     });
-    */
 }
-
-/*
-<li class="btnBuscarListadoProductos" codigo="1" nombre="POSTRES Y TORTAS"><a href="#POSTRES">POSTRES Y TORTAS</a></li>                                
-<li class="btnBuscarListadoProductos" codigo="2" nombre="BOCADITOS SALADOS"><a href="#">BOCADITOS SALADOS</a></li>
-<li class="btnBuscarListadoProductos" codigo="3" nombre="BOCADITOS DULCES"><a href="#BOCADITOSDULCES">BOCADITOS DULCES</a></li>
-<li class="btnBuscarListadoProductos" codigo="4" nombre="PIQUEOS TRADICIONALES"><a href="#PIQUEOSTRADICIONALES">PIQUEOS TRADICIONALES</a></li>
-<li class="btnBuscarListadoProductos" codigo="5" nombre="PIQUEOS PERUANOS"><a href="#PIQUEOSPERUANOS">PIQUEOS PERUANOS</a></li>                                
-
-<li class="btnBuscarListadoProductos" codigo="6" nombre="CUPCKES TRADICIONALES"><a href="#CUPCKESTRADICIONALES">CUPCKES TRADICIONALES</a></li>
-<li class="btnBuscarListadoProductos" codigo="7" nombre="CUPCKES GIGANTES"><a href="#CUPCKESGIGANTES">CUPCKES GIGANTES</a></li>
-<li class="btnBuscarListadoProductos" codigo="8" nombre="COMBOS"><a href="#COMBOS">COMBOS</a></li>
-<li class="btnBuscarListadoProductos" codigo="9" nombre="TENDENCIA"><a href="#TENDENCIA">TENDENCIA</a></li>
-<li class="btnBuscarListadoProductos" codigo="10" nombre="FESTIVO"><a href="#FESTIVO">FESTIVO</a></li>
-*/
 
 function InicializarURL() {
     var loc = window.location;
@@ -89,7 +76,7 @@ function InicializarURL() {
             break;
 
         case "#TENDENCIA" :
-            //MostrarProductosXcategoria("TENDENCIA",9);
+            $("#promotions").hide();
             ListarProductosPopulares();
             break;
         
@@ -102,20 +89,33 @@ function InicializarURL() {
             ListarProductosPopulares();
             break;
 
-        case "#SNACKCART" :
-            AbrirServicio("#SNACKCART");
+        // SERVICIOS
+        case "#SERVICIO_CARITASPINTADAS" :
+            MostrarServicio("SERVICIO_CARITASPINTADAS");
             break;
         
-        case "#CARITAS_PINTADAS" :
-            AbrirServicio("#CARITASPINTADAS");
+        case "#SERVICIO_COFFEBREAK" :
+            MostrarServicio("SERVICIO_COFFEBREAK");
             break;
         
-        case "#COFFE_BREAK" :
-            AbrirServicio("#CARITASPINTADAS");
+        case "#SERVICIO_COMIDASEVENTOS" :
+            MostrarServicio("SERVICIO_COMIDASEVENTOS");
             break;
         
-        case "#MOZOZ_BARMAN" :
-            AbrirServicio("#MOZOZBARMAN");
+        case "#SERVICIO_DECORACION_Y_MENAJE" :
+            MostrarServicio("SERVICIO_DECORACION_Y_MENAJE");
+            break;
+
+        case "#SERVICIO_DEGUSTACIONES" :
+            MostrarServicio("SERVICIO_DEGUSTACIONES");
+            break;
+
+        case "#SERVICIO_MOZOS_Y_BARMAN" :
+            MostrarServicio("SERVICIO_MOZOS_Y_BARMAN");
+            break;
+
+        case "#SERVICIO_SANCK_CART" :
+            MostrarServicio("SERVICIO_SANCK_CART");
             break;
 
         default:
@@ -126,8 +126,7 @@ function InicializarURL() {
 
 function ListadoURL_LINK(categoria) 
 {
-    ObtenerHash(categoria);
-    /*
+    // ObtenerHash(categoria);
     LIMITE_INICIAL = 12;
     limit = LIMITE_INICIAL;
     action = 'inactive';
@@ -149,7 +148,6 @@ function ListadoURL_LINK(categoria)
             }, 800);
         }
     });
-    */
 }
 
 function ObtenerHash(categoria) 
@@ -189,7 +187,10 @@ function ObtenerHash(categoria)
             break;
 
         case 9:
-            MostrarProductosXcategoria("TENDENCIA",categoria);
+            $("#promotions").hide();
+            $("#dvIncio").show();
+            $("#dvProductosListado").hide();
+            ListarProductosPopulares();
             break;
 
         case 10:
@@ -200,30 +201,28 @@ function ObtenerHash(categoria)
 
 function ListarProductosPopulares() {
 
-    // data: 
-    //         { 
-    //             "limit" :  limit,
-    //             "start" :  start
-    //         },
-
     $.ajax({
         type: "POST",
         url: BASE_URL + 'Productos/ListarProductosPopulares',
-        data: { },
+        data: 
+        { 
+            "limit" :  limit,
+            "start" :  start
+       },
         cache: false,
         dataType: 'json',
         success: function (listaProductosPopulares) {
             if (listaProductosPopulares != null) 
             {
                 if (listaProductosPopulares.length > 0) 
-                {
-                    var productoTexto = '';                
-                    listaProductosPopulares.forEach(function (producto) { 
+                {   
+                    var productoTexto = '';                           
+                    listaProductosPopulares.forEach(function (producto) {                         
                         productoTexto += AgregarProducto(producto);
                     });
                     $("#dvProductosPopulares").append(productoTexto);
+                    
                     action = 'inactive';
-
                     $(".btnAgregarProducto").click(function(e)
                     {
                         e.preventDefault();
@@ -243,7 +242,7 @@ function ListarProductosPopulares() {
         },
         error: function (jqXhr, textStatus, errorThrown) {
             console.log(jqXhr); console.log(textStatus); console.log(errorThrown);
-            MensajeAlert(MODULO,'Error al listar los productos populares. Detalle Técnico : ' + errorThrown);
+            MensajeAlert(MODULO,'Error al listar los productos tendencia. Detalle Técnico : ' + errorThrown);
         }
     });
 }
@@ -359,19 +358,18 @@ function BuscarProporciones(IdProducto) {
 function ListarProductos(CATEGORIA) {
 
     /*
+        data: { "categoria": CATEGORIA },
+    */
+    $.ajax({
+        type: "POST",
+        url: BASE_URL + 'Productos/ListarProductos',
         data: 
             { 
                 "categoria": CATEGORIA,
                 "limit" :  limit,
                 "start" :  start
             },
-    */
-
-    $.ajax({
-        type: "POST",
-        url: BASE_URL + 'Productos/ListarProductos',
-        data: { "categoria": CATEGORIA },
-        //async: true,
+        async: true,
         cache: false,
         dataType: 'json',
         success: function (listaProductos) {            
@@ -379,13 +377,14 @@ function ListarProductos(CATEGORIA) {
             if (listaProductos != null) 
             {
                 if (listaProductos.length > 0) 
-                {
-                    var productoTexto = '';
+                {                    
                     action = 'inactive';
-                    listaProductos.forEach(function (producto) { 
+                    var productoTexto = '';
+                    listaProductos.forEach(function (producto) {                         
                         productoTexto += AgregarProducto(producto);
                     });
                     $("#dvProductos").append(productoTexto);
+                    
 
                     $(".btnAgregarProducto").click(function(e)
                     {
@@ -453,17 +452,6 @@ function BuscarProporcion(IdProporcion) {
     return proporcion;
 }
 
-// $( "#btnInicio" ).click(function() {
-//     debugger;
-//     $("#dvProductosPopulares").empty();
-//     ListarProductosPopulares();
-//     $("#dvVentas").show();
-//     $("#dvIncio").show();
-//     $("#dvProductosListado").hide();
-//     $("#dvProductosBuscados").hide();
-//     $("#dvDetalleCompra").hide();
-// });
-
 $( ".btnBuscarListadoProductos" ).click(function() {
     var nombre = $(this).attr("nombre");
     var categoria = $(this).attr("codigo");
@@ -476,7 +464,8 @@ $( ".btnBuscarListadoProductos" ).click(function() {
     $("#slider").show();
     $("#dvProductosListado").show();
     $("#dvDetalleCompra").hide();
-    debugger;
+    OcultarServicios();
+    productosBuscado=false;
     ListadoURL_LINK(categoria);
 });
 
@@ -571,6 +560,9 @@ function CalcularMontos() {
 
 $( "#btnBuscarProducto" ).click(function() {
     var nombreProducto = $("#txtNombreProducto_Busqueda").val();
+    productosBuscado = true;
+    OcultarServicios();
+    $("#lblNombreProductoBuscado").text(nombreProducto);    
     if(nombreProducto != ""){
         BuscarProductos_Nombre(nombreProducto);
         $("#txtNombreProducto_Busqueda").empty();
@@ -589,14 +581,15 @@ function BuscarProductos_Nombre(nombreProducto)
         dataType: 'json',
         success: function (listadoProductos) 
         {
-            if (listadoProductos != null) 
+            if (listadoProductos != null)
             {
                 if (listadoProductos.length > 0) 
                 {
                     var productoTexto = '';
                     $("#dvIncio").hide();
                     $("#dvProductos").empty();
-                    $("#dvProductosListado").hide();                  
+                    $("#dvProductosListado").hide();
+                    $("#dvProductosBuscados").show();
                     $("#dvProductosBuscadosRegistro").empty();
 
                     listadoProductos.forEach(function (producto) { 
@@ -628,7 +621,8 @@ $( "#btnVerDetalleCompra" ).click(function() {
     $("#dvVentas").hide();
     $("#slider").hide();    
     VerDetalleCarrito();
-    $("#dvDetalleCompra").show();    
+    $("#dvDetalleCompra").show();  
+    OcultarServicios();  
 });
 
 function ObjetoProporcion(Idproporcion,cantidad,unidades,montoPrecio)
@@ -655,7 +649,6 @@ function VerDetalleCarrito() {
         var unidades = $("#"+$(this).attr("unidades")).text().trim();
         var montoPrecio = $(this).attr("montoPrecio").trim();
         var proporcion = ObjetoProporcion(Idproporcion,cantidad,unidades,montoPrecio);
-        //console.log(proporcion);
         listaCompra.push(proporcion);
     });
     
@@ -765,17 +758,24 @@ $("#btnSeguirComprando").click(function(e){
     MostrarUltimaPantalla();
 });
 
+$("#btnLimpiarCarritoCompras").click(function(e){
+    $("#menuCarritoVenta").empty();
+    CalcularMontos();
+});
+
 $("#btnInicioLogo").click(function(e){
     MostrarUltimaPantalla();
 });
-
 
 function PaginaInicio() {
     $("#dvProductosBuscados").hide();
     $("#dvProductosListado").hide();    
     $("#dvDetalleCompra").hide();    
     $("#dvServicios").hide();
+    listaProductosPopulares();
+    $("#promotions").show();
     $("#dvIncio").show();
+    OcultarServicios();
 }
 
 $("#btnPaginaInicio").click(function(e){

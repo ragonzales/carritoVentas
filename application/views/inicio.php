@@ -1,3 +1,4 @@
+<!-- PROPUCTOS POPULARES Y  PRODUCTOS PERSONALIZADOS-->
 <div id="dvVentas" style="display:block">
 	<div id="dvIncio" style="display:block">
 		<div id="promotions" class="section-container bg-white">
@@ -23,7 +24,7 @@
 		<div id="trending-items" class="section-container bg-silver">
 			<div class="container">
 				<h4 class="section-title clearfix">
-					PRODUCTOS POPULARES
+					PRODUCTOS TENDENCIA
 				</h4>
 				<div class="row row-space-10" id="dvProductosPopulares">
 				</div>
@@ -44,7 +45,7 @@
 	<div id="dvProductosBuscados" class="section-container bg-silver" style="display:none">
 		<div class="container">
 			<h4 class="section-title clearfix">
-				<label id="lblNombreProductoBuscado">PRODUCTOS BUSCADOS</label>
+				PRODUCTOS BUSCADOS : <label id="lblNombreProductoBuscado"></label>
 			</h4> 
 			<div class="row row-space-10" id="dvProductosBuscadosRegistro">
 			</div>
@@ -83,13 +84,14 @@
 	</div>
 </div>
 
-
+<!-- SERVICIOS -->
 <div id="dvServicios" class="section-container bg-silver" style="display:none">
-	<div id="dvServicioBarmanyMozos">
+	
+	<div id="dvServicioCaritasPintadas" style="display:none">
 		<div class="container">
 			<center>
 				<h2 class="text-inverse">
-					<b><label> BARMAN Y MOZOS</label></b>
+					<b><label>CARITAS PINTADAS</label></b>
 				</h2>
 			</center>
 			<div id="content" class="content">
@@ -98,19 +100,20 @@
 						<div class="col-md-7">
 							<div class="section-container bd-example">
 								<div class="post-image">
-									<img src="<?php echo base_url();?>assets/img/services/mozos.jpg" alt="Mozos y Barman" />
+									<img src="<?php echo base_url();?>assets/img/services/caritaspintadas.jpg" alt="Caritas Pintadas" />
 								</div>
-								<h3 class="text-inverse">MOZOS Y BARMAN</h3>
+								<h3 class="text-inverse">CARITAS PINTADAS</h3>
 								<p class="about-me-desc" align="justify">
-									La reserva se hace con una semana de anticipación.</br>
-									Nuestro servicio incluye:	Movilidad	ida	y	vuelta,	Entrada, Plato de fondo, postre y bebida.
+									Es momento de engreír a los más pequeños de la casa. ¡Vamos directo a tu evento! Pídelo con 7 días de aticipación.</br></br>
+									LLEVATE UN RECUERDO PARA TODA LA VIDA </br>
+									TE REGALAMOS 3 FOTOS TAMAÑO JUMBO: 10 x 15 cm</br>
 								</p> 
 							</div>
 						</div>
 						<div class="col-md-5">
 							</br>
 							<div class="section-container colorPlomo bd-example">
-							<center><h4 class="section-title colorBlanco"><span>Formulario de cotizaciones y consultas</span></h4></center>
+								<center><h4 class="section-title colorBlanco"><span>Formulario de cotizaciones y consultas</span></h4></center>
 								<form>
 									<div class="form-group">
 										<label for="exampleInputEmail1">Nombre o Empresa (*)</label>
@@ -129,57 +132,19 @@
 									</div>
 									
 									<div class="form-group">
-										<label for="exampleSelect2">Servicios</label>
+										<label for="exampleSelect2">Tipo de decoración</label>
 										<select class="form-control" id="exampleSelect2"><!--multiple-->
-										<option>Mozos</option>
-										<option>Barman</option>
-										<option>Ambos</option>
+											<option>Decoreación básica para interior de casa o departamento</option>
+											<option>Decoreación perzonalizada (Diseñada por el ciente)</option>
+											<option>Decoreación completa de globos</option>
+											<option>Decoreación temática infantil</option>
+											<option>Decoreación temática adultos</option>
 										</select>
 									</div>
 									
-									<div class="form-group">
-										<label for="exampleTextarea">Número de Mozos</label>
-										<input type="number" class="form-control" id="exampleInputPassword1" placeholder="Password" min="0" value="0">
-									</div>
-
-									<div class="form-group">
-										<label for="exampleTextarea">Número de Barman</label>
-										<input type="number" class="form-control" id="exampleInputPassword1" placeholder="Password" min="0" value="0">
-									</div>
-
-									<div class="form-group">
-										<label for="exampleSelect2">Tipo Evento</label>
-										<select class="form-control" id="exampleSelect2">
-											<option>Boda</option>
-											<option>Quinceañero</option>
-											<option>Fiesta Infantil</option>
-											<option>Baby Shower</option>
-											<option>Cocktails</option>
-											<option>Aniversario</option>
-											<option>Cumpleaños</option>
-											<option>Conferencias</option>
-											<option>Seminarios</option>
-											<option>Ferias</option>
-											<option>Otros</option>
-										</select>
-									</div>
-
-									<div class="form-group">
-										<label for="exampleSelect2">Uniformados</label>
-										<select class="form-control" id="exampleSelect2">
-											<option>Si</option>
-											<option>No</option>
-										</select>
-									</div>
-
 									<div class="form-group">									
 										<label for="exampleSelect2">Fecha del evento</label>
 										<input type="date" class="form-control" id="start" name="trip" min="2018-01-01" max="2050-12-31" />
-									</div>
-
-									<div class="form-group">
-										<label for="exampleTextarea">Número aproximado de invitados</label>
-										<input type="number" class="form-control" id="exampleInputPassword1" placeholder="Password" min="0" value="0">
 									</div>
 
 									<div class="form-group">
@@ -192,15 +157,6 @@
 									</center>
 								</form>
 							</div>
-							<!-- <div class="section-container">
-								<h4 class="section-title"><span>Follow Us</span></h4>
-								<ul class="sidebar-social-list">
-									<li><a href="#"><i class="fa fa-facebook"></i></a></li>
-									<li><a href="#"><i class="fa fa-twitter"></i></a></li>
-									<li><a href="#"><i class="fa fa-google-plus"></i></a></li>
-									<li><a href="#"><i class="fa fa-instagram"></i></a></li>
-								</ul>
-							</div> -->
 						</div>
 					</div>
 				</div>
@@ -208,7 +164,81 @@
 		</div>
 	</div>
 
-	<div id="dvServicioComidaEventos">
+	<div id="dvServicioCoffeBreak" style="display:none">
+		<div class="container">
+			<center>
+				<h2 class="text-inverse">
+					<b><label> COFFE BREAK</label></b>
+				</h2>
+			</center>
+			<div id="content" class="content">
+				<div class="container">
+					<div class="row row-space-30">
+						<div class="col-md-7">
+							<div class="section-container bd-example">
+								<div class="post-image">
+									<img src="<?php echo base_url();?>assets/img/services/coffeebreak.jpg" alt="Coffe Break" />
+								</div>
+								<h3 class="text-inverse">COFEE BREAK</h3>
+								<p class="about-me-desc" align="justify">
+									Sorprende a tus invitados en tus reuniones ejecutivas o eventos sociales. Solicita tu cotización con 10 días de anticipación. Nuestro servicio incluye:  1 Mozo, fuentes, azafates, thermos, mantelería, servilletas, vasos, entre otros. No olvides que el pedido mínimo son para 30 personas.
+								</p> 
+							</div>
+						</div>
+						<div class="col-md-5">
+							</br>
+							<div class="section-container colorPlomo bd-example">
+								<center><h4 class="section-title colorBlanco"><span>Formulario de cotizaciones y consultas</span></h4></center>
+								<form>
+									<div class="form-group">
+										<label for="exampleInputEmail1">Nombre o Empresa (*)</label>
+										<input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Ingrese Nombre o Empresa">
+									</div>
+
+									<div class="form-group">
+										<label for="exampleInputPassword1">Teléfono (*)</label>
+										<input type="text" class="form-control" id="exampleInputPassword1" placeholder="Ingrese el Teléfono">
+									</div>
+									
+									<div class="form-group">
+										<label for="exampleInputPassword1">Correo electrónico (*)</label>
+										<input type="text" class="form-control" id="exampleInputPassword1" placeholder="Ingrese el Correo electrónico">
+									</div>
+									
+									<div class="form-group">
+										<label for="exampleSelect2">Tipo de decoración</label>
+										<select class="form-control" id="exampleSelect2"><!--multiple-->
+											<option>Decoreación básica para interior de casa o departamento</option>
+											<option>Decoreación perzonalizada (Diseñada por el ciente)</option>
+											<option>Decoreación completa de globos</option>
+											<option>Decoreación temática infantil</option>
+											<option>Decoreación temática adultos</option>
+										</select>
+									</div>
+									
+									<div class="form-group">									
+										<label for="exampleSelect2">Fecha del evento</label>
+										<input type="date" class="form-control" id="start" name="trip" min="2018-01-01" max="2050-12-31" />
+									</div>
+
+									<div class="form-group">
+										<label for="exampleTextarea">Descripción adicional</label>
+										<textarea class="form-control" id="exampleTextarea" rows="4" placeholder="En caso de querer proporcionar informacion adicional, indíquela acá"></textarea>
+									</div>
+
+									<center>
+										<button type="submit" class="form-control btn btn-primary colorAnaranjado">Enviar</button>
+									</center>
+								</form>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div id="dvServicioComidaEventos" style="display:none">
 		<div class="container">
 			<center>
 				<h2 class="text-inverse">
@@ -221,7 +251,7 @@
 						<div class="col-md-7">
 							<div class="section-container bd-example">
 								<div class="post-image">
-									<img src="<?php echo base_url();?>assets/img/services/comida-eventos.jpg" alt="Mozos y Barman" />
+									<img src="<?php echo base_url();?>assets/img/services/comida-eventos.jpg" alt="Comida para eventos" />
 								</div>
 								<h3 class="text-inverse">COMIDA PARA EVENTOS</h3>
 								<p class="about-me-desc" align="justify">
@@ -240,7 +270,6 @@
 									<div class="form-group">
 										<label for="exampleInputEmail1">Nombre o Empresa (*)</label>
 										<input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Ingrese Nombre o Empresa">
-										<!-- <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small> -->
 									</div>
 
 									<div class="form-group">
@@ -290,28 +319,18 @@
 									</center>
 								</form>
 							</div>
-							<!-- <div class="section-container">
-								<h4 class="section-title"><span>Follow Us</span></h4>
-								<ul class="sidebar-social-list">
-									<li><a href="#"><i class="fa fa-facebook"></i></a></li>
-									<li><a href="#"><i class="fa fa-twitter"></i></a></li>
-									<li><a href="#"><i class="fa fa-google-plus"></i></a></li>
-									<li><a href="#"><i class="fa fa-instagram"></i></a></li>
-								</ul>
-							</div> -->
 						</div>
 					</div>
 				</div>
 			</div>
 		</div>
 	</div>
-
-
-	<div id="dvServicioDecoraciones">
+	
+	<div id="dvServicioDecoraciones" style="display:none">
 		<div class="container">
 			<center>
 				<h2 class="text-inverse">
-					<b><label> DECORACIONES</label></b>
+					<b><label>DECORACIONES Y MENAJE</label></b>
 				</h2>
 			</center>
 			<div id="content" class="content">
@@ -320,9 +339,9 @@
 						<div class="col-md-7">
 							<div class="section-container bd-example">
 								<div class="post-image">
-									<img src="<?php echo base_url();?>assets/img/services/decoraciones.jpg" alt="Mozos y Barman" />
+									<img src="<?php echo base_url();?>assets/img/services/decoraciones.jpg" alt="Decoraciones" />
 								</div>
-								<h3 class="text-inverse">DECORACIONES</h3>
+								<h3 class="text-inverse">DECORACIONES Y MENAJE</h3>
 								<p class="about-me-desc" align="justify">
 									<!-- Nuestro servicio incluye:</br>
 									Mínimo 20 platos</br>
@@ -429,4 +448,307 @@
 			</div>
 		</div>
 	</div>
+
+	<div id="dvServicioDegustaciones" style="display:none">
+		<div class="container">
+			<center>
+				<h2 class="text-inverse">
+					<b><label>DEGUSTACIONES</label></b>
+				</h2>
+			</center>
+			<div id="content" class="content">
+				<div class="container">
+					<div class="row row-space-30">
+						<div class="col-md-7">
+							<div class="section-container bd-example">
+								<div class="post-image">
+									<img src="<?php echo base_url();?>assets/img/services/degustaciones.png" alt="Degustaciones" />
+								</div>
+								<h3 class="text-inverse">DEGUSTACIONES</h3>
+								<p class="about-me-desc" align="justify">
+									La reserva se hace con una semana de anticipación.</br>
+									Nuestro servicio incluye:	Movilidad	ida	y	vuelta,	Entrada, Plato de fondo, postre y bebida.
+								</p> 
+							</div>
+						</div>
+						<div class="col-md-5">
+							</br>
+							<div class="section-container colorPlomo bd-example">
+							<center><h4 class="section-title colorBlanco"><span>Formulario de cotizaciones y consultas</span></h4></center>
+								<form>
+									<div class="form-group">
+										<label for="exampleInputEmail1">Nombre o Empresa (*)</label>
+										<input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Ingrese Nombre o Empresa">
+									</div>
+
+									<div class="form-group">
+										<label for="exampleInputPassword1">Teléfono (*)</label>
+										<input type="text" class="form-control" id="exampleInputPassword1" placeholder="Ingrese el Teléfono">
+									</div>
+									
+									<div class="form-group">
+										<label for="exampleInputPassword1">Correo electrónico (*)</label>
+										<input type="text" class="form-control" id="exampleInputPassword1" placeholder="Ingrese el Correo electrónico">
+									</div>
+									
+									<div class="form-group">
+										<label for="exampleSelect2">Servicios</label>
+										<select class="form-control" id="exampleSelect2"><!--multiple-->
+										<option>Mozos</option>
+										<option>Barman</option>
+										<option>Ambos</option>
+										</select>
+									</div>
+									
+									<div class="form-group">
+										<label for="exampleTextarea">Número de Mozos</label>
+										<input type="number" class="form-control" id="exampleInputPassword1" placeholder="Password" min="0" value="0">
+									</div>
+
+									<div class="form-group">
+										<label for="exampleTextarea">Número de Barman</label>
+										<input type="number" class="form-control" id="exampleInputPassword1" placeholder="Password" min="0" value="0">
+									</div>
+
+									<div class="form-group">
+										<label for="exampleSelect2">Tipo Evento</label>
+										<select class="form-control" id="exampleSelect2">
+											<option>Boda</option>
+											<option>Quinceañero</option>
+											<option>Fiesta Infantil</option>
+											<option>Baby Shower</option>
+											<option>Cocktails</option>
+											<option>Aniversario</option>
+											<option>Cumpleaños</option>
+											<option>Conferencias</option>
+											<option>Seminarios</option>
+											<option>Ferias</option>
+											<option>Otros</option>
+										</select>
+									</div>
+
+									<div class="form-group">
+										<label for="exampleSelect2">Uniformados</label>
+										<select class="form-control" id="exampleSelect2">
+											<option>Si</option>
+											<option>No</option>
+										</select>
+									</div>
+
+									<div class="form-group">									
+										<label for="exampleSelect2">Fecha del evento</label>
+										<input type="date" class="form-control" id="start" name="trip" min="2018-01-01" max="2050-12-31" />
+									</div>
+
+									<div class="form-group">
+										<label for="exampleTextarea">Número aproximado de invitados</label>
+										<input type="number" class="form-control" id="exampleInputPassword1" placeholder="Password" min="0" value="0">
+									</div>
+
+									<div class="form-group">
+										<label for="exampleTextarea">Descripción adicional</label>
+										<textarea class="form-control" id="exampleTextarea" rows="4" placeholder="En caso de querer proporcionar informacion adicional, indíquela acá"></textarea>
+									</div>
+
+									<center>
+										<button type="submit" class="form-control btn btn-primary colorAnaranjado">Enviar</button>
+									</center>
+								</form>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div id="dvServicioBarmanyMozos" style="display:none">
+		<div class="container">
+			<center>
+				<h2 class="text-inverse">
+					<b><label> BARMAN Y MOZOS</label></b>
+				</h2>
+			</center>
+			<div id="content" class="content">
+				<div class="container">
+					<div class="row row-space-30">
+						<div class="col-md-7">
+							<div class="section-container bd-example">
+								<div class="post-image">
+									<img src="<?php echo base_url();?>assets/img/services/mozos.jpg" alt="Mozos y Barman" />
+								</div>
+								<h3 class="text-inverse">MOZOS Y BARMAN</h3>
+								<p class="about-me-desc" align="justify">
+									La reserva se hace con una semana de anticipación.</br>
+									Nuestro servicio incluye:	Movilidad	ida	y	vuelta,	Entrada, Plato de fondo, postre y bebida.
+								</p> 
+							</div>
+						</div>
+						<div class="col-md-5">
+							</br>
+							<div class="section-container colorPlomo bd-example">
+							<center><h4 class="section-title colorBlanco"><span>Formulario de cotizaciones y consultas</span></h4></center>
+								<form>
+									<div class="form-group">
+										<label for="exampleInputEmail1">Nombre o Empresa (*)</label>
+										<input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Ingrese Nombre o Empresa">
+									</div>
+
+									<div class="form-group">
+										<label for="exampleInputPassword1">Teléfono (*)</label>
+										<input type="text" class="form-control" id="exampleInputPassword1" placeholder="Ingrese el Teléfono">
+									</div>
+									
+									<div class="form-group">
+										<label for="exampleInputPassword1">Correo electrónico (*)</label>
+										<input type="text" class="form-control" id="exampleInputPassword1" placeholder="Ingrese el Correo electrónico">
+									</div>
+									
+									<div class="form-group">
+										<label for="exampleSelect2">Servicios</label>
+										<select class="form-control" id="exampleSelect2"><!--multiple-->
+										<option>Mozos</option>
+										<option>Barman</option>
+										<option>Ambos</option>
+										</select>
+									</div>
+									
+									<div class="form-group">
+										<label for="exampleTextarea">Número de Mozos</label>
+										<input type="number" class="form-control" id="exampleInputPassword1" placeholder="Password" min="0" value="0">
+									</div>
+
+									<div class="form-group">
+										<label for="exampleTextarea">Número de Barman</label>
+										<input type="number" class="form-control" id="exampleInputPassword1" placeholder="Password" min="0" value="0">
+									</div>
+
+									<div class="form-group">
+										<label for="exampleSelect2">Tipo Evento</label>
+										<select class="form-control" id="exampleSelect2">
+											<option>Boda</option>
+											<option>Quinceañero</option>
+											<option>Fiesta Infantil</option>
+											<option>Baby Shower</option>
+											<option>Cocktails</option>
+											<option>Aniversario</option>
+											<option>Cumpleaños</option>
+											<option>Conferencias</option>
+											<option>Seminarios</option>
+											<option>Ferias</option>
+											<option>Otros</option>
+										</select>
+									</div>
+
+									<div class="form-group">
+										<label for="exampleSelect2">Uniformados</label>
+										<select class="form-control" id="exampleSelect2">
+											<option>Si</option>
+											<option>No</option>
+										</select>
+									</div>
+
+									<div class="form-group">									
+										<label for="exampleSelect2">Fecha del evento</label>
+										<input type="date" class="form-control" id="start" name="trip" min="2018-01-01" max="2050-12-31" />
+									</div>
+
+									<div class="form-group">
+										<label for="exampleTextarea">Número aproximado de invitados</label>
+										<input type="number" class="form-control" id="exampleInputPassword1" placeholder="Password" min="0" value="0">
+									</div>
+
+									<div class="form-group">
+										<label for="exampleTextarea">Descripción adicional</label>
+										<textarea class="form-control" id="exampleTextarea" rows="4" placeholder="En caso de querer proporcionar informacion adicional, indíquela acá"></textarea>
+									</div>
+
+									<center>
+										<button type="submit" class="form-control btn btn-primary colorAnaranjado">Enviar</button>
+									</center>
+								</form>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div id="dvServicioSnackCart" style="display:none">
+		<div class="container">
+			<center>
+				<h2 class="text-inverse">
+					<b><label> DECORACIONES</label></b>
+				</h2>
+			</center>
+			<div id="content" class="content">
+				<div class="container">
+					<div class="row row-space-30">
+						<div class="col-md-7">
+							<div class="section-container bd-example">
+								<div class="post-image">
+									<img src="<?php echo base_url();?>assets/img/services/decoraciones.jpg" alt="Mozos y Barman" />
+								</div>
+								<h3 class="text-inverse">DECORACIONES</h3>
+								<p class="about-me-desc" align="justify">
+									<b>Te ofrecemos:</b></br>
+									&nbsp;&nbsp;&nbsp;&nbsp;- Arco trenzado de globos</br>
+									&nbsp;&nbsp;&nbsp;&nbsp;- Columas de 1.5 mt de alto</br>
+								</p> 
+							</div>
+						</div>
+						<div class="col-md-5">
+							</br>
+							<div class="section-container colorPlomo bd-example">
+								<center><h4 class="section-title colorBlanco"><span>Formulario de cotizaciones y consultas</span></h4></center>
+								<form>
+									<div class="form-group">
+										<label for="exampleInputEmail1">Nombre o Empresa (*)</label>
+										<input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Ingrese Nombre o Empresa">
+									</div>
+
+									<div class="form-group">
+										<label for="exampleInputPassword1">Teléfono (*)</label>
+										<input type="text" class="form-control" id="exampleInputPassword1" placeholder="Ingrese el Teléfono">
+									</div>
+									
+									<div class="form-group">
+										<label for="exampleInputPassword1">Correo electrónico (*)</label>
+										<input type="text" class="form-control" id="exampleInputPassword1" placeholder="Ingrese el Correo electrónico">
+									</div>
+									
+									<div class="form-group">
+										<label for="exampleSelect2">Tipo de decoración</label>
+										<select class="form-control" id="exampleSelect2"><!--multiple-->
+											<option>Decoreación básica para interior de casa o departamento</option>
+											<option>Decoreación perzonalizada (Diseñada por el ciente)</option>
+											<option>Decoreación completa de globos</option>
+											<option>Decoreación temática infantil</option>
+											<option>Decoreación temática adultos</option>
+										</select>
+									</div>
+									
+									<div class="form-group">									
+										<label for="exampleSelect2">Fecha del evento</label>
+										<input type="date" class="form-control" id="start" name="trip" min="2018-01-01" max="2050-12-31" />
+									</div>
+
+									<div class="form-group">
+										<label for="exampleTextarea">Descripción adicional</label>
+										<textarea class="form-control" id="exampleTextarea" rows="4" placeholder="En caso de querer proporcionar informacion adicional, indíquela acá"></textarea>
+									</div>
+
+									<center>
+										<button type="submit" class="form-control btn btn-primary colorAnaranjado">Enviar</button>
+									</center>
+								</form>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
 </div>

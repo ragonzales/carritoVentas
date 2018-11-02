@@ -161,7 +161,6 @@ function numeroFormato(num,cantidadCaracteres){
 }
 
 $( "#btnBuscarCoberturas").click(function() {
-    debugger;
     ListarCoberturas();
 });
 

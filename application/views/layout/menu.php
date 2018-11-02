@@ -44,12 +44,13 @@
                                 <span class="arrow top"></span>
                             </a>
                             <ul class="dropdown-menu">
-                                <li><a href="product.html">Snack Cart</a></li>
-                                <li><a href="product.html">Caritas Pintadas</a></li>
-                                <li><a href="product.html">Coffee Break</a></li>
-                                <li><a href="product.html">Mozos y Barman</a></li>
-                                <li><a href="product.html">Servicio 5</a></li>
-                                <li><a href="product.html">Servicio 6</a></li>
+                                <li class="btnListadoServicios" nombre="SERVICIO_CARITASPINTADAS"><a href="#SERVICIO_CARITASPINTADAS">CARITAS PINTADAS</a></li>
+                                <li class="btnListadoServicios" nombre="SERVICIO_COFFEBREAK"><a href="#SERVICIO_COFFEBREAK">COFFE BREAK</a></li>
+                                <li class="btnListadoServicios" nombre="SERVICIO_COMIDASEVENTOS"><a href="#SERVICIO_COMIDASEVENTOS">COMIDAS PARA EVENTOS</a></li>                                
+                                <li class="btnListadoServicios" nombre="SERVICIO_DECORACION_Y_MENAJE"><a href="#SERVICIO_DECORACION_Y_MENAJE">DECORACION Y MENAJE</a></li>
+                                <li class="btnListadoServicios" nombre="SERVICIO_DEGUSTACIONES"><a href="#SERVICIO_DEGUSTACIONES">DEGUSTACIONES</a></li>                                
+                                <li class="btnListadoServicios" nombre="SERVICIO_MOZOS_Y_BARMAN"><a href="#SERVICIO_MOZOS_Y_BARMAN">MOZOS Y BARMAN</a></li>
+                                <li class="btnListadoServicios" nombre="SERVICIO_SANCK_CART"><a href="#SERVICIO_SANCK_CART">SANCK CART</a></li>
                             </ul>
                         </li>
                         <li id="btnBuscarCoberturas"><a href="#COBERTURAS">COBERTURA</a></li>
@@ -85,10 +86,10 @@
                         <div class="dropdown-menu dropdown-menu-cart p-0">
                             <div class="cart-header">
                                 <h4 class="cart-title">TU PEDIDO</h4>
+                                <a href="javascript:;" id="btnLimpiarCarritoCompras">Limpiar</a>
                             </div>
                             <div class="cart-body">
                                 <ul class="cart-item" id="menuCarritoVenta">
-
                                 </ul>
                             </div>
                             <div class="cart-footer">
@@ -118,7 +119,7 @@
                     <li>
                         <a>
                             <span class="hidden-md hidden-sm hidden-xs">
-                            <b>TOTAL S/. <label id="lblMontoTotal">00.00</label></b></h4>
+                            <b>TOTAL S/. <label id="lblMontoTotal">0</label></b></h4>
                             </span>
                         </a>
                     </li>
