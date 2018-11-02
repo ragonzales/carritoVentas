@@ -10,16 +10,32 @@ class ProductoModel extends CI_Model
 		return $query->result();
 	}
 
+	/*
 	public function ListarProductosPopulares($limit,$start)
 	{	
 		$this->db->limit($limit, $start);
 		$query = $this->db->get_where('producto', array('destacado' => 1, 'estado' => 1));
 		return $query->result();
 	}
+	*/
 
+	public function ListarProductosPopulares()
+	{	
+		$query = $this->db->get_where('producto', array('destacado' => 1, 'estado' => 1));
+		return $query->result();
+	}
+
+	/*
 	public function ListarProductos($idcategoria,$limit,$start)
 	{	
 		$this->db->limit($limit, $start);
+		$query = $this->db->get_where('producto', array('idcategoria' => $idcategoria, 'estado' => 1));		
+		return $query->result();
+	}
+	*/
+
+	public function ListarProductos($idcategoria)
+	{	
 		$query = $this->db->get_where('producto', array('idcategoria' => $idcategoria, 'estado' => 1));		
 		return $query->result();
 	}

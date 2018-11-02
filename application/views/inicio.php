@@ -84,7 +84,7 @@
 </div>
 
 
-<div id="dvServicios" class="section-container bg-silver">
+<div id="dvServicios" class="section-container bg-silver" style="display:none">
 	<div id="dvServicioBarmanyMozos">
 		<div class="container">
 			<center>
@@ -150,25 +150,25 @@
 									<div class="form-group">
 										<label for="exampleSelect2">Tipo Evento</label>
 										<select class="form-control" id="exampleSelect2">
-										<option>Si</option>
-										<option>No</option>
+											<option>Boda</option>
+											<option>Quinceañero</option>
+											<option>Fiesta Infantil</option>
+											<option>Baby Shower</option>
+											<option>Cocktails</option>
+											<option>Aniversario</option>
+											<option>Cumpleaños</option>
+											<option>Conferencias</option>
+											<option>Seminarios</option>
+											<option>Ferias</option>
+											<option>Otros</option>
 										</select>
 									</div>
 
 									<div class="form-group">
 										<label for="exampleSelect2">Uniformados</label>
 										<select class="form-control" id="exampleSelect2">
-										<option>Boda</option>
-										<option>Quinceañero</option>
-										<option>Fiesta Infantil</option>
-										<option>Baby Shower</option>
-										<option>Cocktails</option>
-										<option>Aniversario</option>
-										<option>Cumpleaños</option>
-										<option>Conferencias</option>
-										<option>Seminarios</option>
-										<option>Ferias</option>
-										<option>Otros</option>
+											<option>Si</option>
+											<option>No</option>
 										</select>
 									</div>
 

@@ -1,7 +1,7 @@
 var MODULO = "MÓDULO DE PRODUCTOS";
-var LIMITE_INICIAL = 12;
-var categoriaAnterior = 0;
-var limit = LIMITE_INICIAL;
+// var LIMITE_INICIAL = 12;
+// var categoriaAnterior = 0;
+// var limit = LIMITE_INICIAL;
 var categoriaNuevo = '';
 var action = 'inactive';
 var start = 0;
@@ -18,6 +18,7 @@ function ListadoURL() {
       InicializarURL();
     }
 
+    /*
     $(window).scroll(function(){
         if($(window).scrollTop() + $(window).height() > $("#dvProductos").height() && action == 'inactive')
         {
@@ -28,7 +29,22 @@ function ListadoURL() {
             }, 800);
         }
     });
+    */
 }
+
+/*
+<li class="btnBuscarListadoProductos" codigo="1" nombre="POSTRES Y TORTAS"><a href="#POSTRES">POSTRES Y TORTAS</a></li>                                
+<li class="btnBuscarListadoProductos" codigo="2" nombre="BOCADITOS SALADOS"><a href="#">BOCADITOS SALADOS</a></li>
+<li class="btnBuscarListadoProductos" codigo="3" nombre="BOCADITOS DULCES"><a href="#BOCADITOSDULCES">BOCADITOS DULCES</a></li>
+<li class="btnBuscarListadoProductos" codigo="4" nombre="PIQUEOS TRADICIONALES"><a href="#PIQUEOSTRADICIONALES">PIQUEOS TRADICIONALES</a></li>
+<li class="btnBuscarListadoProductos" codigo="5" nombre="PIQUEOS PERUANOS"><a href="#PIQUEOSPERUANOS">PIQUEOS PERUANOS</a></li>                                
+
+<li class="btnBuscarListadoProductos" codigo="6" nombre="CUPCKES TRADICIONALES"><a href="#CUPCKESTRADICIONALES">CUPCKES TRADICIONALES</a></li>
+<li class="btnBuscarListadoProductos" codigo="7" nombre="CUPCKES GIGANTES"><a href="#CUPCKESGIGANTES">CUPCKES GIGANTES</a></li>
+<li class="btnBuscarListadoProductos" codigo="8" nombre="COMBOS"><a href="#COMBOS">COMBOS</a></li>
+<li class="btnBuscarListadoProductos" codigo="9" nombre="TENDENCIA"><a href="#TENDENCIA">TENDENCIA</a></li>
+<li class="btnBuscarListadoProductos" codigo="10" nombre="FESTIVO"><a href="#FESTIVO">FESTIVO</a></li>
+*/
 
 function InicializarURL() {
     var loc = window.location;
@@ -40,25 +56,47 @@ function InicializarURL() {
             ListarProductosPopulares();
             break;
 
-        case "#BOCADITOS" :
-            MostrarProductosXcategoria("BOCADITOS",1);
-            break;
-
-        case "#COMBOS" :
-            MostrarProductosXcategoria("COMBOS",2);
-            break;
-        case "#CUPCKES" :
-            MostrarProductosXcategoria("CUPCKES",3);
-            break;
-
-        case "#FESTIVO" :
-            MostrarProductosXcategoria("FESTIVO",4);
-            break;
-
         case "#POSTRES" :
-            MostrarProductosXcategoria("TORTAS Y POSTRES",5);
+            MostrarProductosXcategoria("POSTRES Y TORTAS",1);
+            break;
+
+        case "#BOCADITOSSALADOS" :
+            MostrarProductosXcategoria("BOCADITOS SALADOS",2);
+            break;
+            
+        case "#BOCADITOSDULCES" :
+            MostrarProductosXcategoria("BOCADITOS DULCES",3);
+            break;
+
+        case "#PIQUEOSTRADICIONALES" :
+            MostrarProductosXcategoria("PIQUEOS TRADICIONALES",4);
+            break;
+
+        case "#PIQUEOSPERUANOS" :
+            MostrarProductosXcategoria("PIQUEOS PERUANOS",5);
+            break;
+
+        case "#CUPCKESTRADICIONALES" :
+            MostrarProductosXcategoria("CUPCKES TRADICIONALES",6);
+            break;
+
+        case "#CUPCKESGIGANTES" :
+            MostrarProductosXcategoria("CUPCKES GIGANTES",7);
+            break;
+            
+        case "#COMBOS" :
+            MostrarProductosXcategoria("COMBOS",8);
+            break;
+
+        case "#TENDENCIA" :
+            //MostrarProductosXcategoria("TENDENCIA",9);
+            ListarProductosPopulares();
             break;
         
+        case "#FESTIVO" :
+            MostrarProductosXcategoria("FESTIVO",10);
+            break;
+
         case "#COBERTURAS" :
             ListarCoberturas();
             ListarProductosPopulares();
@@ -88,6 +126,8 @@ function InicializarURL() {
 
 function ListadoURL_LINK(categoria) 
 {
+    ObtenerHash(categoria);
+    /*
     LIMITE_INICIAL = 12;
     limit = LIMITE_INICIAL;
     action = 'inactive';
@@ -109,44 +149,67 @@ function ListadoURL_LINK(categoria)
             }, 800);
         }
     });
+    */
 }
 
 function ObtenerHash(categoria) 
 {
-
     switch(parseInt(categoria))
     {
         case 1:
-            MostrarProductosXcategoria("BOCADITOS",1);
+            MostrarProductosXcategoria("TORTAS Y POSTRES",categoria);
             break;
         
         case 2:
-            MostrarProductosXcategoria("COMBOS",2);
+            MostrarProductosXcategoria("BOCADITOS SALADOS",categoria);
             break;
 
         case 3:
-            MostrarProductosXcategoria("CUPCKES",3);
+            MostrarProductosXcategoria("BOCADITOS DULCES",categoria);
             break;
 
         case 4:
-            MostrarProductosXcategoria("FESTIVO",4);
+            MostrarProductosXcategoria("PIQUEOS TRADICIONALES",categoria);
             break;
         
         case 5:
-            MostrarProductosXcategoria("TORTAS Y POSTRES",5);
+            MostrarProductosXcategoria("PIQUEOS PERUANOS",categoria);
             break;
+        
+        case 6:
+            MostrarProductosXcategoria("CUPCKES TRADICIONALES",categoria);
+            break;
+        
+        case 7:
+            MostrarProductosXcategoria("CUPCKES GIGANTES",categoria);
+            break;
+
+        case 8:
+            MostrarProductosXcategoria("COMBOS",categoria);
+            break;
+
+        case 9:
+            MostrarProductosXcategoria("TENDENCIA",categoria);
+            break;
+
+        case 10:
+            MostrarProductosXcategoria("FESTIVO",categoria);
+            break;        
     }
 }
 
 function ListarProductosPopulares() {
+
+    // data: 
+    //         { 
+    //             "limit" :  limit,
+    //             "start" :  start
+    //         },
+
     $.ajax({
         type: "POST",
         url: BASE_URL + 'Productos/ListarProductosPopulares',
-        data: 
-            { 
-                "limit" :  limit,
-                "start" :  start
-            },
+        data: { },
         cache: false,
         dataType: 'json',
         success: function (listaProductosPopulares) {
@@ -294,15 +357,20 @@ function BuscarProporciones(IdProducto) {
 }
 
 function ListarProductos(CATEGORIA) {
-    $.ajax({
-        type: "POST",
-        url: BASE_URL + 'Productos/ListarProductos',
+
+    /*
         data: 
             { 
                 "categoria": CATEGORIA,
                 "limit" :  limit,
                 "start" :  start
             },
+    */
+
+    $.ajax({
+        type: "POST",
+        url: BASE_URL + 'Productos/ListarProductos',
+        data: { "categoria": CATEGORIA },
         //async: true,
         cache: false,
         dataType: 'json',
@@ -408,6 +476,7 @@ $( ".btnBuscarListadoProductos" ).click(function() {
     $("#slider").show();
     $("#dvProductosListado").show();
     $("#dvDetalleCompra").hide();
+    debugger;
     ListadoURL_LINK(categoria);
 });
 
@@ -698,4 +767,17 @@ $("#btnSeguirComprando").click(function(e){
 
 $("#btnInicioLogo").click(function(e){
     MostrarUltimaPantalla();
+});
+
+
+function PaginaInicio() {
+    $("#dvProductosBuscados").hide();
+    $("#dvProductosListado").hide();    
+    $("#dvDetalleCompra").hide();    
+    $("#dvServicios").hide();
+    $("#dvIncio").show();
+}
+
+$("#btnPaginaInicio").click(function(e){
+    PaginaInicio();
 });

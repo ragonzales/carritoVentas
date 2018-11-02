@@ -24,13 +24,19 @@
                                 <span class="arrow top"></span>
                             </a>
                             <ul class="dropdown-menu">
-                                <li class="btnBuscarListadoProductos" codigo="1" nombre="BOCADITOS"><a href="#BOCADITOS">BOCADITOS</a></li>
-                                <li class="btnBuscarListadoProductos" codigo="2" nombre="COMBOS"><a href="#COMBOS">COMBOS</a></li>
-                                <li class="btnBuscarListadoProductos" codigo="3" nombre="CUPCKES"><a href="#CUPCKES">CUPCKES</a></li>
-                                <li class="btnBuscarListadoProductos" codigo="4" nombre="FESTIVO"><a href="#FESTIVO">FESTIVO</a></li>
-                                <li class="btnBuscarListadoProductos" codigo="5" nombre="POSTRES Y TORTAS"><a href="#POSTRES">POSTRES Y TORTAS</a></li>
+                                <li class="btnBuscarListadoProductos" codigo="1" nombre="POSTRES Y TORTAS"><a href="#POSTRES">POSTRES Y TORTAS</a></li>                                
+                                <li class="btnBuscarListadoProductos" codigo="2" nombre="BOCADITOS SALADOS"><a href="#BOCADITOSSALADOS">BOCADITOS SALADOS</a></li>
+                                <li class="btnBuscarListadoProductos" codigo="3" nombre="BOCADITOS DULCES"><a href="#BOCADITOSDULCES">BOCADITOS DULCES</a></li>
+                                <li class="btnBuscarListadoProductos" codigo="4" nombre="PIQUEOS TRADICIONALES"><a href="#PIQUEOSTRADICIONALES">PIQUEOS TRADICIONALES</a></li>
+                                <li class="btnBuscarListadoProductos" codigo="5" nombre="PIQUEOS PERUANOS"><a href="#PIQUEOSPERUANOS">PIQUEOS PERUANOS</a></li>                                
+                                <li class="btnBuscarListadoProductos" codigo="6" nombre="CUPCKES TRADICIONALES"><a href="#CUPCKESTRADICIONALES">CUPCKES TRADICIONALES</a></li>
+                                <li class="btnBuscarListadoProductos" codigo="7" nombre="CUPCKES GIGANTES"><a href="#CUPCKESGIGANTES">CUPCKES GIGANTES</a></li>
+                                <li class="btnBuscarListadoProductos" codigo="8" nombre="COMBOS"><a href="#COMBOS">COMBOS</a></li>
+                                <li class="btnBuscarListadoProductos" codigo="9" nombre="TENDENCIA"><a href="#TENDENCIA">TENDENCIA</a></li>
+                                <li class="btnBuscarListadoProductos" codigo="10" nombre="FESTIVO"><a href="#FESTIVO">FESTIVO</a></li>
                             </ul>
                         </li>
+
                         <li class="dropdown dropdown-hover">
                             <a href="#" data-toggle="dropdown">
                                 SERVICIOS ADICIONALES
@@ -47,7 +53,7 @@
                             </ul>
                         </li>
                         <li id="btnBuscarCoberturas"><a href="#COBERTURAS">COBERTURA</a></li>
-                        <li id="btnInicio"><a href="http://dolcesalato.com.pe/" target="_blank">INICIO</a></li>
+                        <li id="btnPaginaInicio"><a href="#INICIO" >INICIO</a></li>
                         <li class="dropdown dropdown-hover">
                             <a href="#" data-toggle="dropdown">
                                 <i class="fa fa-search search-btn"></i>
