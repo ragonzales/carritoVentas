@@ -384,7 +384,6 @@ function ListarProductos(CATEGORIA) {
                         productoTexto += AgregarProducto(producto);
                     });
                     $("#dvProductos").append(productoTexto);
-                    
 
                     $(".btnAgregarProducto").click(function(e)
                     {
@@ -759,7 +758,8 @@ $("#btnSeguirComprando").click(function(e){
 });
 
 $("#btnLimpiarCarritoCompras").click(function(e){
-    $("#menuCarritoVenta").empty();
+    $("#txtCantidadProductos").text('0');
+    $("#menuCarritoVenta").empty();    
     CalcularMontos();
 });
 
@@ -772,7 +772,7 @@ function PaginaInicio() {
     $("#dvProductosListado").hide();    
     $("#dvDetalleCompra").hide();    
     $("#dvServicios").hide();
-    listaProductosPopulares();
+    ListarProductosPopulares();
     $("#promotions").show();
     $("#dvIncio").show();
     OcultarServicios();

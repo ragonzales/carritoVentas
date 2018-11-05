@@ -23,7 +23,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 | a PHP script and you can easily do that on your own.
 |
 */
-$config['base_url'] = 'http://localhost:8080/carritoVentas/';
+$config['base_url'] = 'http://dolcesalato.com.pe/carritoVentas/';
 
 /*
 |--------------------------------------------------------------------------
@@ -522,5 +522,4 @@ $config['rewrite_short_tags'] = FALSE;
 */
 $config['proxy_ips'] = '';
 
-//$config['RUTA_ADMINISTRADOR'] = "http://localhost:80/dolceSalato";
-$config['CORREO_ELECTRONICO_TO'] = 'rogger.tgonzales@gmail.com';
+$config['RUTA_ADMINISTRADOR'] = "http://localhost:80/dolceSalato";

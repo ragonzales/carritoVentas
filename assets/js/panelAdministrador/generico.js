@@ -1,5 +1,6 @@
 $( document ).ready(function() {
     ListarBanners();
+    ListarCoberturasCombo();
 });
 
 function ListarBanners() {
@@ -98,7 +99,6 @@ function BannerCentro(banner,active){
     return bannerTexto;
 }
 
-
 function validar_email(email)
 {
     var regex = /^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/;
@@ -164,6 +164,29 @@ $( "#btnBuscarCoberturas").click(function() {
     ListarCoberturas();
 });
 
+function ListarCoberturasCombo(){
+    $.ajax({
+        type: "POST",
+        url: BASE_URL + 'Coberturas/ListarCoberturas',
+        data: {},
+        async: false,
+        dataType: 'json',
+        success: function (listadoCoberturas) {
+            $("#cmbDistritoEnvio").empty();
+            if (listadoCoberturas != null) 
+            {
+                listadoCoberturas.forEach(function (cobertura) {                    
+                    $('#cmbDistritoEnvio').append('<option value="foo">' + cobertura.distrito + '</option>');
+                });
+            }
+        },
+        error: function (jqXhr, textStatus, errorThrown) {
+            console.log(jqXhr); console.log(textStatus); console.log(errorThrown);
+            MensajeAlert(MODULO, 'Error al listar las coberturas. Detalle Técnico : ' + errorThrown);
+        }
+    });
+}
+
 function ListarCoberturas(){
     $.ajax({
         type: "POST",
@@ -197,4 +220,47 @@ function AgregarCobertura(cobertura){
     coberturaTexto += '</div>';
     coberturaTexto += '</div>';
     return coberturaTexto;
+}
+
+
+function ListarBancos(){
+    $.ajax({
+        type: "POST",
+        url: BASE_URL + 'Bancos/ListarBancos',
+        data: {},
+        async: false,
+        dataType: 'json',
+        success: function (listarBancos) {
+            if (listarBancos != null) {
+                var texto = '';
+                listarBancos.forEach(function (banco) {                    
+                    texto += AgregarCobertura(banco);
+                });
+                $("#dvDetalleCobertura").append(texto);
+            }
+        },
+        error: function (jqXhr, textStatus, errorThrown) {
+            console.log(jqXhr); console.log(textStatus); console.log(errorThrown);
+            MensajeAlert(MODULO, 'Error al listar los bancos. Detalle Técnico : ' + errorThrown);
+        }
+    });
+}
+
+function BuscarBanco(){
+    $.ajax({
+        type: "POST",
+        url: BASE_URL + 'Bancos/BuscarBanco',
+        data: {},
+        async: false,
+        dataType: 'json',
+        success: function (banco) {
+            if (banco != null) {
+                
+            }
+        },
+        error: function (jqXhr, textStatus, errorThrown) {
+            console.log(jqXhr); console.log(textStatus); console.log(errorThrown);
+            MensajeAlert(MODULO, 'Error al buscar el banco. Detalle Técnico : ' + errorThrown);
+        }
+    });
 }

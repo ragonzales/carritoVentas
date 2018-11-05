@@ -216,3 +216,37 @@
 img {
     border: 0;
 } */
+
+.footer-header {
+    font-size: 15px;
+    color: #fff;
+    font-weight: 700;
+    margin: 10px 0 20px;
+    letter-spacing: 1px;
+}
+
+.divBordedado{
+    border-radius: 30px 30px 30px 30px;
+    -moz-border-radius: 30px 30px 30px 30px;
+    -webkit-border-radius: 30px 30px 30px 30px;
+    border: 0px solid #ea7324;
+}
+
+.divBordeadoBanco{
+    border-radius: 10px 10px 10px 10px;
+    -moz-border-radius: 10px 10px 10px 10px;
+    -webkit-border-radius: 10px 10px 10px 10px;
+    border: 2px solid #fbda7e;
+    background: #fbda7e;
+}
+
+.colorAnaranjadoBoton:hover { 
+    background: #f6c53b  !important;
+    border-color: #f6c53b  !important;
+}
+
+.colorAnaranjadoBoton {
+    color: #fff;
+    background: #ea7324 !important;
+    border-color: #ea7324 !important;
+}

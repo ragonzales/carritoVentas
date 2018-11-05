@@ -103,18 +103,33 @@
 									<img src="<?php echo base_url();?>assets/img/services/caritaspintadas.jpg" alt="Caritas Pintadas" />
 								</div>
 								<h3 class="text-inverse">CARITAS PINTADAS</h3>
+								
 								<p class="about-me-desc" align="justify">
 									Es momento de engreír a los más pequeños de la casa. ¡Vamos directo a tu evento! Pídelo con 7 días de aticipación.</br></br>
 									LLEVATE UN RECUERDO PARA TODA LA VIDA </br>
 									TE REGALAMOS 3 FOTOS TAMAÑO JUMBO: 10 x 15 cm</br>
 								</p> 
+
+								<p class="about-me-desc" align="justify">
+									Nuestro servicio dura 1 hora y 30 minutos y pueden ser atendidos hasta 25 niños. </br>
+								</p>
+
+								<p class="about-me-desc" align="justify">
+									Además, te regalamos tres fotos jumbo de 10x15 cm</br>
+									Tan solo por S/. 58 Aprovecha tambien nuestra oferta de 50 niños por S/. 100</br>
+								</p> 
+
+								<p class="about-me-desc" align="justify">		
+									Nota: La reserva se debe hace con 3 días de anticipación</br>
+								</p> 
+
 							</div>
 						</div>
 						<div class="col-md-5">
 							</br>
 							<div class="section-container colorPlomo bd-example">
 								<center><h4 class="section-title colorBlanco"><span>Formulario de cotizaciones y consultas</span></h4></center>
-								<form>
+								<!-- <form> -->
 									<div class="form-group">
 										<label for="exampleInputEmail1">Nombre o Empresa (*)</label>
 										<input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Ingrese Nombre o Empresa">
@@ -153,9 +168,9 @@
 									</div>
 
 									<center>
-										<button type="submit" class="form-control btn btn-primary colorAnaranjado">Enviar</button>
+										<button type="submit" class="form-control btn btn-primary colorAnaranjadoBoton">Enviar</button>
 									</center>
-								</form>
+								<!-- </form> -->
 							</div>
 						</div>
 					</div>
@@ -189,7 +204,7 @@
 							</br>
 							<div class="section-container colorPlomo bd-example">
 								<center><h4 class="section-title colorBlanco"><span>Formulario de cotizaciones y consultas</span></h4></center>
-								<form>
+								<!-- <form> -->
 									<div class="form-group">
 										<label for="exampleInputEmail1">Nombre o Empresa (*)</label>
 										<input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Ingrese Nombre o Empresa">
@@ -227,9 +242,9 @@
 									</div>
 
 									<center>
-										<button type="submit" class="form-control btn btn-primary colorAnaranjado">Enviar</button>
+										<button type="submit" class="form-control btn btn-primary colorAnaranjadoBoton">Enviar</button>
 									</center>
-								</form>
+								<!-- </form> -->
 							</div>
 						</div>
 					</div>
@@ -266,7 +281,7 @@
 							</br>
 							<div class="section-container colorPlomo bd-example">
 								<center><h4 class="section-title colorBlanco"><span>Formulario de cotizaciones y consultas</span></h4></center>
-								<form>
+								<!-- <form> -->
 									<div class="form-group">
 										<label for="exampleInputEmail1">Nombre o Empresa (*)</label>
 										<input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Ingrese Nombre o Empresa">
@@ -315,9 +330,9 @@
 									</div>
 
 									<center>
-										<button type="submit" class="form-control btn btn-primary colorAnaranjado">Enviar</button>
+										<button type="submit" class="form-control btn btn-primary colorAnaranjadoBoton">Enviar</button>
 									</center>
-								</form>
+								<!-- </form> -->
 							</div>
 						</div>
 					</div>
@@ -390,7 +405,7 @@
 							</br>
 							<div class="section-container colorPlomo bd-example">
 								<center><h4 class="section-title colorBlanco"><span>Formulario de cotizaciones y consultas</span></h4></center>
-								<form>
+								<!-- <form> -->
 									<div class="form-group">
 										<label for="exampleInputEmail1">Nombre o Empresa (*)</label>
 										<input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Ingrese Nombre o Empresa">
@@ -429,9 +444,9 @@
 									</div>
 
 									<center>
-										<button type="submit" class="form-control btn btn-primary colorAnaranjado">Enviar</button>
+										<button type="submit" class="form-control btn btn-primary colorAnaranjadoBoton">Enviar</button>
 									</center>
-								</form>
+								<!-- </form> -->
 							</div>
 							<!-- <div class="section-container">
 								<h4 class="section-title"><span>Follow Us</span></h4>
@@ -475,7 +490,7 @@
 							</br>
 							<div class="section-container colorPlomo bd-example">
 							<center><h4 class="section-title colorBlanco"><span>Formulario de cotizaciones y consultas</span></h4></center>
-								<form>
+								<!-- <form> -->
 									<div class="form-group">
 										<label for="exampleInputEmail1">Nombre o Empresa (*)</label>
 										<input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Ingrese Nombre o Empresa">
@@ -551,9 +566,9 @@
 									</div>
 
 									<center>
-										<button type="submit" class="form-control btn btn-primary colorAnaranjado">Enviar</button>
+										<button type="submit" class="form-control btn btn-primary colorAnaranjadoBoton">Enviar</button>
 									</center>
-								</form>
+								<!-- </form> -->
 							</div>
 						</div>
 					</div>
@@ -588,7 +603,7 @@
 							</br>
 							<div class="section-container colorPlomo bd-example">
 							<center><h4 class="section-title colorBlanco"><span>Formulario de cotizaciones y consultas</span></h4></center>
-								<form>
+								<!-- <form> -->
 									<div class="form-group">
 										<label for="exampleInputEmail1">Nombre o Empresa (*)</label>
 										<input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Ingrese Nombre o Empresa">
@@ -664,9 +679,9 @@
 									</div>
 
 									<center>
-										<button type="submit" class="form-control btn btn-primary colorAnaranjado">Enviar</button>
+										<button type="submit" class="form-control btn btn-primary colorAnaranjadoBoton">Enviar</button>
 									</center>
-								</form>
+								<!-- </form> -->
 							</div>
 						</div>
 					</div>
@@ -679,7 +694,7 @@
 		<div class="container">
 			<center>
 				<h2 class="text-inverse">
-					<b><label> DECORACIONES</label></b>
+					<b><label> SNACK CART</label></b>
 				</h2>
 			</center>
 			<div id="content" class="content">
@@ -688,21 +703,29 @@
 						<div class="col-md-7">
 							<div class="section-container bd-example">
 								<div class="post-image">
-									<img src="<?php echo base_url();?>assets/img/services/decoraciones.jpg" alt="Mozos y Barman" />
+									<img src="<?php echo base_url();?>assets/img/services/snackCart.png" alt="Snack Cart" />
 								</div>
-								<h3 class="text-inverse">DECORACIONES</h3>
+								<h3 class="text-inverse">SNACK CART</h3>
+								
 								<p class="about-me-desc" align="justify">
-									<b>Te ofrecemos:</b></br>
-									&nbsp;&nbsp;&nbsp;&nbsp;- Arco trenzado de globos</br>
-									&nbsp;&nbsp;&nbsp;&nbsp;- Columas de 1.5 mt de alto</br>
-								</p> 
+									<b>¡Celebremos juntos con Dolce Salato!</b> Vamos directo a tu fiesta con nuestra casita rodante y te cocinamos lo que tu prefieras.</br>
+								</p>
+
+								<p class="about-me-desc" align="justify">
+									Aquí te dejamos nuestra carta con algunas comidas con las que contamos. Escríbenos y pide tu cotización.</br>
+								</p>
+
+								<p class="about-me-desc" align="justify">
+									Todos nuestros servicos incluyen: 1 Truck, fuentes, azafates y thermos, 2 colaboradores, servilletas, vasos, salsas, otros</br>         
+		 							La reserva se hace con 10 días de anticipación</br>
+								</p>
 							</div>
 						</div>
 						<div class="col-md-5">
 							</br>
 							<div class="section-container colorPlomo bd-example">
 								<center><h4 class="section-title colorBlanco"><span>Formulario de cotizaciones y consultas</span></h4></center>
-								<form>
+								<!-- <form> -->
 									<div class="form-group">
 										<label for="exampleInputEmail1">Nombre o Empresa (*)</label>
 										<input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Ingrese Nombre o Empresa">
@@ -740,9 +763,9 @@
 									</div>
 
 									<center>
-										<button type="submit" class="form-control btn btn-primary colorAnaranjado">Enviar</button>
+										<button type="submit" class="form-control btn btn-primary colorAnaranjadoBoton">Enviar</button>
 									</center>
-								</form>
+								<!-- </form> -->
 							</div>
 						</div>
 					</div>
@@ -752,3 +775,347 @@
 	</div>
 
 </div>
+
+<!-- BEGIN #checkout-payment -->
+<div class="section-container" id="checkout-info">
+	<!-- BEGIN container -->
+	<div class="container">
+		<!-- BEGIN checkout -->
+		<div class="checkout">
+			<form class="form-horizontal">
+				<!-- BEGIN checkout-header -->
+				<div class="checkout-header">
+					<!-- BEGIN row -->
+					<div class="row">
+						<!-- BEGIN col-3 -->
+						<div class="col-md-3 col-sm-3">
+							<div class="step">
+								<a href="checkout_cart.html">
+									<div class="number">1</div>
+									<div class="info">
+										<div class="title">Carrito</div>
+										<div class="desc">Lorem ipsum dolor sit amet.</div>
+									</div>
+								</a>
+							</div>
+						</div>
+						<!-- END col-3 -->
+						<!-- BEGIN col-3 -->
+						<div class="col-md-3 col-sm-3">
+							<div class="step active">
+								<a href="#">
+									<div class="number">2</div>
+									<div class="info">
+										<div class="title">Envio</div>
+										<div class="desc">Vivamus eleifend euismod.</div>
+									</div>
+								</a>
+							</div>
+						</div>
+						<!-- END col-3 -->
+						<!-- BEGIN col-3 -->
+						<div class="col-md-3 col-sm-3">
+							<div class="step">
+								<a href="checkout_payment.html">
+									<div class="number">3</div>
+									<div class="info">
+										<div class="title">Recibo</div>
+										<div class="desc">Aenean ut pretium ipsum. </div>
+									</div>
+								</a>
+							</div>
+						</div>
+						<!-- END col-3 -->
+						<!-- BEGIN col-3 -->
+						<div class="col-md-3 col-sm-3">
+							<div class="step">
+								<a href="checkout_complete.html">
+									<div class="number">4</div>
+									<div class="info">
+										<div class="title">Pago</div>
+										<div class="desc">Curabitur interdum libero.</div>
+									</div>
+								</a>
+							</div>
+						</div>
+						<!-- END col-3 -->
+					</div>
+					<!-- END row -->
+				</div>
+				<!-- END checkout-header -->
+
+
+				<!-- BEGIN checkout-body -->
+				<div class="checkout-body" id="dvPerzonalizarPedido">					
+					<div class="form-group">
+						<div class="col-md-12">
+							<label class="col-md-12">
+								<b>PERZONALIZA TU PEDIDO :</b>
+							</label>
+						</div>
+					</div>
+					
+					<div class="form-group">
+						<div class="col-md-12">
+							<label class="col-md-12">
+								Su pedido incluye una dedicatoria y una tarjeta de regalo
+							</label>
+						</div>
+
+						<div class="col-md-12">
+							<div class="col-md-12">
+								<!-- <input type="date" class="form-control" name="first_name" value="" placeholder=""  id="txtCumpleanosEnvio"/> -->
+								<textarea class="form-control" rows="4" cols="50" maxlength="50"></textarea>
+								Máximo 50 caracteres
+							</div>
+						</div>
+					</div>
+														
+					<hr />
+				</div>
+				<!-- END checkout-body -->
+				
+				<!-- BEGIN checkout-body -->
+				<div class="checkout-body" id="dvDatosCliente">					
+					<div class="col-md-12">
+						<label class="col-md-4">
+							<b>DATOS DEL CLIENTE :</b>
+						</label>
+					</div>
+
+					<div class="form-group">
+						<div class="col-md-12">					
+							<div class="col-md-6">
+								<label class="control-label col-md-5">
+									Nombres y Apellidos <span class="text-danger">*</span>
+								</label>
+								<div class="col-md-7">
+									<input type="text" class="form-control" name="first_name" value="" placeholder="" id="txtNombreEnvio"/>
+								</div>
+							</div>
+
+							<div class="col-md-6">
+								<label class="control-label col-md-4">
+									Cumpleaños <span class="text-danger">*</span>
+								</label>
+								<div class="col-md-8">
+									<input type="date" class="form-control" name="first_name" value="" placeholder=""  id="txtCumpleanosEnvio"/>
+								</div>
+							</div>
+						</div>
+					</div>
+					
+					<div class="form-group">
+						<div class="col-md-12">
+							<div class="col-md-6">
+								<label class="control-label col-md-5">
+									Correo <span class="text-danger">*</span>
+								</label>
+								<div class="col-md-7">
+									<input type="text" class="form-control" name="first_name" value="" placeholder="" id="txtCorreoEnvio" />
+								</div>
+							</div>
+
+							<div class="col-md-6">
+								<label class="control-label col-md-4">
+									Teléfono <span class="text-danger">*</span>
+								</label>
+								<div class="col-md-8">
+									<input type="text" class="form-control" name="first_name" value="" placeholder="" id="txtTelefonoEnvio"/>
+								</div>
+							</div>
+						</div>
+					</div>
+
+					<div class="col-md-12">
+						<label class="col-md-4">
+							<b>DATOS DEL ENVIO :</b>
+						</label>
+					</div>
+
+					<div class="form-group">
+						<div class="col-md-12">
+							<div class="col-md-6">
+								<label class="control-label col-md-5">
+									Cupón
+								</label>
+								<div class="col-md-7">
+									<input type="text" class="form-control" name="first_name" value="" placeholder="" id="txtCuponEnvio" />
+								</div>
+							</div>
+
+							<div class="col-md-6">
+								<label class="control-label col-md-4">
+									Distrito <span class="text-danger">*</span>
+								</label>
+								<div class="col-md-8">
+									<select class="form-control" id="cmbDistritoEnvio">
+									</select>
+								</div>
+							</div>
+						</div>
+					</div>
+
+					<div class="form-group">
+						<div class="col-md-12">
+							<div class="col-md-6">
+								<label class="control-label col-md-5">
+									Dirección <span class="text-danger">*</span>
+								</label>
+								<div class="col-md-7">
+									<input type="text" class="form-control" name="first_name" value="" placeholder="" id="txtDireccionEnvio"/>
+								</div>
+							</div>
+
+							<div class="col-md-6">
+								<label class="control-label col-md-4">
+									Referencia <span class="text-danger"></span>
+								</label>
+								<div class="col-md-8">
+									<input type="text" class="form-control" name="first_name" value="" placeholder="" id="txtReferenciaEnvio" />
+								</div>
+							</div>
+						</div>
+					</div>
+
+					<div class="form-group">
+						<div class="col-md-12">
+							<div class="col-md-6">
+								<label class="control-label col-md-5">
+									Fecha de Entrega <span class="text-danger">*</span>
+								</label>
+								<div class="col-md-7">
+									<input type="date" class="form-control" name="first_name" value="" placeholder="" id="txtFechaEntregaEnvio" />
+								</div>
+							</div>
+
+							<div class="col-md-6">
+								<label class="control-label col-md-4">
+									Horario de Entrega <span class="text-danger">*</span>
+								</label>
+								<div class="col-md-8">
+									<input type="time" class="form-control" name="first_name" value="" placeholder="" id="txtHorarioEntregaEnvio"/>
+								</div>
+							</div>
+						</div>
+					</div>
+										
+					<hr />
+				</div>
+				<!-- END checkout-body -->
+
+				<!-- BEGIN checkout-body -->
+				<div class="checkout-body" id="dvDatosRecibo">
+					<div class="form-group">
+						<div class="col-md-12">
+							<b>DATOS DEL DOCUMENTO :</b></br></br>
+						</div>
+
+						<div class="col-md-12">
+							<input type="radio" name="gender"> Boleta</br>
+							<input type="radio" name="gender"> Factura</br></br>
+						</div>
+
+						<div class="col-md-4">
+							<input type="text" class="form-control" name="first_name" value="" placeholder="Ingrese número de Documento" id="txtCuponEnvio" />
+						</div>
+					</div>										
+					<hr />
+				</div>
+				<!-- END checkout-body -->
+
+				<!-- BEGIN checkout-body -->
+				<div class="checkout-body" id="dvDatosPago">
+					<div class="form-group">
+						<div class="col-md-12">
+							<b>FORMA DE PAGO :</b></br></br>
+						</div>
+
+						<div class="col-md-12">
+							<input type="radio" name="gender"> Tarjeta</br>
+							<input type="radio" name="gender"> Depósito Bancario <b>(50% 0 100%, si se realiza el pago parcial, el monto faltante se realizará en efectivo o cualquier tarjeta Visa )</b></br></br>
+							<b>Seleccione el banco de su preferencia</b></br>
+						</div>
+
+						<div class="col-md-4">
+							<select class="form-control" id="exampleSelect2">
+								<option>BCP</option>
+								<option>INTERBANK</option>
+							</select>
+							</br>
+						</div>
+
+						<div class="col-md-12 divBordeadoBanco">
+							</br>
+							<b>Pasos a seguir:</b>															</br>
+							1. Hacer el depósito a nombre de :												</br>
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Razón Social : 							</br>
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;RUC : 									</br>
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Banco : 								</br>
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;CTA Ahorro Corriente Soles : 			</br>
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;CCI :									</br>
+							2. Enviar el voucher de transaccion a : 										</br>
+							3. Nos contactaremos contigo luego de la validación								</br>
+							</br>
+						</div>
+					</div>										
+					<hr />
+				</div>
+				<!-- END checkout-body -->
+
+				<!-- BEGIN checkout-body -->
+				<div class="checkout-body">
+					<div class="table-responsive">
+						<table class="table table-cart">
+							<thead>
+								<tr>
+									<th>Product Name</th>
+									<th class="text-center">Price</th>
+									<th class="text-center">Quantity</th>
+									<th class="text-center">Total</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+									<td class="cart-product">
+										<div class="product-img">
+											<img src="../assets/img/product/product-iphone-6s-plus.png" alt="" />
+										</div>
+										<div class="product-info">
+											<div class="title">iPhone 6s Plus 16GB (Silver)</div>
+											<div class="desc">Delivers Tue 26/04/2016 - Free</div>
+										</div>
+									</td>
+									<td class="cart-price text-center">$999.00</td>
+									<td class="cart-qty text-center">
+										<div class="cart-qty-input">
+											<a href="#" class="qty-control left disabled" data-click="decrease-qty" data-target="#qty"><i class="fa fa-minus"></i></a>
+											<input type="text" name="qty" value="1" class="form-control" id="qty" />
+											<a href="#" class="qty-control right disabled" data-click="increase-qty" data-target="#qty"><i class="fa fa-plus"></i></a>
+										</div>
+										<div class="qty-desc">1 to max order</div>
+									</td>
+									<td class="cart-total text-center">
+										$999.00
+									</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+				</div>
+				<!-- END checkout-body -->
+
+
+				<!-- BEGIN checkout-footer -->
+				<div class="checkout-footer">
+					<a href="checkout_cart.html" class="btn btn-white btn-lg pull-left">Back</a>
+					<button type="submit" class="btn btn-inverse btn-lg p-l-30 p-r-30 m-l-10">Continue</button>
+				</div>
+				<!-- END checkout-footer -->
+			<!-- </form> -->
+		</div>
+		<!-- END checkout -->
+	</div>
+	<!-- END container -->
+</div>
+<!-- END #checkout-info -->
